@@ -20,6 +20,7 @@ end
 if placeID == 8560631822 or 8444591321 or 6872274481 then
 	createinfo("Insult", 'Executing script for "BedWars", please wait...', 5)
 	loadstring(game:HttpGet(bedwarsLoad, true))()
+	createinfo("Insult", 'Finished loading for "BedWars". Have fun!', 5)
 else
 	createinfo("Insult", "Unknown PlaceID. Insult will not execute.", 10)
 end
