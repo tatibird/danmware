@@ -240,7 +240,7 @@ UICorner_6.Parent = TextBox
 
 -- Scripts:
 
-local function OZTRM_fake_script() -- insultv2exec_v2.LocalScript 
+local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 
 	-- insult private v2[.1/REWRITE] by youknowwho
@@ -716,12 +716,12 @@ local function OZTRM_fake_script() -- insultv2exec_v2.LocalScript
 				antivoidpart.Size = Vector3.new(10000, 1, 10000)
 				antivoidpart.Anchored = true
 				antivoidpart.Material = Enum.Material.Neon
-				antivoidpart.Color = Color3.fromRGB(0, 81, 255)
+				antivoidpart.Color = Color3.fromRGB(0,255,0)
 				antivoidpart.Transparency = 0.35
-				antivoidpart.Position = Vector3.new(0, 10, 0)
+				antivoidpart.Position = Vector3.new(0, 20, 0)
 				antivoidpart.Parent = workspace
 				repeat wait()
-					if isalive(lplr) and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 10 then
+					if isalive(lplr) and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 20 then
 						local e = Instance.new("BodyVelocity",lplr.Character.HumanoidRootPart)
 						workspace.Gravity = 0
 						e.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X,130,lplr.Character:WaitForChild("HumanoidRootPart").Velocity.Z)
@@ -1014,5 +1014,44 @@ local function OZTRM_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
+	
+	local ChestOpen
+	local ChestStealer = {["Enabled"] = false}
+	local ChestBlacklist = {}
+	local ChestStealer = windowapi.CreateButton({
+		["Name"] = "ChestStealer",
+		["Tab"] = "World",
+		["Function"] = function(callback)
+			if callback then
+				ChestOpen = skywars["EventHandler"][skywars["Events"].ChestController.onStart[1]]:connect(function(one, two, three)
+					if ChestBlacklist[one] == nil then
+						ChestBlacklist[one] = true
+						for i,v in pairs(two) do
+							skywars["EventHandler"][skywars["Events"].ChestController.updateChest[1]](one, v.Type, -v.Quantity)
+						end
+						skywars["EventHandler"][skywars["Events"].ChestController.closeChest[1]](one)
+					end
+				end)
+				spawn(function()
+					repeat
+						wait(0.3)
+						if isAlive() then
+							for i,v in pairs(workspace.BlockContainer.Map.Chests:GetChildren()) do
+								if v.PrimaryPart then
+									if (lplr.Character.HumanoidRootPart.Position - v.PrimaryPart.Position).magnitude <= 10 and ChestBlacklist[v] == nil then
+										skywars["EventHandler"][skywars["Events"].ChestController.openChest[1]](v)
+									end
+								end
+							end
+						end
+					until (not ChestStealer["Enabled"])
+				end)
+			else
+				if ChestOpen then
+					ChestOpen:Disconnect()
+				end
+			end
+		end,
+	})
 end
-coroutine.wrap(OZTRM_fake_script)()
+coroutine.wrap(KVHXUO_fake_script)()
