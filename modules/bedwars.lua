@@ -517,7 +517,7 @@ end
 
 -- Scripts:
 
-local function DHMI_fake_script() -- insultv2exec_v2.LocalScript 
+local function ZYHBQX_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 	local req = require
 	local require = function(obj)
@@ -1138,7 +1138,7 @@ local function DHMI_fake_script() -- insultv2exec_v2.LocalScript
 				}
 				local origC0 = cam.Viewmodel.RightHand.RightWrist.C0
 				repeat
-					task.wait(0.01)
+					task.wait(0.02)
 					local nearest = getnearestplayer(Distance["Value"])
 					if nearest ~= nil and nearest.Team ~= lplr.Team and isalive(nearest) and nearest.Character:FindFirstChild("Humanoid").Health > 0.1 and isalive(lplr) and lplr.Character:FindFirstChild("Humanoid").Health > 0.1 then
 						local sword = getSword()
@@ -1835,5 +1835,64 @@ local function DHMI_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
+	
+	local stealerEnabled = nil
+	local ChestStealer = windowapi.CreateButton({
+		["Name"] = "ChestStealer",
+		["Tab"] = "World",
+		["Function"] = function(callback)
+			if callback then
+				stealerEnabled = true
+				repeat wait()
+					if bedwars["AppController"]:isAppOpen("ChestApp") then
+						local chest = lplr.Character:FindFirstChild("ObservedChestFolder")
+						local items = chest and chest.Value and chest.Value:GetChildren() or {}
+						if #items > 0 then
+							for itemNumber,Item in pairs(items) do
+								if Item:IsA("Accessory") then
+									task.spawn(function()
+										pcall(function()
+											bedwars["ClientHandler"]:GetNamespace("Inventory"):Get("ChestGetItem"):CallServer(chest.Value, Item)
+										end)
+									end)
+								end
+							end
+						end
+					end
+				until not stealerEnabled
+			else
+				stealerEnabled = false
+			end
+		end,
+	})
+	
+	local espHighlight
+	local Chams = windowapi.CreateButton({
+		["Name"] = "Chams",
+		["Tab"] = "World",
+		["Function"] = function(callback)
+			local players = game.Players:GetPlayers()
+			if callback then
+				for i,v in pairs(players) do
+					espHighlight = Instance.new("Highlight")
+					espHighlight.Name = v.Name.."_highlight_insult"
+					espHighlight.FillTransparency = 0.5
+					espHighlight.FillColor = Color3.fromRGB(0, 179, 255)
+					espHighlight.OutlineColor = Color3.fromRGB(0, 110, 255)
+					espHighlight.OutlineTransparency = 0
+					espHighlight.Parent = v.Character
+				end
+			else
+				for i,v in pairs(players) do
+					if v.Character:FindFirstChildWhichIsA("Highlight") then
+						local highlight = v.Character:FindFirstChildWhichIsA("Highlight")
+						if highlight.Name:match("_highlight_insult") then
+							highlight:Destroy()
+						end
+					end
+				end
+			end
+		end,
+	})
 end
-coroutine.wrap(DHMI_fake_script)()
+coroutine.wrap(ZYHBQX_fake_script)()
