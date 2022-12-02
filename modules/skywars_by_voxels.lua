@@ -240,7 +240,7 @@ UICorner_6.Parent = TextBox
 
 -- Scripts:
 
-local function KMERJS_fake_script() -- insultv2exec_v2.LocalScript 
+local function XEOQK_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 
 	-- insult private v2[.1/REWRITE] by youknowwho
@@ -940,7 +940,7 @@ local function KMERJS_fake_script() -- insultv2exec_v2.LocalScript
 				RunLoops:BindToStepped("Killaura", 1, function()
 					local targettable = {}
 					local targetsize = 0
-					local plrs = GetAllNearestHumanoidToPosition(killauratargetframe["Players"]["Enabled"], killaurarange["Value"] + 0.5, killauratargets["Value"])
+					local plrs = GetAllNearestHumanoidToPosition(game.Players.LocalPlayer, killaurarange["Value"] + 0.5, killauratargets["Value"])
 					local handcheck = (killaurahandcheck["Enabled"] and skywars["HotbarController"]:getHeldItemInfo() and skywars["HotbarController"]:getHeldItemInfo().Melee or (not killaurahandcheck["Enabled"]))
 					for i,plr in pairs(plrs) do
 						if handcheck then
@@ -1048,4 +1048,4 @@ local function KMERJS_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 	})
 end
-coroutine.wrap(KMERJS_fake_script)()
+coroutine.wrap(XEOQK_fake_script)()
