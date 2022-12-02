@@ -240,7 +240,7 @@ UICorner_6.Parent = TextBox
 
 -- Scripts:
 
-local function WEUA_fake_script() -- insultv2exec_v2.LocalScript 
+local function KMERJS_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 
 	-- insult private v2[.1/REWRITE] by youknowwho
@@ -1048,4 +1048,4 @@ local function WEUA_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 	})
 end
-coroutine.wrap(WEUA_fake_script)()
+coroutine.wrap(KMERJS_fake_script)()
