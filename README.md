@@ -1,4 +1,5 @@
 # insult
+## A Roblox thing for BedWars
 
 To use insult, put this into your executor:
 ```lua
