@@ -240,7 +240,7 @@ UICorner_6.Parent = TextBox
 
 -- Scripts:
 
-local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript 
+local function WEUA_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 
 	-- insult private v2[.1/REWRITE] by youknowwho
@@ -261,6 +261,14 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 	local controllers = {}
 	local controllerids = {}
 	local eventnames = {}
+	
+	local function isAlive(plr)
+		if plr then
+			return plr and plr.Character and plr.Character.Parent ~= nil and plr.Character:FindFirstChild("HumanoidRootPart") and plr.Character:FindFirstChild("Head") and plr.Character:FindFirstChild("Humanoid")
+		end
+		return lplr and lplr.Character and lplr.Character.Parent ~= nil and lplr.Character:FindFirstChild("HumanoidRootPart") and lplr.Character:FindFirstChild("Head") and lplr.Character:FindFirstChild("Humanoid")
+	end
+	
 	for i,v in pairs(debug.getupvalue(Flamework.Testing.patchDependency, 1).idToObj) do
 		controllers[tostring(v)] = v
 		controllerids[tostring(v)] = i 
@@ -299,7 +307,7 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 	end
 	
 	local function isPlayerTargetable(plr, target)
-		return plr ~= lplr and isalive(plr) and targetCheck(plr, target)
+		return plr ~= lplr and isAlive(plr) and targetCheck(plr, target)
 	end
 	
 	local function getSword()
@@ -721,7 +729,7 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 				antivoidpart.Position = Vector3.new(0, 20, 0)
 				antivoidpart.Parent = workspace
 				repeat wait()
-					if isalive(lplr) and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 20 then
+					if isAlive(lplr) and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 20 then
 						local e = Instance.new("BodyVelocity",lplr.Character.HumanoidRootPart)
 						workspace.Gravity = 0
 						e.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X,130,lplr.Character:WaitForChild("HumanoidRootPart").Velocity.Z)
@@ -738,13 +746,6 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 	})
 	
 	local canReturn = false
-	function isalive(plr)
-		plr = plr or lplr
-		if not plr.Character then return false end
-		if not plr.Character:FindFirstChild("Head") then return false end
-		if not plr.Character:FindFirstChild("Humanoid") then return false end
-		return true
-	end
 	
 	function hashFunc(vec) 
 		return {value = vec}
@@ -858,13 +859,6 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 		return Vector3.new(math.round(vec.X / .5) * .65, math.round(vec.Y), math.round(vec.Z / .5) * .65)
 	end
 	
-	local function isAlive(plr)
-		if plr then
-			return plr and plr.Character and plr.Character.Parent ~= nil and plr.Character:FindFirstChild("HumanoidRootPart") and plr.Character:FindFirstChild("Head") and plr.Character:FindFirstChild("Humanoid")
-		end
-		return lplr and lplr.Character and lplr.Character.Parent ~= nil and lplr.Character:FindFirstChild("HumanoidRootPart") and lplr.Character:FindFirstChild("Head") and lplr.Character:FindFirstChild("Humanoid")
-	end
-	
 	local HealthText = Instance.new("TextLabel")
 	HealthText.Font = Enum.Font.SourceSans
 	HealthText.TextSize = 20
@@ -882,7 +876,7 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 			if callback then
 				HealthText.Visible = true
 				RunLoops:BindToRenderStep("Health", 1, function()
-					if isalive(lplr) then
+					if isAlive(lplr) then
 						HealthText.Text = tostring(math.round(lplr.Character.Humanoid.Health)).."❤"
 					end
 				end)
@@ -896,7 +890,7 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 	local function GetAllNearestHumanoidToPosition(player, distance, amount)
 		local returnedplayer = {}
 		local currentamount = 0
-		if isalive(lplr) then
+		if isAlive(lplr) then
 			for i, v in pairs(game:GetService("Players"):GetChildren()) do
 				if isPlayerTargetable((player and v or nil), true, true) and v.Character:FindFirstChild("HumanoidRootPart") and v.Character:FindFirstChild("Head") and currentamount < amount then
 					local mag = (lplr.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).magnitude
@@ -1054,4 +1048,4 @@ local function KVHXUO_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 	})
 end
-coroutine.wrap(KVHXUO_fake_script)()
+coroutine.wrap(WEUA_fake_script)()
