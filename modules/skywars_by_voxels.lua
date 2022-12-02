@@ -240,7 +240,7 @@ UICorner_6.Parent = TextBox
 
 -- Scripts:
 
-local function XEOQK_fake_script() -- insultv2exec_v2.LocalScript 
+local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 
 	-- insult private v2[.1/REWRITE] by youknowwho
@@ -729,10 +729,10 @@ local function XEOQK_fake_script() -- insultv2exec_v2.LocalScript
 				antivoidpart.Position = Vector3.new(0, 20, 0)
 				antivoidpart.Parent = workspace
 				repeat wait()
-					if isAlive(lplr) and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 20 then
+					if isAlive() and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 20 then
 						local e = Instance.new("BodyVelocity",lplr.Character.HumanoidRootPart)
 						workspace.Gravity = 0
-						e.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X,130,lplr.Character:WaitForChild("HumanoidRootPart").Velocity.Z)
+						e.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X,300,lplr.Character:WaitForChild("HumanoidRootPart").Velocity.Z)
 						task.wait(0.5)
 						e:Destroy()
 						workspace.Gravity = 196.2
@@ -1047,5 +1047,109 @@ local function XEOQK_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
+	
+	local NoFall = {["Enabled"] = false}
+	local nofallconnection = nil
+	local debounce = false
+	local pos = CFrame.new(0, 500, 0)
+	local NoFall = windowapi.CreateButton({
+		["Name"] = "NoFall",
+		["Tab"] = "Blatant",
+		["Function"] = function(callback)
+			if callback then
+				if isAlive() then
+					spawn(function()
+						repeat
+							task.wait()
+							if isAlive() and lplr.Character.Humanoid:GetState() == Enum.HumanoidStateType.Freefall then
+								lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed, false)
+								local ray
+								local ray2
+								pos = lplr.Character.HumanoidRootPart.CFrame + Vector3.new(0, 70, 0)
+								local start = lplr.Character.HumanoidRootPart.CFrame
+								ray = nil
+								repeat
+									task.wait()
+									local raycastparameters = RaycastParams.new()
+									raycastparameters.FilterDescendantsInstances = {workspace.BlockContainer}
+									raycastparameters.FilterType = Enum.RaycastFilterType.Whitelist
+									ray = workspace:Raycast(lplr.Character.HumanoidRootPart.Position, Vector3.new(0, -lplr.Character.Humanoid.HipHeight, 0), raycastparameters)
+								until ray ~= nil
+								local oldlanded = (ray and ray.Position and ray.Position + Vector3.new(0, lplr.Character.Humanoid.HipHeight * 2, 0) or lplr.Character.HumanoidRootPart.CFrame.p)
+								if (start.p.Y - oldlanded.Y > 10) then
+									lplr.Character.HumanoidRootPart.CFrame = pos
+									task.wait(0.1)
+									lplr.Character.HumanoidRootPart.CFrame = CFrame.new(oldlanded, oldlanded + lplr.Character.HumanoidRootPart.CFrame.lookVector)
+									lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed, true)
+									lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
+									lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed, false)
+									task.wait(0.1)
+									lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed, true)
+								else
+									lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed, true)
+									lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Landed)
+								end
+								task.wait(0.3)
+							end
+						until (not NoFall["Enabled"])
+					end)
+				end
+			else
+				lplr.Character.Humanoid:SetStateEnabled(7, true)
+				if nofallconnection then
+					nofallconnection:Disconnect()
+				end
+			end
+		end,
+	})
+	
+	local AutoReportEnabled = false
+	local oldplr21 = nil
+	local AutoReport = windowapi.CreateButton({
+		["Name"] = "AutoReport",
+		["Tab"] = "World",
+		["Function"] = function(callback)
+			if callback then
+				AutoReportEnabled = true
+				spawn(function()
+					repeat
+						wait(0.2 + (math.random(1, 10) / 10))
+						local plr21
+						repeat wait() plr21 = game.Players:GetChildren()[math.random(1, #game.Players:GetChildren())] until plr21 ~= oldplr21 and plr21 ~= lplr
+						skywars["EventHandler"][skywars["Events"].ReportController.submitReport[1]]:fire(plr21.UserId)
+						createinfo("Insult (AutoReport)", plr21.DisplayName.."\n(@"..plr21.Name..")", 1.5)
+					until (not AutoReportEnabled)
+				end)
+			else
+				AutoReportEnabled = false
+			end
+		end,
+	})
+	
+	local dropStealerEnabled = false
+	local DropStealer = windowapi.CreateButton({
+		["Name"] = "DropStealer",
+		["Tab"] = "Blatant",
+		["Function"] = function(callback)
+			if callback then
+				dropStealerEnabled = true
+				spawn(function()
+					repeat
+						wait(0.2)
+						if isAlive() then
+							for i,v in pairs(workspace:GetChildren()) do
+								if v.Name == "Handle" then
+									firetouchinterest(lplr.Character.HumanoidRootPart, workspace.Handle, 1)
+									firetouchinterest(lplr.Character.HumanoidRootPart, workspace.Handle, 0)
+								end
+							end
+						end
+					until dropStealerEnabled == false
+				end)
+			else
+				dropStealerEnabled = false
+			end
+		end,
+	})
 end
-coroutine.wrap(XEOQK_fake_script)()
+coroutine.wrap(AFPXQX_fake_script)()
