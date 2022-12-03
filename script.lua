@@ -12,6 +12,14 @@ local function createinfo(this_title, this_notify, this_duration)
 	})
 end
 
+if placeID == 8542259458 or 8542275097 or 8592115909 or 8768229691 or 8951451142 then -- Skywars by Voxels
+	createinfo("Insult", 'Executing script for "SkyWars", please wait...', 5)
+	loadstring(game:HttpGet(skyWarsLoad, true))()
+	createinfo("Insult", 'Finished loading for "SkyWars". Have fun!', 5)
+else
+	createinfo("Insult", "Unknown PlaceID. Insult will not execute.", 10)
+end
+
 if fluxus then
 	createinfo("Insult", 'Detected Fluxus', 5)
 elseif syn then
