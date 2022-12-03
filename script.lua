@@ -1,7 +1,7 @@
 -- insult (private) by youknowwho REWRITE 1.1
 local bedWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars.lua"
 local skyWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/skywars_by_voxels.lua"
-local bedWarsLoad_Lobby = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars_lobby.lua"
+local bedWarsLoad_Lobby = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars/bedwars_lobby.lua"
 
 local bedWars_Lobby = {
 	6872265039
