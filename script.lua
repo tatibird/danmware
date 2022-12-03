@@ -20,6 +20,7 @@ elseif KRNL_LOADED then
 	createinfo("Insult", 'Detected KRNL', 5)
 end
 -- bedwars
+print("PlaceID (Insult): "..placeID)
 if placeID == 8560631822 or 8444591321 or 6872274481 then
 	createinfo("Insult", 'Executing script for "BedWars", please wait...', 5)
 	loadstring(game:HttpGet(bedwarsLoad, true))()
