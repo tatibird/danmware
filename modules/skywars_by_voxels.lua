@@ -240,7 +240,7 @@ UICorner_6.Parent = TextBox
 
 -- Scripts:
 
-local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript 
+local function AJPP_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 
 	-- insult private v2[.1/REWRITE] by youknowwho
@@ -249,6 +249,25 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 	
 	local lplr = game.Players.LocalPlayer
 	local repstorage = game:GetService("ReplicatedStorage")
+	
+	--[[_G.InsultSettings_skywarsbyvoxels = {}
+	
+	local function SaveSettings()
+		local JSON -- is nil
+		local HttpService = game:service('HttpService')
+		JSON = HttpService:JSONEncode(_G.InsultSettings_skywarsbyvoxels)
+		if not isfolder("insult") then
+			makefolder("insult")
+		end
+		writefile('insult/settings_skywars_by_voxels_load.insult',JSON)
+	end
+	
+	local function LoadSettings()
+		local HttpService = game:service('HttpService')
+		if isfile('insult/settings_skywars_by_voxels_load.insult') then
+			_G.InsultSettings_skywarsbyvoxels = HttpService:JSONDecode(readfile('insult/settings_skywars_by_voxels_load.insult'))
+		end
+	end]]--
 	
 	local cam = workspace.CurrentCamera
 	workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
@@ -261,6 +280,11 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 	local controllers = {}
 	local controllerids = {}
 	local eventnames = {}
+	
+	local blatant = script.Parent.Blatant
+	local world = script.Parent.World
+	local default = script.Parent.Default
+	local logoScreen = script.Parent.InsultLogoScreen
 	
 	local function isAlive(plr)
 		if plr then
@@ -374,7 +398,31 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 		end
 	end
 	
+	local blueCallback = Color3.fromRGB(0, 145, 255)
+	local noCallback = Color3.fromRGB(69, 69, 69) -- funny
+	
+	local function removeItemFromInsultList(this_title)
+		for i,v in pairs(logoScreen.list:GetChildren()) do
+			if v:IsA("TextLabel") and v.Name == this_title then
+				v:Destroy()
+			end
+		end
+	end
+	
+	local function addItemToInsultList(this_title)
+		removeItemFromInsultList(this_title)
+		local newLabel = Instance.new("TextLabel", logoScreen.list)
+		newLabel.Name = this_title
+		newLabel.Text = this_title
+		newLabel.Font = Enum.Font.Gotham
+		newLabel.Size = UDim2.new(1,0,0.284,0)
+		newLabel.BackgroundTransparency = 1
+		newLabel.TextColor3 = Color3.fromRGB(255,255,255)
+		newLabel.TextScaled = true
+	end
+	
 	local currentAdded = 0
+	--LoadSettings()
 	windowapi["CreateButton"] = function(argstablemain)
 		local buttonapi = {}
 		local player = game.Players.LocalPlayer
@@ -389,16 +437,6 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 		buttonapi["NumValue"] = argstablemain["NumValue"]
 		
 		currentAdded = currentAdded + 1
-		--local enabled = isfile(buttonapi["Name"]..".txt")
-	
-		--if enabled then
-		--table.insert(modules,buttonapi["Name"])
-		--modules[buttonapi["Name"]] = true
-		--bind = readfile(buttonapi["Name"]..".txt")
-		--else
-		--table.insert(modules,buttonapi["Name"])
-		--modules[buttonapi["Name"]] = false
-		--end
 	
 		local TextButton = Instance.new("TextButton")
 		--local config = Instance.new("ImageButton")
@@ -424,6 +462,9 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 			if key == bind then
 				if buttonapi["Function"] ~= true then
 					buttonapi["Function"] = true
+					addItemToInsultList(buttonapi["Name"])
+					--table.insert(_G.InsultSettings_skywarsbyvoxels, buttonapi["Name"])
+					--SaveSettings()
 					createinfo("Insult Private", buttonapi["Name"].." has been enabled!", 2)
 					table.insert(states,argstablemain["Function"])
 					states[buttonapi["Name"]] = true
@@ -435,6 +476,9 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 					argstablemain["Function"](false)
 					TextButton.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
 					buttonapi["Function"] = false
+					removeItemFromInsultList(buttonapi["Name"])
+					--table.remove(_G.InsultSettings_skywarsbyvoxels, table.find(table.insert(_G.InsultSettings_skywarsbyvoxels, buttonapi["Name"])))
+					--SaveSettings()
 					createinfo("Insult Private", buttonapi["Name"].." has been disabled!", 2)
 				end
 			end
@@ -448,14 +492,20 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 				table.insert(states,argstablemain["Function"])
 				states[buttonapi["Name"]] = true
 				buttonapi["Function"] = true
+				addItemToInsultList(buttonapi["Name"])
+				--table.insert(_G.InsultSettings_skywarsbyvoxels, buttonapi["Name"])
 				createinfo("Insult Private", buttonapi["Name"].." has been enabled!", 2)
+				--SaveSettings()
 				TextButton.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
 			else
 				table.insert(states,argstablemain["Function"])
 				states[buttonapi["Name"]] = false
 				TextButton.BackgroundColor3 = Color3.fromRGB(69, 69, 69)
 				buttonapi["Function"] = false
+				removeItemFromInsultList(buttonapi["Name"])
+				--table.insert(_G.InsultSettings_skywarsbyvoxels, buttonapi["Name"])
 				createinfo("Insult Private", buttonapi["Name"].." has been disabled!", 2)
+				--SaveSettings()
 			end
 			if buttonapi["Function"] ~= true then
 				argstablemain["Function"](false)
@@ -490,12 +540,6 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 			TextBox.FocusLost:Connect(function()
 				bind = TextBox.Text
 				TextBox:Destroy()
-				--if enabled then
-				--delfile(buttonapi["Name"],scriptName)
-				--writefile(buttonapi["Name"]..".txt",bind)
-				--else
-				--writefile(buttonapi["Name"]..".txt",bind)
-				--end
 			end)
 		end)
 		UICorner_2.Parent = TextButton
@@ -600,11 +644,6 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 	
 	local inffly_bind = "G"]]--
 	
-	local blatant = script.Parent.Blatant
-	local world = script.Parent.World
-	local default = script.Parent.Default
-	local logoScreen = script.Parent.InsultLogoScreen
-	
 	--[[local df_list = default.list
 	local wl_list = world.list
 	local bl_list = blatant.list
@@ -627,29 +666,6 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 	local newBlur = Instance.new("BlurEffect", game.Lighting)
 	newBlur.Size = 15
 	newBlur.Enabled = false
-	
-	local blueCallback = Color3.fromRGB(0, 145, 255)
-	local noCallback = Color3.fromRGB(69, 69, 69) -- funny
-	
-	local function removeItemFromInsultList(this_title)
-		for i,v in pairs(logoScreen.list:GetChildren()) do
-			if v:IsA("TextLabel") and v.Name == this_title then
-				v:Destroy()
-			end
-		end
-	end
-	
-	local function addItemToInsultList(this_title)
-		removeItemFromInsultList(this_title)
-		local newLabel = Instance.new("TextLabel", logoScreen.list)
-		newLabel.Name = this_title
-		newLabel.Text = this_title
-		newLabel.Font = Enum.Font.Gotham
-		newLabel.Size = UDim2.new(1,0,0.284,0)
-		newLabel.BackgroundTransparency = 1
-		newLabel.TextColor3 = Color3.fromRGB(255,255,255)
-		newLabel.TextScaled = true
-	end
 	
 	game:GetService("UserInputService").InputBegan:Connect(function(input)
 		if input.KeyCode == Enum.KeyCode.RightShift then
@@ -1152,4 +1168,4 @@ local function AFPXQX_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 	})
 end
-coroutine.wrap(AFPXQX_fake_script)()
+coroutine.wrap(AJPP_fake_script)()
