@@ -1,6 +1,6 @@
 -- insult (private) by youknowwho REWRITE 1.1
 local bedWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars.lua"
-local skyWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars.lua"
+local skyWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/skywars_by_voxels.lua"
 
 local placeID = game.PlaceId
 local function createinfo(this_title, this_notify, this_duration)
