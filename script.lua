@@ -12,13 +12,13 @@ local function createinfo(this_title, this_notify, this_duration)
 	})
 end
 
-if fluxus then
+--[[if fluxus then
 	createinfo("Insult", 'Detected Fluxus', 5)
 elseif syn then
 	createinfo("Insult", 'Detected some good executor ;D', 5)
 elseif KRNL_LOADED then
 	createinfo("Insult", 'Detected KRNL', 5)
-end
+end]]--
 -- bedwars
 print("PlaceID (Insult): "..placeID)
 if placeID == 8560631822 or 8444591321 or 6872274481 then
