@@ -6,8 +6,9 @@ To use insult, put this into your executor:
 loadstring(game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/main/script.lua", true))()
 ```
 
-### Recent Updates
-SkyWars by Voxels - Update 1.1
+## Recent Updates
+### SkyWars by Voxels - Update 1.1
+```yaml
 This update brings SkyWars to Insult.
 
 In this commit itself, it adds functionality to the Insult Menu Bar (you can find near the top right that says Insult Private)
@@ -25,3 +26,4 @@ DropStealer | Blatant
 Chams | World
 ChestStealer | World
 AutoReport | World
+```
