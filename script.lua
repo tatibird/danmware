@@ -1,11 +1,6 @@
 -- insult (private) by youknowwho REWRITE 1.1
 local bedWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars.lua"
 local skyWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/skywars_by_voxels.lua"
-local bedWarsLoad_Lobby = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars/bedwars_lobby.lua"
-
-local bedWars_Lobby = {
-	6872265039
-}
 
 local alreadyLaunched = false
 
@@ -37,7 +32,7 @@ end
 if fluxus then
 	createinfo("Insult", 'Detected Fluxus', 5)
 elseif syn then
-	createinfo("Insult", 'Detected a good executor ;D (Synapse)', 5)
+	createinfo("Insult", 'Detected some good executor ;D', 5)
 elseif KRNL_LOADED then
 	createinfo("Insult", 'Detected KRNL', 5)
 end
@@ -56,12 +51,6 @@ local skyWars_launch = function()
 	createinfo("Insult", 'Finished loading for "SkyWars". Have fun!', 5)
 end
 
-local bedWars_lobby_launch = function()
-	createinfo("Insult", 'Executing script for "BedWars (Lobby)", please wait...', 5)
-	loadstring(game:HttpGet(bedWarsLoad_Lobby))()
-	createinfo("Insult", 'Finished loading for "BedWars (Lobby)". Have fun!', 5)
-end
-
 for i,v in pairs(bedWars_ids) do
 	if v == placeID then
 		coroutine.wrap(bedwars_launch)()
@@ -73,14 +62,6 @@ end
 for i,v in pairs(skyWars_ids) do
 	if v == placeID then
 		coroutine.wrap(skyWars_launch)()
-		alreadyLaunched = true
-		break
-	end
-end
-
-for i,v in pairs(bedWars_Lobby) do
-	if v == placeID then
-		coroutine.wrap(bedWars_lobby_launch)()
 		alreadyLaunched = true
 		break
 	end
