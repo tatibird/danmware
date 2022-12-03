@@ -26,7 +26,7 @@ if placeID == 6872274481 or 8444591321 or 8560631822 or 9903116309 then -- Skywa
 	createinfo("Insult", 'Executing script for "BedWars", please wait...', 5)
 	loadstring(game:HttpGet(bedWarsLoad))()
 	createinfo("Insult", 'Finished loading for "BedWars". Have fun!', 5)
-if placeID == 8542259458 or 8542275097 or 8592115909 or 8768229691 or 8951451142 then -- Skywars by Voxels
+elseif placeID == 8542259458 or 8542275097 or 8592115909 or 8768229691 or 8951451142 then -- Skywars by Voxels
 	createinfo("Insult", 'Executing script for "SkyWars", please wait...', 5)
 	loadstring(game:HttpGet(skyWarsLoad))()
 	createinfo("Insult", 'Finished loading for "SkyWars". Have fun!', 5)
