@@ -3,7 +3,7 @@
 
 To use insult, put this into your executor:
 ```lua
-loadstring(game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/main/script.lua", true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/main/script.lua", false))()
 ```
 This is insult private, but I really don't care if it's private. It's public at the moment.
 
