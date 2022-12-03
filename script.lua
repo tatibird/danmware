@@ -80,7 +80,7 @@ end
 
 for i,v in pairs(bedWars_Lobby) do
 	if v == placeID then
-		coroutine.wrap(skyWars_launch)()
+		coroutine.wrap(bedWarsLoad_Lobby)()
 		alreadyLaunched = true
 		break
 	end
