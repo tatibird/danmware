@@ -58,7 +58,7 @@ end
 
 local bedWars_lobby_launch = function()
 	createinfo("Insult", 'Executing script for "BedWars (Lobby)", please wait...', 5)
-	loadstring(game:HttpGet(skyWarsLoad))()
+	loadstring(game:HttpGet(bedWarsLoad_Lobby))()
 	createinfo("Insult", 'Finished loading for "BedWars (Lobby)". Have fun!', 5)
 end
 
@@ -80,7 +80,7 @@ end
 
 for i,v in pairs(bedWars_Lobby) do
 	if v == placeID then
-		coroutine.wrap(bedWarsLoad_Lobby)()
+		coroutine.wrap(bedWars_lobby_launch)()
 		alreadyLaunched = true
 		break
 	end
