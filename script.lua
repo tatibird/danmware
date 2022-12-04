@@ -1,4 +1,9 @@
 -- insult (private) by youknowwho REWRITE 1.1
+
+--/ Wait for the game to load
+if not game:IsLoaded() then game.Loaded:Wait() end
+
+--// Load scripts
 local bedWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars.lua"
 local skyWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/skywars_by_voxels.lua"
 
