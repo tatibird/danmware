@@ -37,7 +37,7 @@ end
 if fluxus then
 	createinfo("Insult", 'Detected Fluxus', 5)
 elseif syn then
-	createinfo("Insult", 'Detected a good executor ;D', 5)
+	createinfo("Insult", 'Detected Synapse X or a decent executor', 5)
 elseif KRNL_LOADED then
 	createinfo("Insult", 'Detected KRNL', 5)
 end
