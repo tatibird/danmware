@@ -517,7 +517,7 @@ end
 
 -- Scripts:
 
-local function ZYHBQX_fake_script() -- insultv2exec_v2.LocalScript 
+local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 	local req = require
 	local require = function(obj)
@@ -1126,7 +1126,7 @@ local function ZYHBQX_fake_script() -- insultv2exec_v2.LocalScript
 	local HitRemote = Client:Get(bedwars["SwordRemote"])
 	local KA_Enabled = true
 	local Killaura = windowapi.CreateButton({
-		["Name"] = "Killaura",
+		["Name"] = "Killaura/ComboAura",
 		["Tab"] = "Blatant",
 		["Function"] = function(callback)
 			if callback then
@@ -1137,13 +1137,21 @@ local function ZYHBQX_fake_script() -- insultv2exec_v2.LocalScript
 					},
 				}
 				local origC0 = cam.Viewmodel.RightHand.RightWrist.C0
+				
 				repeat
-					task.wait(0.02)
-					local nearest = getnearestplayer(Distance["Value"])
-					if nearest ~= nil and nearest.Team ~= lplr.Team and isalive(nearest) and nearest.Character:FindFirstChild("Humanoid").Health > 0.1 and isalive(lplr) and lplr.Character:FindFirstChild("Humanoid").Health > 0.1 then
-						local sword = getSword()
-						spawn(function()
-							for i,v in pairs(anims.Normal) do 
+					if not isalive(lplr) then
+						repeat wait() until isalive(lplr)
+					end
+					if nearestID ~= nil then
+					end
+					for _,v in pairs(game.Players:GetPlayers()) do
+						if v ~= lplr then
+							nearestID = v
+							target = v.Name
+							if v.Team ~= lplr.Team and v ~= lplr and isalive(v) and v.Character:FindFirstChild("HumanoidRootPart") and (v.Character.HumanoidRootPart.Position - lplr.Character.HumanoidRootPart.Position).Magnitude < 20 then
+								local sword = getSword()
+								coroutine.wrap(function()
+									for i,v in pairs(anims.Normal) do 
 								local anim = game:GetService("TweenService"):Create(cam.Viewmodel.RightHand.RightWrist, TweenInfo.new(v.Time), {C0 = origC0 * v.CFrame})
 								anim:Play()
 								task.wait(v.Time+0.1)
@@ -1152,33 +1160,29 @@ local function ZYHBQX_fake_script() -- insultv2exec_v2.LocalScript
 								end)
 								local anim2 = game:GetService("TweenService"):Create(cam.Viewmodel.RightHand.RightWrist, TweenInfo.new(0.1), {C0 = origC0})
 								anim2:Play()
-							end
-							--local anim = Instance.new("Animation")
-							--anim.AnimationId = "rbxassetid://4947108314"
-							--local animator = lplr.Character:FindFirstChild("Humanoid"):FindFirstChild("Animator")
-							--animator:LoadAnimation(anim):Play()
-							--anim:Destroy()
-							--bedwars["ViewmodelController"]:playAnimation(15)
-							if sword ~= nil then
-								bedwars["SwordController"].lastAttack = game:GetService("Workspace"):GetServerTimeNow() - 0.11
-								HitRemote:SendToServer({
-									["weapon"] = sword.tool,
-									["entityInstance"] = nearest.Character,
-									["validate"] = {
-										["raycast"] = {
-											["cameraPosition"] = hashFunc(cam.CFrame.Position),
-											["cursorDirection"] = hashFunc(Ray.new(cam.CFrame.Position, nearest.Character:FindFirstChild("HumanoidRootPart").Position).Unit.Direction)
+								end		
+								end)()
+								if sword ~= nil then
+									bedwars["SwordController"].lastAttack = game:GetService("Workspace"):GetServerTimeNow() - 0.11
+									HitRemote:SendToServer({
+										["weapon"] = sword.tool,
+										["entityInstance"] = v.Character,
+										["validate"] = {
+											["raycast"] = {
+												["cameraPosition"] = hashFunc(cam.CFrame.Position),
+												["cursorDirection"] = hashFunc(Ray.new(cam.CFrame.Position, v.Character:FindFirstChild("HumanoidRootPart").Position).Unit.Direction)
+											},
+											["targetPosition"] = hashFunc(v.Character:FindFirstChild("HumanoidRootPart").Position),
+											["selfPosition"] = hashFunc(lplr.Character:FindFirstChild("HumanoidRootPart").Position + ((lplr.Character:FindFirstChild("HumanoidRootPart").Position - v.Character:FindFirstChild("HumanoidRootPart").Position).magnitude > 14 and (CFrame.lookAt(lplr.Character:FindFirstChild("HumanoidRootPart").Position, v.Character:FindFirstChild("HumanoidRootPart").Position).LookVector * 4) or Vector3.new(0, 0, 0)))
 										},
-										["targetPosition"] = hashFunc(nearest.Character:FindFirstChild("HumanoidRootPart").Position),
-										["selfPosition"] = hashFunc(lplr.Character:FindFirstChild("HumanoidRootPart").Position + ((lplr.Character:FindFirstChild("HumanoidRootPart").Position - nearest.Character:FindFirstChild("HumanoidRootPart").Position).magnitude > 14 and (CFrame.lookAt(lplr.Character:FindFirstChild("HumanoidRootPart").Position, nearest.Character:FindFirstChild("HumanoidRootPart").Position).LookVector * 4) or Vector3.new(0, 0, 0)))
-									},
-									["chargedAttack"] = {["chargeRatio"] = 0.6}
-								})
+										["chargedAttack"] = {["chargeRatio"] = 0.8}
+									})
+								end
 							end
-	
-						end)
+						end
 					end
-				until not KA_Enabled
+					task.wait(0.12)
+			until not KA_Enabled
 			else
 				KA_Enabled = false
 			end
@@ -1894,5 +1898,41 @@ local function ZYHBQX_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
+	
+	local NoKillFeed = windowapi.CreateButton({
+		["Name"] = "NoKillFeed",
+		["Tab"] = "World",
+		["Function"] = function(callback)
+			local killFeed = lplr:WaitForChild("PlayerGui"):WaitForChild("KillFeedGui")
+			if callback then
+				if killFeed then killFeed.Enabled = false end
+			else
+				if killFeed then killFeed.Enabled = true end
+			end
+		end,
+		["HoverText"] = "Disables the new kill feed."
+	})
+	
+	local AutoJuggernaut = windowapi.CreateButton({
+		["Name"] = "AutoJuggernaut",
+		["Tab"] = "Blatant",
+		["Function"] = function(callback)
+			if callback then
+				if workspace:FindFirstChild("JuggernautRageBlade") then
+					local juggernaut = workspace:FindFirstChild("JuggernautRageBlade")
+					local proximity = juggernaut:WaitForChild("Rock"):FindFirstChildWhichIsA("ProximityPrompt")
+					if proximity then
+						local character = lplr.Character or lplr.CharacterAdded:Wait()
+						character.PrimaryPart.CFrame = CFrame.new(1000,1000,1000)
+						task.wait(1)
+						character.PrimaryPart.CFrame = juggernaut:WaitForChild("Rock").CFrame
+						task.wait(1)
+						fireproximityprompt(proximity, 500)
+					end
+				end
+			end
+		end,
+		["HoverText"] = "Teleports to the juggernaut sword."
+	})
 end
-coroutine.wrap(ZYHBQX_fake_script)()
+coroutine.wrap(YGRUSY_fake_script)()
