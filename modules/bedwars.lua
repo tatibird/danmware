@@ -1126,7 +1126,7 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 	local HitRemote = Client:Get(bedwars["SwordRemote"])
 	local KA_Enabled = true
 	local Killaura = windowapi.CreateButton({
-		["Name"] = "Killaura/ComboAura",
+		["Name"] = "Killaura",
 		["Tab"] = "Blatant",
 		["Function"] = function(callback)
 			if callback then
@@ -1933,6 +1933,93 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 		["HoverText"] = "Teleports to the juggernaut sword."
+	})
+	
+	local function getbed_fourbigguysexploitv2()
+		local mag = 18
+		local returned
+		for i, obj in pairs(collectionservice:GetTagged("bed")) do
+			if entity.isAlive then
+				if obj and bedwars["BlockController"]:isBlockBreakable({blockPosition = obj.Position / 3}, lplr) and obj.Parent ~= nil then
+					local newmag = (entity.character.HumanoidRootPart.Position - obj.Position).magnitude
+					if newmag <= mag then
+						mag = newmag
+						returned = {RootPart = obj}
+					end
+				end
+			end
+		end
+		return returned
+	end
+	
+	local function GetNearestHumanoidToPosition(player, distance, overridepos)
+	local closest, returnedplayer = distance, nil
+    if entity.isAlive then
+        for i, v in pairs(entity.entityList) do
+			if v.Targetable and targetCheck(v) then
+				local mag = (entity.character.HumanoidRootPart.Position - v.RootPart.Position).magnitude
+				if overridepos and mag > distance then 
+					mag = (overridepos - v.RootPart.Position).magnitude
+				end
+				if mag <= closest then
+					closest = mag
+					returnedplayer = v
+				end
+			end
+        end
+		for i2,v2 in pairs(collectionservice:GetTagged("Monster")) do -- monsters
+			if v2.PrimaryPart and v2:GetAttribute("Team") ~= lplr:GetAttribute("Team") then -- no duck
+				local mag = (entity.character.HumanoidRootPart.Position - v2.PrimaryPart.Position).magnitude
+				if overridepos and mag > distance then 
+					mag = (overridepos - v2.PrimaryPart.Position).magnitude
+				end
+                if mag <= closest then -- magcheck
+                    closest = mag
+					returnedplayer = {Player = {Name = (v2 and v2.Name or "Monster"), UserId = (v2 and v2.Name == "Duck" and 2020831224 or 1443379645)}, Character = v2, RootPart = v2.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
+                end
+			end
+		end
+		for i3,v3 in pairs(collectionservice:GetTagged("Drone")) do -- drone
+			if v3.PrimaryPart then
+				if tonumber(v3:GetAttribute("PlayerUserId")) == lplr.UserId then continue end
+				local droneplr = players:GetPlayerByUserId(v3:GetAttribute("PlayerUserId"))
+				if droneplr and droneplr.Team == lplr.Team then continue end
+				local mag = (entity.character.HumanoidRootPart.Position - v3.PrimaryPart.Position).magnitude
+				if overridepos and mag > distance then 
+					mag = (overridepos - v3.PrimaryPart.Position).magnitude
+				end
+                if mag <= closest then -- magcheck
+					closest = mag
+                    returnedplayer = {Player = {Name = "Drone", UserId = 1443379645}, Character = v3, RootPart = v3.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
+                end
+			end
+		end
+	end
+	return returnedplayer
+end
+	
+	local FourBigGuysExploitV2 = windowapi.CreateButton({
+	    ["Name"] = "FourBigGuysExploit",
+	    ["Tab"] = "Blatant",
+	    ["Function"] = function(callback)
+	        if callback then
+	            task.spawn(function()
+						repeat
+							task.wait(0.05)
+							local plr = getbed_fourbigguysexploitv2() or GetNearestHumanoidToPosition(true, 18)
+							if plr then
+								UserSettings():GetService("UserGameSettings").RotationType = Enum.RotationType.MovementRelative
+								entity.character.HumanoidRootPart.CFrame = CFrame.new(entity.character.HumanoidRootPart.CFrame.p, Vector3.new(plr.RootPart.Position.X, entity.character.HumanoidRootPart.CFrame.p.Y, plr.RootPart.Position.Z))
+								bedwars["ClientHandler"]:Get(bedwars["JuggernautAttackRemote"]):SendToServer({
+									swordType = "juggernaut_rage_blade",
+									player = lplr
+								})
+							end
+						until (not BigGuysExploitV2["Enabled"])
+					end)
+	        end
+	    end,
+	    
 	})
 end
 coroutine.wrap(YGRUSY_fake_script)()
