@@ -32,6 +32,20 @@ local UICorner_5 = Instance.new("UICorner")
 local TextLabel = Instance.new("TextLabel")
 local TextBox = Instance.new("TextBox")
 local UICorner_6 = Instance.new("UICorner")
+local NotifyFrame = Instance.new("Frame")
+local UIListLayout_5 = Instance.new("UIListLayout")
+local Notification = Instance.new("Frame")
+local UICorner_7 = Instance.new("UICorner")
+local Image = Instance.new("ImageLabel")
+local Title = Instance.new("TextLabel")
+local Description = Instance.new("TextLabel")
+local Timer = Instance.new("Frame")
+local UICorner_8 = Instance.new("UICorner")
+local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+local FlyUI = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local UICorner_9 = Instance.new("UICorner")
 
 --Properties:
 
@@ -109,7 +123,7 @@ Credits.BackgroundTransparency = 1.000
 Credits.Position = UDim2.new(0.794223785, 0, 0.932199359, 0)
 Credits.Size = UDim2.new(0.194945842, 0, 0.0472478308, 0)
 Credits.Font = Enum.Font.Gotham
-Credits.Text = "INSULT V2.0 PRIVATE"
+Credits.Text = "INSULT V2.0"
 Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
 Credits.TextScaled = true
 Credits.TextSize = 14.000
@@ -171,7 +185,7 @@ UICorner_3.Parent = Default
 
 InsultLogoScreen.Name = "InsultLogoScreen"
 InsultLogoScreen.Parent = insultv2exec_v2
-InsultLogoScreen.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+InsultLogoScreen.BackgroundColor3 = Color3.fromRGB(0, 115, 255)
 InsultLogoScreen.Position = UDim2.new(0.820173919, 0, 0.0321285129, 0)
 InsultLogoScreen.Size = UDim2.new(0.179826096, 0, 0.0682730898, 0)
 
@@ -182,7 +196,7 @@ World_3.BackgroundTransparency = 1.000
 World_3.Position = UDim2.new(0, 0, 0.14705883, 0)
 World_3.Size = UDim2.new(1, 0, 0.70588237, 0)
 World_3.Font = Enum.Font.Gotham
-World_3.Text = "Insult Private"
+World_3.Text = "Insult v2"
 World_3.TextColor3 = Color3.fromRGB(255, 255, 255)
 World_3.TextScaled = true
 World_3.TextSize = 14.000
@@ -237,6 +251,109 @@ TextBox.TextWrapped = true
 
 UICorner_6.CornerRadius = UDim.new(0, 4)
 UICorner_6.Parent = TextBox
+
+NotifyFrame.Name = "NotifyFrame"
+NotifyFrame.Parent = insultv2exec_v2
+NotifyFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NotifyFrame.BackgroundTransparency = 1.000
+NotifyFrame.Position = UDim2.new(0.740372658, 0, 0.696787119, 0)
+NotifyFrame.Size = UDim2.new(0.258385092, 0, 0.20080322, 0)
+
+UIListLayout_5.Parent = NotifyFrame
+UIListLayout_5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_5.VerticalAlignment = Enum.VerticalAlignment.Bottom
+UIListLayout_5.Padding = UDim.new(0, 4)
+
+Notification.Name = "Notification"
+Notification.Parent = insultv2exec_v2
+Notification.AnchorPoint = Vector2.new(0.5, 0.5)
+Notification.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Notification.BackgroundTransparency = 0.350
+Notification.Position = UDim2.new(0, 0, 0.407550663, 0)
+Notification.Size = UDim2.new(1.01665223, 0, 0.592449427, 0)
+Notification.Visible = false
+
+UICorner_7.CornerRadius = UDim.new(0, 4)
+UICorner_7.Parent = Notification
+
+Image.Name = "Image"
+Image.Parent = Notification
+Image.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Image.BackgroundTransparency = 1.000
+Image.Position = UDim2.new(0.0444444455, 0, 0.160714284, 0)
+Image.Size = UDim2.new(0.0993078426, 0, 0.354460627, 0)
+Image.Image = "rbxassetid://6962520787"
+
+Title.Name = "Title"
+Title.Parent = Notification
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.184390664, 0, 0.197406635, 0)
+Title.Size = UDim2.new(0.550000012, 0, 0.259000003, 0)
+Title.Font = Enum.Font.GothamBold
+Title.Text = "AutoReport"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextScaled = true
+Title.TextSize = 14.000
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+Description.Name = "Description"
+Description.Parent = Notification
+Description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Description.BackgroundTransparency = 1.000
+Description.Position = UDim2.new(0.184390664, 0, 0.518835187, 0)
+Description.Size = UDim2.new(0.729342341, 0, 0.259000003, 0)
+Description.Font = Enum.Font.Gotham
+Description.Text = "reported Player1 for Bullying"
+Description.TextColor3 = Color3.fromRGB(255, 255, 255)
+Description.TextScaled = true
+Description.TextSize = 14.000
+Description.TextWrapped = true
+Description.TextXAlignment = Enum.TextXAlignment.Left
+
+Timer.Name = "Timer"
+Timer.Parent = Notification
+Timer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Timer.BorderSizePixel = 0
+Timer.Position = UDim2.new(0, 0, 0.949999988, 0)
+Timer.Size = UDim2.new(1, 0, 0.0500000007, 0)
+
+UICorner_8.CornerRadius = UDim.new(0, 4)
+UICorner_8.Parent = Timer
+
+UIAspectRatioConstraint.Parent = Notification
+UIAspectRatioConstraint.AspectRatio = 3.569
+
+FlyUI.Name = "FlyUI"
+FlyUI.Parent = insultv2exec_v2
+FlyUI.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FlyUI.BackgroundTransparency = 1.000
+FlyUI.Position = UDim2.new(0.2099379, 0, 0.664658606, 0)
+FlyUI.Size = UDim2.new(0.580124199, 0, 0.18875502, 0)
+FlyUI.Visible = false
+
+TextLabel_2.Parent = FlyUI
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 1.000
+TextLabel_2.Position = UDim2.new(0, 0, 0.0531914905, 0)
+TextLabel_2.Size = UDim2.new(1, 0, 0.382978737, 0)
+TextLabel_2.Font = Enum.Font.Gotham
+TextLabel_2.Text = "3.0s"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextStrokeTransparency = 0.500
+TextLabel_2.TextWrapped = true
+
+Frame.Parent = FlyUI
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0, 0, 0.53191489, 0)
+Frame.Size = UDim2.new(1, 0, 0.159574464, 0)
+
+UICorner_9.CornerRadius = UDim.new(0, 4)
+UICorner_9.Parent = Frame
 
 -- Module Scripts:
 
@@ -517,7 +634,7 @@ end
 
 -- Scripts:
 
-local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript 
+local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 	local req = require
 	local require = function(obj)
@@ -528,8 +645,10 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 		return req(obj)
 	end
 
-	-- insult private v2[.1/REWRITE] by youknowwho
+	-- insult v2[.1/REWRITE] by youknowwho
 	-- skid this and say goodbye to your kneecaps
+	
+	-- bedwars
 	
 	local lplr = game.Players.LocalPlayer
 	local repstorage = game:GetService("ReplicatedStorage")
@@ -542,6 +661,7 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 	local KnitClient = debug.getupvalue(require(lplr.PlayerScripts.TS.knit).setup, 6)
 	local Client = require(repstorage.TS.remotes).default.Client
 	local funcs = require(script.Parent.funcs)
+	print("Insult basic loaded")
 	local getremote = function(tab)
 		for i,v in pairs(tab) do
 			if v == "Client" then
@@ -581,6 +701,10 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 		["BlockPlacementController"] = KnitClient.Controllers.BlockPlacementController,
 		["KnockbackTable"] = debug.getupvalue(require(repstorage.TS.damage["knockback-util"]).KnockbackUtil.calculateKnockbackVelocity, 1),
 		["BlockController2"] = require(repstorage["rbxts_include"]["node_modules"]["@easy-games"]["block-engine"].out.client.placement["block-placer"]).BlockPlacer,
+		["LobbyClientEvents"] = require(repstorage["rbxts_include"]["node_modules"]["@easy-games"].lobby.out.client.events).LobbyClientEvents,
+		["BowTable"] = KnitClient.Controllers.ProjectileController,
+		["BowConstantsTable"] = debug.getupvalue(KnitClient.Controllers.ProjectileController.enableBeam, 5),
+		["CombatConstant"] = require(repstorage.TS.combat["combat-constant"]).CombatConstant,
 	}
 	
 	local states = {}
@@ -591,18 +715,36 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 	blockraycast.FilterType = Enum.RaycastFilterType.Whitelist
 	
 	local function createinfo(this_title, this_notify, this_duration)
-		game:GetService("StarterGui"):SetCore("SendNotification", {
+		coroutine.wrap(function()
+			local notification = script.Parent:WaitForChild("Notification"):Clone()
+			notification.Parent = script.Parent:WaitForChild("NotifyFrame")
+			notification.Visible = true
+			notification.Title.Text = this_title
+			notification.Description.Text = this_notify
+			local tween = notification.Timer:TweenSize(UDim2.new(0,0,0.05,0), "In", "Linear", this_duration)
+			task.wait(this_duration)
+			local tween2 = notification:TweenSize(UDim2.new(0,0,0,0), "In", "Linear", 0.25)
+			task.wait(0.25)
+			notification:Destroy()
+		end)()
+		--[[game:GetService("StarterGui"):SetCore("SendNotification", {
 			Title = this_title,
 			Text = this_notify,
 			Duration = this_duration,
 			Icon = "rbxassetid://6962520787"
-		})
+		})]]--
 	end
 	
 	local function destruct()
 		for i3,v3 in pairs(connectionstodisconnect) do
 			if v3.Disconnect then pcall(function() v3:Disconnect() end) continue end
 			if v3.disconnect then pcall(function() v3:disconnect() end) continue end
+		end
+	end
+	
+	local function disableorEnableAllButtons(callback)
+		for i,v in pairs(states) do
+			v = callback
 		end
 	end
 	
@@ -675,6 +817,10 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 	end
 	
 	local currentAdded = 0
+	local btnCounts = {}
+	local uiCount = 0
+	
+	local enabledTable = {}
 	windowapi["CreateButton"] = function(argstablemain)
 		local buttonapi = {}
 		local player = game.Players.LocalPlayer
@@ -719,12 +865,33 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 		config.Position = UDim2.new(0.809, 0, 0.094, 0)
 		config.Image = "rbxassetid://7059346373"
 		config.BackgroundTransparency = 1]]--
-		
+		if not isfile("insult") then
+			makefolder("insult")
+		end
+		if not isfile("insult/config") then
+			makefolder("insult/config")
+		end
+		if not isfile("insult/config/bedwars") then
+			makefolder("insult/config/bedwars")
+		end
+		local cfgisEnabled = isfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+		if cfgisEnabled then
+			local function resume()
+				bind = readfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+				TextButton.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
+				buttonapi["Function"] = true
+				argstablemain["Function"](true)
+			end
+			coroutine.wrap(resume)()
+		end
 		mouse.KeyDown:connect(function(key)
 			if key == bind then
 				if buttonapi["Function"] ~= true then
 					buttonapi["Function"] = true
-					createinfo("Insult Private", buttonapi["Name"].." has been enabled!", 2)
+					if not cfgisEnabled then
+						writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
+					end
+					createinfo("Insult", buttonapi["Name"].." has been enabled!", 2)
 					table.insert(states,argstablemain["Function"])
 					states[buttonapi["Name"]] = true
 					argstablemain["Function"](true)
@@ -735,7 +902,8 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 					argstablemain["Function"](false)
 					TextButton.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
 					buttonapi["Function"] = false
-					createinfo("Insult Private", buttonapi["Name"].." has been disabled!", 2)
+					delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+					createinfo("Insult", buttonapi["Name"].." has been disabled!", 2)
 				end
 			end
 		end)
@@ -748,14 +916,18 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 				table.insert(states,argstablemain["Function"])
 				states[buttonapi["Name"]] = true
 				buttonapi["Function"] = true
-				createinfo("Insult Private", buttonapi["Name"].." has been enabled!", 2)
+				if not cfgisEnabled then
+					writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
+				end
+				createinfo("Insult", buttonapi["Name"].." has been enabled!", 2)
 				TextButton.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
 			else
 				table.insert(states,argstablemain["Function"])
 				states[buttonapi["Name"]] = false
 				TextButton.BackgroundColor3 = Color3.fromRGB(69, 69, 69)
 				buttonapi["Function"] = false
-				createinfo("Insult Private", buttonapi["Name"].." has been disabled!", 2)
+				delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+				createinfo("Insult", buttonapi["Name"].." has been disabled!", 2)
 			end
 			if buttonapi["Function"] ~= true then
 				argstablemain["Function"](false)
@@ -790,6 +962,10 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 			TextBox.FocusLost:Connect(function()
 				bind = TextBox.Text
 				TextBox:Destroy()
+				if cfgisEnabled then
+					delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+					writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
+				end
 				--if enabled then
 				--delfile(buttonapi["Name"],scriptName)
 				--writefile(buttonapi["Name"]..".txt",bind)
@@ -885,6 +1061,103 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 		end)]]--
 	end
 	
+	local function getLinkTo(lt)
+		for i,v in pairs(script.Parent:GetDescendants()) do
+			if v.Parent.Name == "list" and v:IsA("TextButton") and v.Name == lt then
+				
+				return v
+			end
+		end
+		return nil
+	end
+	
+	windowapi["CreateCheckbox"] = function(argstablemain)
+		local btnEnabled = false
+		local buttonapi = {}
+	
+		buttonapi["Name"] = argstablemain["Name"]
+		buttonapi["LinkTo"] = argstablemain["LinkTo"]
+		buttonapi["Default"] = argstablemain["Default"]
+		buttonapi["Function"] = argstablemain["Function"]
+		buttonapi["HoverText"] = argstablemain["HoverText"]
+		
+		if buttonapi["LinkTo"] == nil then
+			createinfo("Insult", "A checkbox link error occurred.", 5)
+		end
+		
+		local getLink = getLinkTo(buttonapi["LinkTo"])
+		if not getLink then
+			createinfo("Insult", "A fatal error occurred. Check output for details.", 10)
+			error("The LinkTo provided in the CreateCheckbox function returned nil.")
+			return
+		end
+		
+		local checkFrame = Instance.new("Frame")
+		checkFrame.Parent = script.Parent[buttonapi["Tab"]].list
+		checkFrame.Name = buttonapi["Name"].."_checkbox"
+		checkFrame.Size = UDim2.new(1, 0, 0.247, 0)
+		checkFrame.LayoutOrder = getLink.LayoutOrder
+		checkFrame.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+		local checkFrame_UICorner = Instance.new("UICorner")
+		checkFrame_UICorner.Parent = checkFrame
+		checkFrame_UICorner.CornerRadius.Offset = 4
+		local checkBtn = Instance.new("TextButton")
+		checkBtn.Parent = checkFrame
+		checkBtn.Size = UDim2.new(0.18, 0, 1, 0)
+		checkBtn.Position = UDim2.new(0.753, 0, 0, 0)
+		checkBtn.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+		local checkBtn_UICorner = Instance.new("UICorner")
+		checkBtn_UICorner.Parent = checkBtn
+		checkBtn_UICorner.CornerRadius.Offset = 4
+		
+		local checkImage = Instance.new("ImageLabel")
+		checkImage.Parent = checkBtn
+		checkImage.Size = UDim2.new(1, 0, 1, 0)
+		checkImage.BackgroundTransparency = 1
+		checkImage.ImageTransparency = 1
+		checkImage.Image = "rbxassetid://8589545938"
+		
+		if buttonapi["Default"] == true then
+			btnEnabled = true
+			checkImage.ImageTransparency = 0
+			buttonapi["Function"](true)
+		end
+		
+		checkBtn.MouseButton1Click:Connect(function()
+			if btnEnabled == false then
+				btnEnabled = true
+				checkImage.ImageTransparency = 0
+				buttonapi["Function"](true)
+			elseif btnEnabled == true then
+				btnEnabled = false
+				checkImage.ImageTransparency = 1
+				buttonapi["Function"](false)
+			end
+		end)
+	end
+	
+	windowapi["RemoveCheckbox"] = function(argstablemain)
+		local btnEnabled = false
+		local buttonapi = {}
+		local player = game.Players.LocalPlayer
+		local mouse = player:GetMouse()
+	
+		buttonapi["LinkTo"] = argstablemain["LinkTo"]
+	
+		if buttonapi["LinkTo"] == nil then
+			createinfo("Insult", "A checkbox link error occurred.", 5)
+		end
+	
+		local getLink = getLinkTo(buttonapi["LinkTo"])
+		if not getLink then
+			createinfo("Insult", "A fatal error occurred. Check output for details.", 10)
+			error("The LinkTo provided in the CreateCheckbox function returned nil.")
+			return
+		end
+		
+		getLink:Destroy()
+	end
+	
 	local GetInventory = function(plr) 
 		if not plr then 
 			return {items = {}, armor = {}}
@@ -961,6 +1234,14 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 	
 	local blueCallback = Color3.fromRGB(0, 145, 255)
 	local noCallback = Color3.fromRGB(69, 69, 69) -- funny
+	
+	local function hideUI()
+		blatant.Visible = false
+		default.Visible = false
+		world.Visible = false
+		script.Parent.Credits.Visible = false
+		newBlur.Enabled = false
+	end
 	
 	local function removeItemFromInsultList(this_title)
 		for i,v in pairs(logoScreen.list:GetChildren()) do
@@ -1040,6 +1321,69 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 				RunLoops.HeartTable[name] = nil
 			end
 		end
+	end
+	
+	--skidded off the devforum because I hate projectile math
+	-- Compute 2D launch angle
+	-- v: launch velocity
+	-- g: gravity (positive) e.g. 196.2
+	-- d: horizontal distance
+	-- h: vertical distance
+	-- higherArc: if true, use the higher arc. If false, use the lower arc.
+	local function LaunchAngle(v: number, g: number, d: number, h: number, higherArc: boolean)
+		local v2 = v * v
+		local v4 = v2 * v2
+		local root = math.sqrt(v4 - g*(g*d*d + 2*h*v2))
+		if not higherArc then root = -root end
+		return math.atan((v2 + root) / (g * d))
+	end
+	
+	-- Compute 3D launch direction from
+	-- start: start position
+	-- target: target position
+	-- v: launch velocity
+	-- g: gravity (positive) e.g. 196.2
+	-- higherArc: if true, use the higher arc. If false, use the lower arc.
+	--//Credits: Vape V4
+	local function LaunchDirection(start, target, v, g, higherArc: boolean)
+		-- get the direction flattened:
+		local horizontal = Vector3.new(target.X - start.X, 0, target.Z - start.Z)
+	
+		local h = target.Y - start.Y
+		local d = horizontal.Magnitude
+		local a = LaunchAngle(v, g, d, h, higherArc)
+	
+		-- NaN ~= NaN, computation couldn't be done (e.g. because it's too far to launch)
+		if a ~= a then return nil end
+	
+		-- speed if we were just launching at a flat angle:
+		local vec = horizontal.Unit * v
+	
+		-- rotate around the axis perpendicular to that direction...
+		local rotAxis = Vector3.new(-horizontal.Z, 0, horizontal.X)
+	
+		-- ...by the angle amount
+		return CFrame.fromAxisAngle(rotAxis, a) * vec
+	end
+	
+	local function FindLeadShot(targetPosition: Vector3, targetVelocity: Vector3, projectileSpeed: Number, shooterPosition: Vector3, shooterVelocity: Vector3, gravity: Number)
+		local distance = (targetPosition - shooterPosition).Magnitude
+	
+		local p = targetPosition - shooterPosition
+		local v = targetVelocity - shooterVelocity
+		local a = Vector3.zero
+	
+		local timeTaken = (distance / projectileSpeed)
+	
+		if gravity > 0 then
+			local timeTaken = projectileSpeed/gravity+math.sqrt(2*distance/gravity+projectileSpeed^2/gravity^2)
+		end
+	
+		local goalX = targetPosition.X + v.X*timeTaken + 0.5 * a.X * timeTaken^2
+		local goalY = targetPosition.Y + v.Y*timeTaken + 0.5 * a.Y * timeTaken^2
+		local goalZ = targetPosition.Z + v.Z*timeTaken + 0.5 * a.Z * timeTaken^2
+	
+		return Vector3.new(goalX, goalY, goalZ)
 	end
 	
 	local AntivoidEnabled = nil
@@ -1137,21 +1481,13 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 					},
 				}
 				local origC0 = cam.Viewmodel.RightHand.RightWrist.C0
-				
 				repeat
-					if not isalive(lplr) then
-						repeat wait() until isalive(lplr)
-					end
-					if nearestID ~= nil then
-					end
-					for _,v in pairs(game.Players:GetPlayers()) do
-						if v ~= lplr then
-							nearestID = v
-							target = v.Name
-							if v.Team ~= lplr.Team and v ~= lplr and isalive(v) and v.Character:FindFirstChild("HumanoidRootPart") and (v.Character.HumanoidRootPart.Position - lplr.Character.HumanoidRootPart.Position).Magnitude < 20 then
-								local sword = getSword()
-								coroutine.wrap(function()
-									for i,v in pairs(anims.Normal) do 
+					task.wait(0.02)
+					local nearest = getnearestplayer(Distance["Value"])
+					if nearest ~= nil and nearest.Team ~= lplr.Team and isalive(nearest) and nearest.Character:FindFirstChild("Humanoid").Health > 0.1 and isalive(lplr) and lplr.Character:FindFirstChild("Humanoid").Health > 0.1 then
+						local sword = getSword()
+						spawn(function()
+							for i,v in pairs(anims.Normal) do 
 								local anim = game:GetService("TweenService"):Create(cam.Viewmodel.RightHand.RightWrist, TweenInfo.new(v.Time), {C0 = origC0 * v.CFrame})
 								anim:Play()
 								task.wait(v.Time+0.1)
@@ -1160,29 +1496,33 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 								end)
 								local anim2 = game:GetService("TweenService"):Create(cam.Viewmodel.RightHand.RightWrist, TweenInfo.new(0.1), {C0 = origC0})
 								anim2:Play()
-								end		
-								end)()
-								if sword ~= nil then
-									bedwars["SwordController"].lastAttack = game:GetService("Workspace"):GetServerTimeNow() - 0.11
-									HitRemote:SendToServer({
-										["weapon"] = sword.tool,
-										["entityInstance"] = v.Character,
-										["validate"] = {
-											["raycast"] = {
-												["cameraPosition"] = hashFunc(cam.CFrame.Position),
-												["cursorDirection"] = hashFunc(Ray.new(cam.CFrame.Position, v.Character:FindFirstChild("HumanoidRootPart").Position).Unit.Direction)
-											},
-											["targetPosition"] = hashFunc(v.Character:FindFirstChild("HumanoidRootPart").Position),
-											["selfPosition"] = hashFunc(lplr.Character:FindFirstChild("HumanoidRootPart").Position + ((lplr.Character:FindFirstChild("HumanoidRootPart").Position - v.Character:FindFirstChild("HumanoidRootPart").Position).magnitude > 14 and (CFrame.lookAt(lplr.Character:FindFirstChild("HumanoidRootPart").Position, v.Character:FindFirstChild("HumanoidRootPart").Position).LookVector * 4) or Vector3.new(0, 0, 0)))
-										},
-										["chargedAttack"] = {["chargeRatio"] = 0.8}
-									})
-								end
 							end
-						end
+							--local anim = Instance.new("Animation")
+							--anim.AnimationId = "rbxassetid://4947108314"
+							--local animator = lplr.Character:FindFirstChild("Humanoid"):FindFirstChild("Animator")
+							--animator:LoadAnimation(anim):Play()
+							--anim:Destroy()
+							--bedwars["ViewmodelController"]:playAnimation(15)
+							if sword ~= nil then
+								bedwars["SwordController"].lastAttack = game:GetService("Workspace"):GetServerTimeNow() - 0.11
+								HitRemote:SendToServer({
+									["weapon"] = sword.tool,
+									["entityInstance"] = nearest.Character,
+									["validate"] = {
+										["raycast"] = {
+											["cameraPosition"] = hashFunc(cam.CFrame.Position),
+											["cursorDirection"] = hashFunc(Ray.new(cam.CFrame.Position, nearest.Character:FindFirstChild("HumanoidRootPart").Position).Unit.Direction)
+										},
+										["targetPosition"] = hashFunc(nearest.Character:FindFirstChild("HumanoidRootPart").Position),
+										["selfPosition"] = hashFunc(lplr.Character:FindFirstChild("HumanoidRootPart").Position + ((lplr.Character:FindFirstChild("HumanoidRootPart").Position - nearest.Character:FindFirstChild("HumanoidRootPart").Position).magnitude > 14 and (CFrame.lookAt(lplr.Character:FindFirstChild("HumanoidRootPart").Position, nearest.Character:FindFirstChild("HumanoidRootPart").Position).LookVector * 4) or Vector3.new(0, 0, 0)))
+									},
+									["chargedAttack"] = {["chargeRatio"] = 0.6}
+								})
+							end
+	
+						end)
 					end
-					task.wait(0.12)
-			until not KA_Enabled
+				until not KA_Enabled
 			else
 				KA_Enabled = false
 			end
@@ -1326,8 +1666,8 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 		return {["Object"] = obj and obj.tool, ["Type"] = typetext}
 	end
 	
-	local velohorizontal = {["Value"] = 100}
-	local velovertical = {["Value"] = 100}
+	local velohorizontal = {["Value"] = 0}
+	local velovertical = {["Value"] = 0}
 	local Velocity = {["Enabled"] = false}
 	local oldhori = bedwars["KnockbackTable"]["kbDirectionStrength"]
 	local oldvert = bedwars["KnockbackTable"]["kbUpwardStrength"]
@@ -1724,7 +2064,7 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 				actionBarGUI.BackgroundColor3 = old_select_color_health_bar
 			end
 		end,
-		["HoverText"] = "Colo(u)rs the health bar to a certain color that you want. | Insult Private"
+		["HoverText"] = "Colo(u)rs the health bar to a certain color that you want. | Insult"
 	})
 	
 	local HealthText = Instance.new("TextLabel")
@@ -1827,7 +2167,7 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 	})
 	
-	local Panic = windowapi.CreateButton({
+	--[[local Panic = windowapi.CreateButton({
 		["Name"] = "Panic",
 		["Tab"] = "Default",
 		["Function"] = function(callback)
@@ -1838,7 +2178,7 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 				end
 			end
 		end,
-	})
+	})]]--
 	
 	local stealerEnabled = nil
 	local ChestStealer = windowapi.CreateButton({
@@ -1938,10 +2278,10 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 	local function getbed_fourbigguysexploitv2()
 		local mag = 18
 		local returned
-		for i, obj in pairs(collectionservice:GetTagged("bed")) do
-			if entity.isAlive then
+		for i, obj in pairs(game:GetService("CollectionService"):GetTagged("bed")) do
+			if isalive(lplr) then
 				if obj and bedwars["BlockController"]:isBlockBreakable({blockPosition = obj.Position / 3}, lplr) and obj.Parent ~= nil then
-					local newmag = (entity.character.HumanoidRootPart.Position - obj.Position).magnitude
+					local newmag = (lplr.Character.HumanoidRootPart.Position - obj.Position).magnitude
 					if newmag <= mag then
 						mag = newmag
 						returned = {RootPart = obj}
@@ -1952,74 +2292,337 @@ local function YGRUSY_fake_script() -- insultv2exec_v2.LocalScript
 		return returned
 	end
 	
+	local function targetCheck(plr)
+		return plr and plr.Humanoid and plr.Humanoid.Health > 0 and plr.Character:FindFirstChild("ForceField") == nil
+	end
+	
 	local function GetNearestHumanoidToPosition(player, distance, overridepos)
-	local closest, returnedplayer = distance, nil
-    if entity.isAlive then
-        for i, v in pairs(entity.entityList) do
-			if v.Targetable and targetCheck(v) then
-				local mag = (entity.character.HumanoidRootPart.Position - v.RootPart.Position).magnitude
-				if overridepos and mag > distance then 
-					mag = (overridepos - v.RootPart.Position).magnitude
-				end
-				if mag <= closest then
-					closest = mag
-					returnedplayer = v
+		local closest, returnedplayer = distance, nil
+		if isalive(lplr) then
+			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+				if targetCheck(v) then
+					local vChar = v.Character or v.CharacterAdded:Wait()
+					local mag = (lplr.Character.HumanoidRootPart.Position - vChar.HumanoidRootPart.Position).magnitude
+					if overridepos and mag > distance then 
+						mag = (overridepos - vChar.HumanoidRootPart.Position).magnitude
+					end
+					if mag <= closest then
+						closest = mag
+						returnedplayer = v
+					end
 				end
 			end
-        end
-		for i2,v2 in pairs(collectionservice:GetTagged("Monster")) do -- monsters
-			if v2.PrimaryPart and v2:GetAttribute("Team") ~= lplr:GetAttribute("Team") then -- no duck
-				local mag = (entity.character.HumanoidRootPart.Position - v2.PrimaryPart.Position).magnitude
-				if overridepos and mag > distance then 
-					mag = (overridepos - v2.PrimaryPart.Position).magnitude
+			for i2,v2 in pairs(game:GetService("CollectionService"):GetTagged("Monster")) do -- monsters
+				if v2.PrimaryPart and v2:GetAttribute("Team") ~= lplr:GetAttribute("Team") then -- no duck
+					local mag = (lplr.Character.HumanoidRootPart.Position - v2.PrimaryPart.Position).magnitude
+					if overridepos and mag > distance then 
+						mag = (overridepos - v2.PrimaryPart.Position).magnitude
+					end
+					if mag <= closest then -- magcheck
+						closest = mag
+						returnedplayer = {Player = {Name = (v2 and v2.Name or "Monster"), UserId = (v2 and v2.Name == "Duck" and 2020831224 or 1443379645)}, Character = v2, RootPart = v2.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
+					end
 				end
-                if mag <= closest then -- magcheck
-                    closest = mag
-					returnedplayer = {Player = {Name = (v2 and v2.Name or "Monster"), UserId = (v2 and v2.Name == "Duck" and 2020831224 or 1443379645)}, Character = v2, RootPart = v2.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
-                end
+			end
+			for i3,v3 in pairs(game:GetService("CollectionService"):GetTagged("Drone")) do -- drone
+				if v3.PrimaryPart then
+					if tonumber(v3:GetAttribute("PlayerUserId")) == lplr.UserId then continue end
+					local droneplr = game:GetService("Players"):GetPlayerByUserId(v3:GetAttribute("PlayerUserId"))
+					if droneplr and droneplr.Team == lplr.Team then continue end
+					local mag = (lplr.Character.HumanoidRootPart.Position - v3.PrimaryPart.Position).magnitude
+					if overridepos and mag > distance then 
+						mag = (overridepos - v3.PrimaryPart.Position).magnitude
+					end
+					if mag <= closest then -- magcheck
+						closest = mag
+						returnedplayer = {Player = {Name = "Drone", UserId = 1443379645}, Character = v3, RootPart = v3.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
+					end
+				end
 			end
 		end
-		for i3,v3 in pairs(collectionservice:GetTagged("Drone")) do -- drone
-			if v3.PrimaryPart then
-				if tonumber(v3:GetAttribute("PlayerUserId")) == lplr.UserId then continue end
-				local droneplr = players:GetPlayerByUserId(v3:GetAttribute("PlayerUserId"))
-				if droneplr and droneplr.Team == lplr.Team then continue end
-				local mag = (entity.character.HumanoidRootPart.Position - v3.PrimaryPart.Position).magnitude
-				if overridepos and mag > distance then 
-					mag = (overridepos - v3.PrimaryPart.Position).magnitude
+		return returnedplayer
+	end
+	
+	--[[local fourBigGuysEnabled = false
+	local FourBigGuysExploitV2 = windowapi.CreateButton({
+		["Name"] = "FourBigGuysExploit",
+		["Tab"] = "Blatant",
+		["Function"] = function(callback)
+			if callback then
+				fourBigGuysEnabled = true
+				task.spawn(function()
+					repeat
+						task.wait(0.05)
+						local cplr = getbed_fourbigguysexploitv2() or GetNearestHumanoidToPosition(true, 18)
+						if cplr then
+							UserSettings():GetService("UserGameSettings").RotationType = Enum.RotationType.MovementRelative
+							lplr.Character.HumanoidRootPart.CFrame = CFrame.new(cplr.PrimaryPart.CFrame.p, Vector3.new(lplr.Character.HumanoidRootPart.Position.X, cplr.PrimaryPart.CFrame.p.Y, lplr.Character.HumanoidRootPart.Position.Z))
+							bedwars["ClientHandler"]:Get(bedwars["JuggernautAttackRemote"]):SendToServer({
+								swordType = "juggernaut_rage_blade",
+								player = lplr
+							})
+						end
+					until (fourBigGuysEnabled == false)
+				end)
+			else
+				fourBigGuysEnabled = false
+			end
+		end,
+	})]]--
+	
+	local queueEnabled = false
+	local AutoQueue = windowapi.CreateButton({
+		["Name"] = "AutoQueue",
+		["Tab"] = "Default",
+		["Function"] = function(callback)
+			queueEnabled = callback
+		end,
+	})
+	
+	coroutine.wrap(function()
+		bedwars["ClientHandler"]:WaitFor("MatchEndEvent"):andThen(function(p6)
+			connectionstodisconnect[#connectionstodisconnect + 1] = p6:Connect(function(p2)
+				if queueEnabled then
+					task.wait(0.2)
+					if bedwars["ClientStoreHandler"]:getState().Game.customMatch == nil and bedwars["ClientStoreHandler"]:getState().Party.leader.userId == lplr.UserId then
+						if bedwars["ClientStoreHandler"]:getState().Party.queueState == 0 then
+							bedwars["LobbyClientEvents"].joinQueue:fire({
+								queueType = queueType
+							})
+						end
+					end
 				end
-                if mag <= closest then -- magcheck
-					closest = mag
-                    returnedplayer = {Player = {Name = "Drone", UserId = 1443379645}, Character = v3, RootPart = v3.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
-                end
+			end)
+		end)
+	end)()
+	
+	local function getEasyGGRole(plr)
+		local suc, res = pcall(function() return plr:GetRankInGroup(5774246) end)
+		if not suc then 
+			repeat
+				suc, res = pcall(function() return plr:GetRankInGroup(5774246) end)
+				task.wait()
+			until suc
+		end
+		return res
+	end
+	
+	local alsconnection = nil
+	local autoLeaveStaffEnabled = false
+	
+	local function autoleaveplr(alplr)
+		if getEasyGGRole(alplr) >= 100 and (alplr.UserId ~= 87365146) then
+			if autoLeaveStaffEnabled == true then
+				destruct()
+				disableorEnableAllButtons(false)
+				hideUI()
+				script.Parent.Enabled = false
+				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100)
+				createinfo("Insult", "Leaving in 2 seconds...", 100)
+				task.wait(2)
+				bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
 			end
 		end
 	end
-	return returnedplayer
-end
 	
-	local FourBigGuysExploitV2 = windowapi.CreateButton({
-	    ["Name"] = "FourBigGuysExploit",
-	    ["Tab"] = "Blatant",
-	    ["Function"] = function(callback)
-	        if callback then
-	            task.spawn(function()
-						repeat
-							task.wait(0.05)
-							local plr = getbed_fourbigguysexploitv2() or GetNearestHumanoidToPosition(true, 18)
-							if plr then
-								UserSettings():GetService("UserGameSettings").RotationType = Enum.RotationType.MovementRelative
-								entity.character.HumanoidRootPart.CFrame = CFrame.new(entity.character.HumanoidRootPart.CFrame.p, Vector3.new(plr.RootPart.Position.X, entity.character.HumanoidRootPart.CFrame.p.Y, plr.RootPart.Position.Z))
-								bedwars["ClientHandler"]:Get(bedwars["JuggernautAttackRemote"]):SendToServer({
-									swordType = "juggernaut_rage_blade",
-									player = lplr
-								})
-							end
-						until (not BigGuysExploitV2["Enabled"])
-					end)
-	        end
-	    end,
-	    
+	local AutoLeaveStaff = windowapi.CreateButton({
+		["Name"] = "AutoLeaveStaff",
+		["Tab"] = "Default",
+		["Function"] = function(callback)
+			if callback then
+				autoLeaveStaffEnabled = true
+				alsconnection = game:GetService("Players").PlayerAdded:Connect(autoleaveplr)
+				for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+					autoleaveplr(v)
+				end
+			else
+				autoLeaveStaffEnabled = false
+				alsconnection:Disconnect()
+			end
+		end,
 	})
+	
+	local GetNearestHumanoidToMouse = function(player, distance, checkvis)
+			local closest, returnedplayer = distance, nil
+			if isalive(lplr) then
+				for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+						local vec, vis = cam:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+						if vis and targetCheck(v) then
+							local mag = (uis:GetMouseLocation() - Vector2.new(vec.X, vec.Y)).magnitude
+							if mag <= closest then
+								closest = mag
+								returnedplayer = v
+							end
+						end
+					end
+			end
+			return returnedplayer, closest
+		end
+	
+	--[[local AutoLeaveCheckbox = windowapi.CreateCheckbox({
+		["Name"] = "Leave on Staff",
+		["LinkTo"] = "AutoLeaveStaff",
+		["Default"] = false,
+		["Function"] = function(callback)
+			if callback then
+				createinfo("Insult", "cope", 2)
+			else
+				createinfo("Insult", "still cope", 2)
+			end
+		end,
+		["HoverText"] = "cope"
+	})]]--
+	local ST2 = 0;
+	local LinearVelocity
+	local BounceMax = {["Value"] = 25};
+	local SpeedInc2 = {["Value"] = 1};
+	local BounceInc = {["Value"] = 0.7};
+	local FlySpeedMin = {["Value"] = 20};
+	local FlySpeed = {["Value"] = 25};
+	local FlyVSpeed = {["Value"] = 35};
+	local FlyDelay = {["Value"] = 0};
+	CFrameDelay = {Value = 1}
+	CFrameDist = {Value = 0}
+	local speedWasEnabledForFly = false
+	local flyLeft = 3
+	local BetterFly = windowapi.CreateButton({
+		["Name"] = "Fly",
+		["Tab"] = "Blatant",
+		["Function"] = function(callback)
+			--[[local flyui = script.Parent.FlyUI:Clone()
+			flyui.Parent = script.Parent]]--
+			if callback then
+				local Dir2 = true
+				local YVelo = 0
+				coroutine.wrap(function()
+					repeat
+						ST2 = workspace:GetServerTimeNow() + (SpeedInc2.Value)
+						task.wait(FlyDelay.Value + SpeedInc2.Value)
+					until not Speed.Enabled
+				end)()
+				--[[flyui.Visible = true
+				flyui.Frame:TweenSize(UDim2.new(0,0,0.16,0), "In", "Linear", flyLeft)
+				coroutine.wrap(function()
+					repeat task.wait(0.1)
+						flyLeft = flyLeft - 0.1
+						flyui.TextLabel.Text = tostring(flyLeft).."s"
+					until flyLeft <= 0
+					createinfo("Insult (Test)", "<b>Fly</b> test passed.")
+					flyui:Destroy()
+				end)()]]--
+				RunLoops:BindToHeartbeat("flyBedwars", 1, function(dt)
+					if not isalive(lplr) then
+						return 
+					end
+					if Speed["Function"] == true and speedWasEnabledForFly == false then
+						speedWasEnabledForFly = true
+						Speed["Function"](false)
+					end
+	
+					local Humanoid = lplr.Character.Humanoid
+					local MoveDirection = Humanoid.MoveDirection
+					local Velocity = lplr.Character.HumanoidRootPart.Velocity
+	
+					if YVelo >= BounceMax.Value then
+						Dir2 = false 
+					elseif YVelo <= -BounceMax.Value then
+						Dir2 = true
+					end
+	
+					if Dir2 then
+						YVelo = YVelo + BounceInc.Value
+					else
+						YVelo = YVelo - BounceInc.Value
+					end
+	
+					local Y = YVelo
+					if uis:IsKeyDown(Enum.KeyCode.LeftShift) then 
+						Y = -FlyVSpeed.Value
+					end
+					if uis:IsKeyDown(Enum.KeyCode.Space) then 
+						Y = FlyVSpeed.Value
+					end
+	
+					local speed = FlySpeed.Value + (lplr.Character.Humanoid.WalkSpeed - FlySpeed.Value) * (1 - (math.max(ST2 - workspace:GetServerTimeNow(), 0)) / SpeedInc2.Value)
+					speed = math.clamp(speed, FlySpeedMin.Value, math.huge)
+					local MD = MoveDirection * speed
+					local NewVelo = Vector3.new(MD.X, Y, MD.Z)
+					LinearVelocity = lplr.Character.HumanoidRootPart:FindFirstChildOfClass("LinearVelocity") or Instance.new("LinearVelocity", lplr.Character.HumanoidRootPart)
+					LinearVelocity.Attachment0 = lplr.Character.HumanoidRootPart:FindFirstChildOfClass("Attachment")
+					LinearVelocity.MaxForce = 9e9
+					LinearVelocity.VectorVelocity = NewVelo
+				end)
+			else
+				if Speed["Function"] == false and speedWasEnabledForFly == true then
+					speedWasEnabledForFly = false
+					Speed["Function"](true)
+				end
+				RunLoops:UnbindFromHeartbeat("flyBedwars")
+				if LinearVelocity then 
+					LinearVelocity:Destroy()
+					LinearVelocity = nil
+				end
+			end
+		end,
+	})
+	
+	local AnticheatDisabler = windowapi.CreateButton({
+		["Name"] = "AnticheatDisabler",
+		["Tab"] = "Blatant",
+		["Function"] = function(callback)
+			if callback then
+				if isalive(lplr) then
+					lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
+					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Dead)
+					repeat task.wait() until lplr.Character.Humanoid.MoveDirection ~= Vector3.zero
+					task.wait(0.2)
+					lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
+					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
+					workspace.Gravity = 192.6
+					createinfo("Insult: AnticheatDisabler", "<b>Successfully</b> enabled.\nDo note that you can't redo this unless you join another game.", 10)
+				else
+					createinfo("Insult: AnticheatDisabler", "<b>Error:</b> You must be alive first.", 10)
+				end
+			end
+	
+		end,
+	})
+	
+	local oldReach = nil
+	local Reach = windowapi.CreateButton({
+		["Name"] = "Reach",
+		["Tab"] = "Default",
+		["Function"] = function(callback)
+			if callback then
+				oldReach = bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE
+				bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = 18
+			else
+				if oldReach then
+					bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = oldReach
+				else
+					bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = 14.4
+				end
+			end
+		end,
+	})
+	
+	--[[local AutoLeaveTest = windowapi.CreateButton({
+		["Name"] = "AutoLeaveTest",
+		["Tab"] = "Default",
+		["Function"] = function(callback)
+			if callback then
+				createinfo("Insult", "AutoLeaveTest begins in 5 seconds.", 3)
+				task.wait(5)
+				destruct()
+				disableorEnableAllButtons(false)
+				hideUI()
+				script.Parent.Enabled = false
+				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100)
+				createinfo("Insult", "Leaving in 2 seconds...", 100)
+				task.wait(2)
+				bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
+			end
+		end,
+	})]]--
 end
-coroutine.wrap(YGRUSY_fake_script)()
+coroutine.wrap(XGXYP_fake_script)()
