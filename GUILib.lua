@@ -8,6 +8,11 @@ local enabledTable = {}
 
 local states = {}
 local windowapi = {}
+
+function module.GetWindowAPI()
+	return windowapi
+end
+
 function module.CreateButton(argstablemain)
 	local buttonapi = {}
 	local player = game.Players.LocalPlayer
