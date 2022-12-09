@@ -253,6 +253,42 @@ function module.CreateButton(argstablemain)
 	end)]]--
 end
 
+local getasset = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
+
+function module.ConstructUI(gameChosen, theme)
+	if not getasset then
+		warn("Bad executor")
+		return
+	end
+	if not isfile('insult/assets/logo.png') then
+		writefile('insult/assets/logo.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/logo.png'))
+	end
+	local newGUI = Instance.new("ScreenGui")
+	newGUI.Parent = game.CoreGui
+	if theme == "defaultv3" or nil then
+		local insultLogo = getasset('logo.png')
+		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+		Frame.Parent = newGUI
+		Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Frame.Position = UDim2.new(0.0186335407, 0, 0.038152609, 0)
+		Frame.Size = UDim2.new(0.193788826, 0, 0.305220872, 0)
+
+		UICorner.CornerRadius = UDim.new(0, 4)
+		UICorner.Parent = Frame
+
+		UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(0, 19, 44)), ColorSequenceKeypoint.new(0.82, Color3.fromRGB(0, 41, 95)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 110, 255))}
+		UIGradient.Rotation = 270
+		UIGradient.Transparency = NumberSequence.new{NumberSequenceKeypoint.new(0.00, 0.15), NumberSequenceKeypoint.new(1.00, 0.15)}
+		UIGradient.Parent = Frame
+
+		ImageLabel.Parent = Frame
+		ImageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		ImageLabel.Size = UDim2.new(0.75, 0, 0.177631572, 0)
+		ImageLabel.Image = insultLogo
+	end
+end
+
 function module.LoadGUILib()
 	local insultv2exec_v2 = Instance.new("ScreenGui")
 	local Blatant = Instance.new("Frame")
