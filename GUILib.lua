@@ -266,6 +266,7 @@ function module.ConstructUI(gameChosen, theme)
 	end
 	local newGUI = Instance.new("ScreenGui")
 	newGUI.Parent = game.CoreGui
+	newGUI.Name = "insult_e"
 	if theme == "defaultv3" or nil then
 		local insultLogo = getasset('logo.png')
 		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
