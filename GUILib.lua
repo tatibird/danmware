@@ -261,14 +261,14 @@ function module.ConstructUI(gameChosen, theme)
 		warn("Bad executor")
 		return
 	end
-	if not isfile('insult/assets/logo.png') then
-		writefile('insult/assets/logo.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/logo.png'))
+	if not isfile('insult/logo.png') then
+		writefile('insult/logo.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/logo.png'))
 	end
 	local newGUI = Instance.new("ScreenGui")
 	newGUI.Parent = game.CoreGui
 	newGUI.Name = "insult_e"
 	if theme == "defaultv3" or nil then
-		local insultLogo = getasset('logo.png')
+		local insultLogo = getasset('insult/logo.png')
 		ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 		Frame.Parent = newGUI
