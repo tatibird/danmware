@@ -256,6 +256,7 @@ end
 local getasset = getsynasset or getcustomasset or function(location) return "rbxasset://"..location end
 
 function module.ConstructUI(gameChosen, theme)
+	print("insult construct called")
 	if not getasset then
 		warn("Bad executor")
 		return
