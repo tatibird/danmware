@@ -9,24 +9,29 @@ local Blatant_2 = Instance.new("TextLabel")
 local list = Instance.new("Frame")
 local UIListLayout = Instance.new("UIListLayout")
 local UICorner = Instance.new("UICorner")
+local UIGradient = Instance.new("UIGradient")
 local World = Instance.new("Frame")
 local World_2 = Instance.new("TextLabel")
 local list_2 = Instance.new("Frame")
 local UIListLayout_2 = Instance.new("UIListLayout")
 local UICorner_2 = Instance.new("UICorner")
-local Credits = Instance.new("TextLabel")
+local UIGradient_2 = Instance.new("UIGradient")
+local Update = Instance.new("TextLabel")
+local UIGradient_3 = Instance.new("UIGradient")
 local Hover = Instance.new("Frame")
-local Credits_2 = Instance.new("TextLabel")
+local Credits = Instance.new("TextLabel")
 local Default = Instance.new("Frame")
 local Default_2 = Instance.new("TextLabel")
 local list_3 = Instance.new("Frame")
 local UIListLayout_3 = Instance.new("UIListLayout")
 local UICorner_3 = Instance.new("UICorner")
+local UIGradient_4 = Instance.new("UIGradient")
 local InsultLogoScreen = Instance.new("Frame")
 local World_3 = Instance.new("TextLabel")
 local list_4 = Instance.new("Frame")
 local UIListLayout_4 = Instance.new("UIListLayout")
 local UICorner_4 = Instance.new("UICorner")
+local UIGradient_5 = Instance.new("UIGradient")
 local storage_config = Instance.new("Frame")
 local UICorner_5 = Instance.new("UICorner")
 local TextLabel = Instance.new("TextLabel")
@@ -46,6 +51,32 @@ local FlyUI = Instance.new("Frame")
 local TextLabel_2 = Instance.new("TextLabel")
 local Frame = Instance.new("Frame")
 local UICorner_9 = Instance.new("UICorner")
+local slider = Instance.new("Frame")
+local UICorner_10 = Instance.new("UICorner")
+local Holder = Instance.new("Frame")
+local Background = Instance.new("Frame")
+local UICorner_11 = Instance.new("UICorner")
+local Slider = Instance.new("TextButton")
+local UICorner_12 = Instance.new("UICorner")
+local Amount = Instance.new("TextLabel")
+local Title_2 = Instance.new("TextLabel")
+local Notification_Plus = Instance.new("Frame")
+local UICorner_13 = Instance.new("UICorner")
+local Image_2 = Instance.new("ImageLabel")
+local Title_3 = Instance.new("TextLabel")
+local Description_2 = Instance.new("TextLabel")
+local Timer_2 = Instance.new("Frame")
+local UICorner_14 = Instance.new("UICorner")
+local UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint")
+local UIGradient_6 = Instance.new("UIGradient")
+local Credits_2 = Instance.new("TextLabel")
+local credit_Grad = Instance.new("UIGradient")
+local Render = Instance.new("Frame")
+local Render_2 = Instance.new("TextLabel")
+local list_5 = Instance.new("Frame")
+local UIListLayout_6 = Instance.new("UIListLayout")
+local UICorner_15 = Instance.new("UICorner")
+local UIGradient_7 = Instance.new("UIGradient")
 
 --Properties:
 
@@ -54,9 +85,9 @@ insultv2exec_v2.Parent = game.CoreGui
 
 Blatant.Name = "Blatant"
 Blatant.Parent = insultv2exec_v2
-Blatant.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
-Blatant.Position = UDim2.new(0.340553552, 0, 0.0421686731, 0)
-Blatant.Size = UDim2.new(0.179826096, 0, 0.0682730898, 0)
+Blatant.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Blatant.Position = UDim2.new(0.221913129, 0, 0.0321285129, 0)
+Blatant.Size = UDim2.new(0.153381079, 0, 0.0582329333, 0)
 
 Blatant_2.Name = "Blatant"
 Blatant_2.Parent = Blatant
@@ -84,11 +115,14 @@ UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 UICorner.CornerRadius = UDim.new(0, 4)
 UICorner.Parent = Blatant
 
+UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(47, 47, 47)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(88, 88, 88))}
+UIGradient.Parent = Blatant
+
 World.Name = "World"
 World.Parent = insultv2exec_v2
-World.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
-World.Position = UDim2.new(0.5409922, 0, 0.0421686731, 0)
-World.Size = UDim2.new(0.179826096, 0, 0.0682730898, 0)
+World.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+World.Position = UDim2.new(0.392875522, 0, 0.0321285129, 0)
+World.Size = UDim2.new(0.153381079, 0, 0.0582329333, 0)
 
 World_2.Name = "World"
 World_2.Parent = World
@@ -116,19 +150,25 @@ UIListLayout_2.SortOrder = Enum.SortOrder.LayoutOrder
 UICorner_2.CornerRadius = UDim.new(0, 4)
 UICorner_2.Parent = World
 
-Credits.Name = "Credits"
-Credits.Parent = insultv2exec_v2
-Credits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Credits.BackgroundTransparency = 1.000
-Credits.Position = UDim2.new(0.794223785, 0, 0.932199359, 0)
-Credits.Size = UDim2.new(0.194945842, 0, 0.0472478308, 0)
-Credits.Font = Enum.Font.Gotham
-Credits.Text = "INSULT V2.0"
-Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
-Credits.TextScaled = true
-Credits.TextSize = 14.000
-Credits.TextWrapped = true
-Credits.TextXAlignment = Enum.TextXAlignment.Right
+UIGradient_2.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(47, 47, 47)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(88, 88, 88))}
+UIGradient_2.Parent = World
+
+Update.Name = "Update"
+Update.Parent = insultv2exec_v2
+Update.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Update.BackgroundTransparency = 1.000
+Update.Position = UDim2.new(0.667515755, 0, 0.948263645, 0)
+Update.Size = UDim2.new(0.321653903, 0, 0.0311835725, 0)
+Update.Font = Enum.Font.Gotham
+Update.Text = "UPDATE 1.3"
+Update.TextColor3 = Color3.fromRGB(255, 255, 255)
+Update.TextScaled = true
+Update.TextSize = 14.000
+Update.TextWrapped = true
+Update.TextXAlignment = Enum.TextXAlignment.Right
+
+UIGradient_3.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 136, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
+UIGradient_3.Parent = Update
 
 Hover.Name = "Hover"
 Hover.Parent = insultv2exec_v2
@@ -138,24 +178,24 @@ Hover.Position = UDim2.new(0.422382683, 0, 0.710843384, 0)
 Hover.Size = UDim2.new(0.28652221, 0, 0.0337349214, 0)
 Hover.Visible = false
 
-Credits_2.Name = "Credits"
-Credits_2.Parent = Hover
-Credits_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Credits_2.BackgroundTransparency = 1.000
-Credits_2.Position = UDim2.new(-0.00121916528, 0, -0.0452822968, 0)
-Credits_2.Size = UDim2.new(1.00121927, 0, 1.04528356, 0)
-Credits_2.Font = Enum.Font.Gotham
-Credits_2.Text = "test label"
-Credits_2.TextColor3 = Color3.fromRGB(255, 255, 255)
-Credits_2.TextScaled = true
-Credits_2.TextSize = 14.000
-Credits_2.TextWrapped = true
+Credits.Name = "Credits"
+Credits.Parent = Hover
+Credits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Credits.BackgroundTransparency = 1.000
+Credits.Position = UDim2.new(-0.00121916528, 0, -0.0452822968, 0)
+Credits.Size = UDim2.new(1.00121927, 0, 1.04528356, 0)
+Credits.Font = Enum.Font.Gotham
+Credits.Text = "test label"
+Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credits.TextScaled = true
+Credits.TextSize = 14.000
+Credits.TextWrapped = true
 
 Default.Name = "Default"
 Default.Parent = insultv2exec_v2
-Default.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
-Default.Position = UDim2.new(0.141997576, 0, 0.0421686731, 0)
-Default.Size = UDim2.new(0.179826096, 0, 0.0682730898, 0)
+Default.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Default.Position = UDim2.new(0.0525565818, 0, 0.0321285129, 0)
+Default.Size = UDim2.new(0.153381079, 0, 0.0582329333, 0)
 
 Default_2.Name = "Default"
 Default_2.Parent = Default
@@ -183,9 +223,12 @@ UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
 UICorner_3.CornerRadius = UDim.new(0, 4)
 UICorner_3.Parent = Default
 
+UIGradient_4.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(47, 47, 47)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(88, 88, 88))}
+UIGradient_4.Parent = Default
+
 InsultLogoScreen.Name = "InsultLogoScreen"
 InsultLogoScreen.Parent = insultv2exec_v2
-InsultLogoScreen.BackgroundColor3 = Color3.fromRGB(0, 115, 255)
+InsultLogoScreen.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 InsultLogoScreen.Position = UDim2.new(0.820173919, 0, 0.0321285129, 0)
 InsultLogoScreen.Size = UDim2.new(0.179826096, 0, 0.0682730898, 0)
 
@@ -214,13 +257,15 @@ UIListLayout_4.Parent = list_4
 UICorner_4.CornerRadius = UDim.new(0, 4)
 UICorner_4.Parent = InsultLogoScreen
 
+UIGradient_5.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 155, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 242, 255))}
+UIGradient_5.Parent = InsultLogoScreen
+
 storage_config.Name = "storage_config"
 storage_config.Parent = insultv2exec_v2
 storage_config.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
 storage_config.LayoutOrder = 5
 storage_config.Position = UDim2.new(0, 0, 1, 0)
 storage_config.Size = UDim2.new(0.995000005, 0, 0.5, 0)
-storage_config.Visible = false
 
 UICorner_5.CornerRadius = UDim.new(0, 4)
 UICorner_5.Parent = storage_config
@@ -354,6 +399,192 @@ Frame.Size = UDim2.new(1, 0, 0.159574464, 0)
 
 UICorner_9.CornerRadius = UDim.new(0, 4)
 UICorner_9.Parent = Frame
+
+slider.Name = "slider"
+slider.Parent = insultv2exec_v2
+slider.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+slider.Position = UDim2.new(0, 0, -4.70950283e-08, 0)
+slider.Size = UDim2.new(1, 0, 0.48156786, 0)
+slider.Visible = false
+
+UICorner_10.CornerRadius = UDim.new(0, 4)
+UICorner_10.Parent = slider
+
+Holder.Name = "Holder"
+Holder.Parent = slider
+Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Holder.BackgroundTransparency = 1.000
+Holder.Position = UDim2.new(0.0630920157, 0, 0.616545677, 0)
+Holder.Size = UDim2.new(0.863498151, 0, 0.179454982, 0)
+
+Background.Name = "Background"
+Background.Parent = Holder
+Background.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
+Background.Size = UDim2.new(1, 0, 1, 0)
+
+UICorner_11.CornerRadius = UDim.new(0, 4)
+UICorner_11.Parent = Background
+
+Slider.Name = "Slider"
+Slider.Parent = Holder
+Slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Slider.Position = UDim2.new(0, 0, -0.571428597, 0)
+Slider.Size = UDim2.new(0.149573982, 0, 2.13677096, 0)
+Slider.ZIndex = 999
+Slider.Font = Enum.Font.SourceSans
+Slider.Text = ""
+Slider.TextColor3 = Color3.fromRGB(255, 255, 255)
+Slider.TextScaled = true
+Slider.TextSize = 14.000
+Slider.TextWrapped = true
+
+UICorner_12.CornerRadius = UDim.new(0, 4)
+UICorner_12.Parent = Slider
+
+Amount.Name = "Amount"
+Amount.Parent = slider
+Amount.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Amount.BackgroundTransparency = 1.000
+Amount.Position = UDim2.new(0.565999985, 0, 0.138999999, 0)
+Amount.Size = UDim2.new(0.35921526, 0, 0.33327356, 0)
+Amount.Font = Enum.Font.Gotham
+Amount.Text = "69/100"
+Amount.TextColor3 = Color3.fromRGB(255, 255, 255)
+Amount.TextScaled = true
+Amount.TextSize = 14.000
+Amount.TextWrapped = true
+Amount.TextXAlignment = Enum.TextXAlignment.Right
+
+Title_2.Name = "Title"
+Title_2.Parent = slider
+Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.BackgroundTransparency = 1.000
+Title_2.Position = UDim2.new(0.0617171377, 0, 0.138999939, 0)
+Title_2.Size = UDim2.new(0.462835014, 0, 0.33327356, 0)
+Title_2.Font = Enum.Font.Gotham
+Title_2.Text = "Fly Speed"
+Title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.TextScaled = true
+Title_2.TextSize = 14.000
+Title_2.TextWrapped = true
+Title_2.TextXAlignment = Enum.TextXAlignment.Left
+
+Notification_Plus.Name = "Notification_Plus"
+Notification_Plus.Parent = insultv2exec_v2
+Notification_Plus.AnchorPoint = Vector2.new(0.5, 0.5)
+Notification_Plus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Notification_Plus.BackgroundTransparency = 0.350
+Notification_Plus.Position = UDim2.new(0, 0, 0.407550663, 0)
+Notification_Plus.Size = UDim2.new(1.01665223, 0, 0.592449427, 0)
+Notification_Plus.Visible = false
+
+UICorner_13.CornerRadius = UDim.new(0, 4)
+UICorner_13.Parent = Notification_Plus
+
+Image_2.Name = "Image"
+Image_2.Parent = Notification_Plus
+Image_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Image_2.BackgroundTransparency = 1.000
+Image_2.Position = UDim2.new(0.0444444455, 0, 0.160714284, 0)
+Image_2.Size = UDim2.new(0.0993078426, 0, 0.354460627, 0)
+Image_2.Image = "rbxassetid://6962520787"
+
+Title_3.Name = "Title"
+Title_3.Parent = Notification_Plus
+Title_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_3.BackgroundTransparency = 1.000
+Title_3.Position = UDim2.new(0.184390664, 0, 0.197406635, 0)
+Title_3.Size = UDim2.new(0.550000012, 0, 0.259000003, 0)
+Title_3.Font = Enum.Font.GothamBold
+Title_3.Text = "AutoReport"
+Title_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title_3.TextScaled = true
+Title_3.TextSize = 14.000
+Title_3.TextWrapped = true
+Title_3.TextXAlignment = Enum.TextXAlignment.Left
+
+Description_2.Name = "Description"
+Description_2.Parent = Notification_Plus
+Description_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Description_2.BackgroundTransparency = 1.000
+Description_2.Position = UDim2.new(0.184390664, 0, 0.518835187, 0)
+Description_2.Size = UDim2.new(0.729342341, 0, 0.259000003, 0)
+Description_2.Font = Enum.Font.Gotham
+Description_2.Text = "reported Player1 for Bullying"
+Description_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Description_2.TextScaled = true
+Description_2.TextSize = 14.000
+Description_2.TextWrapped = true
+Description_2.TextXAlignment = Enum.TextXAlignment.Left
+
+Timer_2.Name = "Timer"
+Timer_2.Parent = Notification_Plus
+Timer_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Timer_2.BorderSizePixel = 0
+Timer_2.Position = UDim2.new(0, 0, 0.949999988, 0)
+Timer_2.Size = UDim2.new(1, 0, 0.0500000007, 0)
+
+UICorner_14.CornerRadius = UDim.new(0, 4)
+UICorner_14.Parent = Timer_2
+
+UIAspectRatioConstraint_2.Parent = Notification_Plus
+UIAspectRatioConstraint_2.AspectRatio = 3.569
+
+UIGradient_6.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 166, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 234, 255))}
+UIGradient_6.Parent = Notification_Plus
+
+Credits_2.Name = "Credits"
+Credits_2.Parent = insultv2exec_v2
+Credits_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Credits_2.BackgroundTransparency = 1.000
+Credits_2.Position = UDim2.new(0.794223785, 0, 0.916135132, 0)
+Credits_2.Size = UDim2.new(0.194945827, 0, 0.0311835725, 0)
+Credits_2.Font = Enum.Font.Gotham
+Credits_2.Text = "INSULT V2.0"
+Credits_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Credits_2.TextScaled = true
+Credits_2.TextSize = 14.000
+Credits_2.TextWrapped = true
+Credits_2.TextXAlignment = Enum.TextXAlignment.Right
+
+credit_Grad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 136, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(0, 255, 247))}
+credit_Grad.Name = "credit_Grad"
+credit_Grad.Parent = insultv2exec_v2
+
+Render.Name = "Render"
+Render.Parent = insultv2exec_v2
+Render.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Render.Position = UDim2.new(0.56400001, 0, 0.0320000015, 0)
+Render.Size = UDim2.new(0.153381079, 0, 0.0582329333, 0)
+
+Render_2.Name = "Render"
+Render_2.Parent = Render
+Render_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Render_2.BackgroundTransparency = 1.000
+Render_2.Position = UDim2.new(0, 0, 0.14705883, 0)
+Render_2.Size = UDim2.new(1, 0, 0.70588237, 0)
+Render_2.Font = Enum.Font.Gotham
+Render_2.Text = "Render"
+Render_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Render_2.TextScaled = true
+Render_2.TextSize = 14.000
+Render_2.TextWrapped = true
+
+list_5.Name = "list"
+list_5.Parent = Render
+list_5.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+list_5.BackgroundTransparency = 1.000
+list_5.Position = UDim2.new(0, 0, 1, 0)
+list_5.Size = UDim2.new(1, 0, 2.38235283, 0)
+
+UIListLayout_6.Parent = list_5
+UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
+
+UICorner_15.CornerRadius = UDim.new(0, 4)
+UICorner_15.Parent = Render
+
+UIGradient_7.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(47, 47, 47)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(88, 88, 88))}
+UIGradient_7.Parent = Render
 
 -- Module Scripts:
 
@@ -634,7 +865,7 @@ end
 
 -- Scripts:
 
-local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript 
+local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 	local req = require
 	local require = function(obj)
@@ -650,6 +881,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	
 	-- bedwars
 	
+	local isPrivate = true
 	local lplr = game.Players.LocalPlayer
 	local repstorage = game:GetService("ReplicatedStorage")
 	
@@ -657,11 +889,11 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
 		cam = (workspace.CurrentCamera or workspace:FindFirstChild("Camera") or Instance.new("Camera"))
 	end)
+	local lighting = game:GetService("Lighting")
 	local uis = game:GetService("UserInputService")
 	local KnitClient = debug.getupvalue(require(lplr.PlayerScripts.TS.knit).setup, 6)
 	local Client = require(repstorage.TS.remotes).default.Client
 	local funcs = require(script.Parent.funcs)
-	print("Insult basic loaded")
 	local getremote = function(tab)
 		for i,v in pairs(tab) do
 			if v == "Client" then
@@ -682,7 +914,47 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		}
 	}
 	
+	local RunLoops = {RenderStepTable = {}, StepTable = {}, HeartTable = {}}
+	do
+		function RunLoops:BindToRenderStep(name, num, func)
+			if RunLoops.RenderStepTable[name] == nil then
+				RunLoops.RenderStepTable[name] = game:GetService("RunService").RenderStepped:Connect(func)
+			end
+		end
 	
+		function RunLoops:UnbindFromRenderStep(name)
+			if RunLoops.RenderStepTable[name] then
+				RunLoops.RenderStepTable[name]:Disconnect()
+				RunLoops.RenderStepTable[name] = nil
+			end
+		end
+	
+		function RunLoops:BindToStepped(name, num, func)
+			if RunLoops.StepTable[name] == nil then
+				RunLoops.StepTable[name] = game:GetService("RunService").Stepped:Connect(func)
+			end
+		end
+	
+		function RunLoops:UnbindFromStepped(name)
+			if RunLoops.StepTable[name] then
+				RunLoops.StepTable[name]:Disconnect()
+				RunLoops.StepTable[name] = nil
+			end
+		end
+	
+		function RunLoops:BindToHeartbeat(name, num, func)
+			if RunLoops.HeartTable[name] == nil then
+				RunLoops.HeartTable[name] = game:GetService("RunService").Heartbeat:Connect(func)
+			end
+		end
+	
+		function RunLoops:UnbindFromHeartbeat(name)
+			if RunLoops.HeartTable[name] then
+				RunLoops.HeartTable[name]:Disconnect()
+				RunLoops.HeartTable[name] = nil
+			end
+		end
+	end
 	
 	local bedwars = {
 		["SprintController"] = KnitClient.Controllers.SprintController,
@@ -705,7 +977,12 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		["BowTable"] = KnitClient.Controllers.ProjectileController,
 		["BowConstantsTable"] = debug.getupvalue(KnitClient.Controllers.ProjectileController.enableBeam, 5),
 		["CombatConstant"] = require(repstorage.TS.combat["combat-constant"]).CombatConstant,
+		["BalloonController"] = KnitClient.Controllers.BalloonController,
 	}
+	
+	local function GetMatchState()
+		return bedwars["ClientStoreHandler"]:getState().Game.matchState
+	end
 	
 	local states = {}
 	local windowapi = {}
@@ -717,6 +994,11 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	local function createinfo(this_title, this_notify, this_duration)
 		coroutine.wrap(function()
 			local notification = script.Parent:WaitForChild("Notification"):Clone()
+			--[[if this_title:match("(Plus)") and isPrivate == true then
+				local notification = script.Parent:WaitForChild("Notification_Plus"):Clone()
+			else
+				local notification = script.Parent:WaitForChild("Notification"):Clone()
+			end]]--
 			notification.Parent = script.Parent:WaitForChild("NotifyFrame")
 			notification.Visible = true
 			notification.Title.Text = this_title
@@ -816,6 +1098,37 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		end
 	end
 	
+	local blatant = script.Parent.Blatant
+	local world = script.Parent.World
+	local default = script.Parent.Default
+	local logoScreen = script.Parent.InsultLogoScreen
+	local render = script.Parent.Render
+	
+	local function removeItemFromInsultList(this_title)
+		for i,v in pairs(logoScreen.list:GetChildren()) do
+			if v:IsA("TextLabel") and v.Name == this_title then
+				v:Destroy()
+			end
+		end
+	end
+	
+	local function addItemToInsultList(this_title)
+		removeItemFromInsultList(this_title)
+		local newLabel = Instance.new("TextLabel", logoScreen.list)
+		newLabel.Name = this_title
+		newLabel.Text = this_title
+		newLabel.Font = Enum.Font.Gotham
+		newLabel.Size = UDim2.new(1,0,0.184,0)
+		newLabel.BackgroundTransparency = 1
+		newLabel.TextColor3 = Color3.fromRGB(255,255,255)
+		newLabel.TextScaled = true
+		newLabel.TextXAlignment = Enum.TextXAlignment.Right
+		local newGrad = script.Parent.credit_Grad:Clone()
+		newGrad.Parent = newLabel
+		--[[local newStroke = script.Parent.credit_Stroke:Clone()
+		newStroke.Parent = newLabel]]--
+	end
+	
 	local currentAdded = 0
 	local btnCounts = {}
 	local uiCount = 0
@@ -881,6 +1194,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 				TextButton.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
 				buttonapi["Function"] = true
 				argstablemain["Function"](true)
+				addItemToInsultList(buttonapi["Name"])
 			end
 			coroutine.wrap(resume)()
 		end
@@ -895,11 +1209,13 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 					table.insert(states,argstablemain["Function"])
 					states[buttonapi["Name"]] = true
 					argstablemain["Function"](true)
+					addItemToInsultList(buttonapi["Name"])
 					TextButton.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
 				else
 					table.insert(states,argstablemain["Function"])
 					states[buttonapi["Name"]] = false
 					argstablemain["Function"](false)
+					removeItemFromInsultList(buttonapi["Name"])
 					TextButton.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
 					buttonapi["Function"] = false
 					delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
@@ -916,6 +1232,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 				table.insert(states,argstablemain["Function"])
 				states[buttonapi["Name"]] = true
 				buttonapi["Function"] = true
+				addItemToInsultList(buttonapi["Name"])
 				if not cfgisEnabled then
 					writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
 				end
@@ -926,6 +1243,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 				states[buttonapi["Name"]] = false
 				TextButton.BackgroundColor3 = Color3.fromRGB(69, 69, 69)
 				buttonapi["Function"] = false
+				removeItemFromInsultList(buttonapi["Name"])
 				delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
 				createinfo("Insult", buttonapi["Name"].." has been disabled!", 2)
 			end
@@ -1001,77 +1319,19 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 				end
 			end)
 		end
-		
-		--[[local mainStorage = nil
-		local gc = nil
-		config.MouseButton1Down:Connect(function()
-			local storage = script.Parent.storage_config:Clone()
-			storage.Parent = TextButton.Parent
-			storage.LayoutOrder = TextButton.LayoutOrder + 0.5
-		end)
-		
-		if mainStorage then
-			gc = mainStorage.FocusLost:Connect(function(enter, input)
-				local after = tonumber(mainStorage:FindFirstChild("TextBox").Text)
-				if after then
-					buttonapi["NumValue"] = after
-				end
-			end)
-		end
-		
-		TextButton.Destroying:Connect(function()
-			if gc then gc:Disconnect() end
-		end)]]--
-		--[[TextButton.MouseMoved:Connect(function()
-			if buttonapi["HoverText"] ~= nil or "" then
-				local hover = script.Parent:FindFirstChild("Hover")
-				if not script.Parent:FindFirstChild("Hover") then
-					local hoverFrame = Instance.new("Frame")
-					globalHoverFrame = hoverFrame
-					hoverFrame.Parent = script.Parent
-					hoverFrame.Size = UDim2.new(0.287, 0, 0.034, 0)
-					hoverFrame.BackgroundColor3 = Color3.fromRGB(0,0,0)
-					hoverFrame.BackgroundTransparency = 0.5
-					local hoverCredit = Instance.new("TextLabel")
-					hoverCredit.Parent = hoverFrame
-					hoverCredit.Size = UDim2.new(1.001, 0 , 1.045, 0)
-					hoverCredit.Position = UDim2.new(-0.001, 0, -0.045, 0)
-					hoverCredit.Text = buttonapi["HoverText"]
-					hoverCredit.Font = Enum.Font.Gotham
-					hoverCredit.TextColor3 = Color3.fromRGB(255,255,255)
-					hoverCredit.TextScaled = true
-					hoverCredit.BackgroundTransparency = 1
-				end]
-				if hover then
-					hover:FindFirstChild("Credits").Text = buttonapi["HoverText"]
-					hover.Visible = true
-					hover.Position = UDim2.new(0, mouse.X, mouse.Y)
-				end
-			end
-		end)
-		
-		TextButton.MouseLeave:Connect(function()
-			if buttonapi["HoverText"] ~= nil or "" then
-				local hover = script.Parent:FindFirstChild("Hover")
-				if hover then
-					hover:FindFirstChild("Credits").Text = ""
-					hover.Visible = false
-				end
-			end
-		end)]]--
 	end
 	
 	local function getLinkTo(lt)
 		for i,v in pairs(script.Parent:GetDescendants()) do
 			if v.Parent.Name == "list" and v:IsA("TextButton") and v.Name == lt then
-				
 				return v
 			end
 		end
 		return nil
 	end
 	
-	windowapi["CreateCheckbox"] = function(argstablemain)
+	--[[windowapi["CreateCheckbox"] = function(argstablemain)
+		print("Create checkbox for "..argstablemain["Name"].." detected")
 		local btnEnabled = false
 		local buttonapi = {}
 	
@@ -1080,6 +1340,8 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		buttonapi["Default"] = argstablemain["Default"]
 		buttonapi["Function"] = argstablemain["Function"]
 		buttonapi["HoverText"] = argstablemain["HoverText"]
+		
+		print("Recieved args")
 		
 		if buttonapi["LinkTo"] == nil then
 			createinfo("Insult", "A checkbox link error occurred.", 5)
@@ -1092,8 +1354,9 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 			return
 		end
 		
+		print("Getlink success")
 		local checkFrame = Instance.new("Frame")
-		checkFrame.Parent = script.Parent[buttonapi["Tab"]].list
+		checkFrame.Parent = getLink.Parent
 		checkFrame.Name = buttonapi["Name"].."_checkbox"
 		checkFrame.Size = UDim2.new(1, 0, 0.247, 0)
 		checkFrame.LayoutOrder = getLink.LayoutOrder
@@ -1105,6 +1368,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		checkBtn.Parent = checkFrame
 		checkBtn.Size = UDim2.new(0.18, 0, 1, 0)
 		checkBtn.Position = UDim2.new(0.753, 0, 0, 0)
+		checkBtn.ZIndex = 999
 		checkBtn.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
 		local checkBtn_UICorner = Instance.new("UICorner")
 		checkBtn_UICorner.Parent = checkBtn
@@ -1116,46 +1380,36 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		checkImage.BackgroundTransparency = 1
 		checkImage.ImageTransparency = 1
 		checkImage.Image = "rbxassetid://8589545938"
+		checkImage.ZIndex = 9999
 		
 		if buttonapi["Default"] == true then
 			btnEnabled = true
 			checkImage.ImageTransparency = 0
 			buttonapi["Function"](true)
 		end
+		print("Done all the other stuff")
 		
 		checkBtn.MouseButton1Click:Connect(function()
 			if btnEnabled == false then
 				btnEnabled = true
 				checkImage.ImageTransparency = 0
 				buttonapi["Function"](true)
+				print("Enabled")
 			elseif btnEnabled == true then
 				btnEnabled = false
 				checkImage.ImageTransparency = 1
 				buttonapi["Function"](false)
+				print("Disabled")
 			end
 		end)
-	end
+	end]]--
 	
-	windowapi["RemoveCheckbox"] = function(argstablemain)
-		local btnEnabled = false
-		local buttonapi = {}
-		local player = game.Players.LocalPlayer
-		local mouse = player:GetMouse()
-	
-		buttonapi["LinkTo"] = argstablemain["LinkTo"]
-	
-		if buttonapi["LinkTo"] == nil then
-			createinfo("Insult", "A checkbox link error occurred.", 5)
+	local function snapSlider(number, factor)
+		if factor == 0 then
+			return number
+		else
+			return math.floor(number/factor+0.5)*factor
 		end
-	
-		local getLink = getLinkTo(buttonapi["LinkTo"])
-		if not getLink then
-			createinfo("Insult", "A fatal error occurred. Check output for details.", 10)
-			error("The LinkTo provided in the CreateCheckbox function returned nil.")
-			return
-		end
-		
-		getLink:Destroy()
 	end
 	
 	local GetInventory = function(plr) 
@@ -1204,11 +1458,6 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	
 	local inffly_bind = "G"]]--
 	
-	local blatant = script.Parent.Blatant
-	local world = script.Parent.World
-	local default = script.Parent.Default
-	local logoScreen = script.Parent.InsultLogoScreen
-	
 	--[[local df_list = default.list
 	local wl_list = world.list
 	local bl_list = blatant.list
@@ -1243,85 +1492,27 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		newBlur.Enabled = false
 	end
 	
-	local function removeItemFromInsultList(this_title)
-		for i,v in pairs(logoScreen.list:GetChildren()) do
-			if v:IsA("TextLabel") and v.Name == this_title then
-				v:Destroy()
-			end
-		end
-	end
-	
-	local function addItemToInsultList(this_title)
-		removeItemFromInsultList(this_title)
-		local newLabel = Instance.new("TextLabel", logoScreen.list)
-		newLabel.Name = this_title
-		newLabel.Text = this_title
-		newLabel.Font = Enum.Font.Gotham
-		newLabel.Size = UDim2.new(1,0,0.284,0)
-		newLabel.BackgroundTransparency = 1
-		newLabel.TextColor3 = Color3.fromRGB(255,255,255)
-		newLabel.TextScaled = true
-	end
-	
 	game:GetService("UserInputService").InputBegan:Connect(function(input)
 		if input.KeyCode == Enum.KeyCode.RightShift then
 			if script.Parent.Credits.Visible == false then
 				blatant.Visible = true
 				default.Visible = true
 				world.Visible = true
+				render.Visible = true
 				script.Parent.Credits.Visible = true
+				script.Parent.Update.Visible = true
 				newBlur.Enabled = true
 			else
 				blatant.Visible = false
 				default.Visible = false
 				world.Visible = false
+				render.Visible = false
 				script.Parent.Credits.Visible = false
+				script.Parent.Update.Visible = false
 				newBlur.Enabled = false
 			end
 		end
 	end)
-	
-	local RunLoops = {RenderStepTable = {}, StepTable = {}, HeartTable = {}}
-	do
-		function RunLoops:BindToRenderStep(name, num, func)
-			if RunLoops.RenderStepTable[name] == nil then
-				RunLoops.RenderStepTable[name] = game:GetService("RunService").RenderStepped:Connect(func)
-			end
-		end
-	
-		function RunLoops:UnbindFromRenderStep(name)
-			if RunLoops.RenderStepTable[name] then
-				RunLoops.RenderStepTable[name]:Disconnect()
-				RunLoops.RenderStepTable[name] = nil
-			end
-		end
-	
-		function RunLoops:BindToStepped(name, num, func)
-			if RunLoops.StepTable[name] == nil then
-				RunLoops.StepTable[name] = game:GetService("RunService").Stepped:Connect(func)
-			end
-		end
-	
-		function RunLoops:UnbindFromStepped(name)
-			if RunLoops.StepTable[name] then
-				RunLoops.StepTable[name]:Disconnect()
-				RunLoops.StepTable[name] = nil
-			end
-		end
-	
-		function RunLoops:BindToHeartbeat(name, num, func)
-			if RunLoops.HeartTable[name] == nil then
-				RunLoops.HeartTable[name] = game:GetService("RunService").Heartbeat:Connect(func)
-			end
-		end
-	
-		function RunLoops:UnbindFromHeartbeat(name)
-			if RunLoops.HeartTable[name] then
-				RunLoops.HeartTable[name]:Disconnect()
-				RunLoops.HeartTable[name] = nil
-			end
-		end
-	end
 	
 	--skidded off the devforum because I hate projectile math
 	-- Compute 2D launch angle
@@ -1385,6 +1576,8 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	
 		return Vector3.new(goalX, goalY, goalZ)
 	end
+	
+	--createinfo("Insult+ (Plus)", "<b>Insult Plus</b> loaded\nDon't have Insult Plus? skill issue moment", 7)
 	
 	local AntivoidEnabled = nil
 	local antivoidpart
@@ -1559,7 +1752,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	local BedESPOnTop = {["Enabled"] = true}
 	local BedESP = windowapi.CreateButton({
 		["Name"] = "BedESP",
-		["Tab"] = "World",
+		["Tab"] = "Render",
 		["Function"] = function(callback)
 			if callback then
 				RunLoops:BindToRenderStep("BedESP", 500, function()
@@ -1767,7 +1960,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	local longjumpE = nil
 	local longjumpAmount = 3.5
 	local LongJumpFly = windowapi.CreateButton({
-		["Name"] = "LongJumpFly",
+		["Name"] = "LongJump",
 		["Tab"] = "Blatant",
 		["Function"] = function(callback)
 			if callback then
@@ -1833,16 +2026,16 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 				local UIS = game:GetService("UserInputService")
 				while _G.Speed1 do wait()
 					if UIS:IsKeyDown(Enum.KeyCode.W) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed)
 					end;
 					if UIS:IsKeyDown(Enum.KeyCode.A) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-Speed,0,0)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-Speed,0,0)
 					end;
 					if UIS:IsKeyDown(Enum.KeyCode.S) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,Speed)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,Speed)
 					end;
 					if UIS:IsKeyDown(Enum.KeyCode.D) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(Speed,0,0)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(Speed,0,0)
 					end;
 				end
 			else
@@ -1852,22 +2045,34 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 				local UIS = game:GetService("UserInputService")
 				while _G.Speed1 do wait()
 					if UIS:IsKeyDown(Enum.KeyCode.W) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed)
 					end;
 					if UIS:IsKeyDown(Enum.KeyCode.A) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-Speed,0,0)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-Speed,0,0)
 					end;
 					if UIS:IsKeyDown(Enum.KeyCode.S) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,Speed)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,Speed)
 					end;
 					if UIS:IsKeyDown(Enum.KeyCode.D) then
-						game:GetService("Workspace")[You].HumanoidRootPart.CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(Speed,0,0)
+						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(Speed,0,0)
 					end;
 				end
 	
 			end
 		end,
 	})
+	--[[local speedCheckBox = windowapi.CreateCheckbox({
+		["Name"] = "VeryOP",
+		["LinkTo"] = "Speed",
+		["Default"] = false,
+		["Function"] = function(callback)
+			if callback then
+				numValue = 15
+			else
+				numValue = 1
+			end
+		end,
+	})]]--
 	
 	local spiderEnabled = false
 	local phaseEnabled = false
@@ -2079,7 +2284,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	HealthText.Parent = script.Parent
 	local Health = windowapi.CreateButton({
 		["Name"] = "Health",
-		["Tab"] = "Default",
+		["Tab"] = "Render",
 		["Function"] = function(callback)
 			if callback then
 				HealthText.Visible = true
@@ -2213,7 +2418,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 	local espHighlight
 	local Chams = windowapi.CreateButton({
 		["Name"] = "Chams",
-		["Tab"] = "World",
+		["Tab"] = "Render",
 		["Function"] = function(callback)
 			local players = game.Players:GetPlayers()
 			if callback then
@@ -2472,101 +2677,130 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 		["HoverText"] = "cope"
 	})]]--
-	local ST2 = 0;
-	local LinearVelocity
-	local BounceMax = {["Value"] = 25};
-	local SpeedInc2 = {["Value"] = 1};
-	local BounceInc = {["Value"] = 0.7};
-	local FlySpeedMin = {["Value"] = 20};
-	local FlySpeed = {["Value"] = 25};
-	local FlyVSpeed = {["Value"] = 35};
-	local FlyDelay = {["Value"] = 0};
-	CFrameDelay = {Value = 1}
-	CFrameDist = {Value = 0}
-	local speedWasEnabledForFly = false
-	local flyLeft = 3
-	local BetterFly = windowapi.CreateButton({
+	local velo1
+	local flyup1 = false
+	local flydown1 = false
+	local connection1
+	local connection21
+	local ltween = nil
+	local debTime = 3
+	local BounceFlyE = {["Enabled"] = false}
+	local newText = script.Parent.FlyUI.TextLabel
+	local newFrame = script.Parent.FlyUI.Frame
+	local FlyE = nil
+	local Fly = windowapi.CreateButton({
 		["Name"] = "Fly",
 		["Tab"] = "Blatant",
 		["Function"] = function(callback)
-			--[[local flyui = script.Parent.FlyUI:Clone()
-			flyui.Parent = script.Parent]]--
 			if callback then
-				local Dir2 = true
-				local YVelo = 0
+				BounceFlyE["Enabled"] = true
 				coroutine.wrap(function()
-					repeat
-						ST2 = workspace:GetServerTimeNow() + (SpeedInc2.Value)
-						task.wait(FlyDelay.Value + SpeedInc2.Value)
-					until not Speed.Enabled
-				end)()
-				--[[flyui.Visible = true
-				flyui.Frame:TweenSize(UDim2.new(0,0,0.16,0), "In", "Linear", flyLeft)
-				coroutine.wrap(function()
+					--[[newText = Instance.new("TextLabel")
+					newText.Parent = script.Parent
+					newText.BackgroundTransparency = 1
+					newText.TextScaled = true
+					newText.TextColor3 = Color3.fromRGB(255,255,255)
+					newText.Font = "Gotham"]]--
+					script.Parent.FlyUI.Visible = true
+					local newText = script.Parent.FlyUI.TextLabel
+					local newFrame = script.Parent.FlyUI.Frame
+					if not ltween then
+						ltween = game:GetService("TweenService"):Create(
+							newFrame,
+							TweenInfo.new(3, Enum.EasingStyle.Linear, Enum.EasingDirection.In),
+							{Size = UDim2.new(0, 0, .16, 0)}
+						)
+						ltween:Play()
+						--newFrame:TweenSize(UDim2.new(0, 0, .16, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, debTime)
+					end
 					repeat task.wait(0.1)
-						flyLeft = flyLeft - 0.1
-						flyui.TextLabel.Text = tostring(flyLeft).."s"
-					until flyLeft <= 0
-					createinfo("Insult (Test)", "<b>Fly</b> test passed.")
-					flyui:Destroy()
-				end)()]]--
-				RunLoops:BindToHeartbeat("flyBedwars", 1, function(dt)
-					if not isalive(lplr) then
-						return 
+						if not BounceFlyE["Enabled"] then break end
+						debTime = debTime - 0.1
+						newText.Text = math.round(debTime).."s"
+					until debTime <= 0
+					debTime = 3
+					script.Parent.FlyUI.Visible = false
+					BounceFlyE["Enabled"] = false
+					if FlyE then
+						table.insert(states, FlyE)
 					end
-					if Speed["Function"] == true and speedWasEnabledForFly == false then
-						speedWasEnabledForFly = true
-						Speed["Function"](false)
+					script.Parent.Blatant.list.Fly.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
+				end)()
+				velo1 = Instance.new("BodyVelocity")
+				velo1.MaxForce = Vector3.new(0,9e9,0)
+				velo1.Parent = lplr.Character:FindFirstChild("HumanoidRootPart")
+				connection1 = uis.InputBegan:Connect(function(input)
+					if input.KeyCode == Enum.KeyCode.Space then
+						flyup1 = true
 					end
-	
-					local Humanoid = lplr.Character.Humanoid
-					local MoveDirection = Humanoid.MoveDirection
-					local Velocity = lplr.Character.HumanoidRootPart.Velocity
-	
-					if YVelo >= BounceMax.Value then
-						Dir2 = false 
-					elseif YVelo <= -BounceMax.Value then
-						Dir2 = true
+					if input.KeyCode == Enum.KeyCode.LeftShift then
+						flydown1 = true
 					end
-	
-					if Dir2 then
-						YVelo = YVelo + BounceInc.Value
-					else
-						YVelo = YVelo - BounceInc.Value
+				end)
+				connection21 = uis.InputEnded:Connect(function(input)
+					if input.KeyCode == Enum.KeyCode.Space then
+						flyup1 = false
 					end
-	
-					local Y = YVelo
-					if uis:IsKeyDown(Enum.KeyCode.LeftShift) then 
-						Y = -FlyVSpeed.Value
+					if input.KeyCode == Enum.KeyCode.LeftShift then
+						flydown1 = false
 					end
-					if uis:IsKeyDown(Enum.KeyCode.Space) then 
-						Y = FlyVSpeed.Value
-					end
-	
-					local speed = FlySpeed.Value + (lplr.Character.Humanoid.WalkSpeed - FlySpeed.Value) * (1 - (math.max(ST2 - workspace:GetServerTimeNow(), 0)) / SpeedInc2.Value)
-					speed = math.clamp(speed, FlySpeedMin.Value, math.huge)
-					local MD = MoveDirection * speed
-					local NewVelo = Vector3.new(MD.X, Y, MD.Z)
-					LinearVelocity = lplr.Character.HumanoidRootPart:FindFirstChildOfClass("LinearVelocity") or Instance.new("LinearVelocity", lplr.Character.HumanoidRootPart)
-					LinearVelocity.Attachment0 = lplr.Character.HumanoidRootPart:FindFirstChildOfClass("Attachment")
-					LinearVelocity.MaxForce = 9e9
-					LinearVelocity.VectorVelocity = NewVelo
+				end)
+				spawn(function()
+					repeat
+						task.wait()
+						if not BounceFlyE["Enabled"] then
+							if velo1 then
+								velo1:Destroy()
+							end
+							if connection1 then
+								connection1:Disconnect()
+							end
+							if connection21 then
+								connection21:Disconnect()
+							end
+							flyup1 = false
+							flydown1 = false
+							debTime = 3.5
+							script.Parent.FlyUI.Visible = false
+						end
+						for i = 1,15 do
+							task.wait()
+							if not BounceFlyE["Enabled"] then return end
+							velo1.Velocity = Vector3.new(0,i*1.25+(flyup1 and 42 or 0)+(flydown1 and -42 or 0),0)
+						end
+						for i = 1,15 do
+							task.wait()
+							if not BounceFlyE["Enabled"] then return end
+							velo1.Velocity = Vector3.new(0,-i*1+(flyup1 and 42 or 0)+(flydown1 and -42 or 0),0)
+						end
+					until not BounceFlyE["Enabled"]
 				end)
 			else
-				if Speed["Function"] == false and speedWasEnabledForFly == true then
-					speedWasEnabledForFly = false
-					Speed["Function"](true)
+				if velo1 then
+					velo1:Destroy()
 				end
-				RunLoops:UnbindFromHeartbeat("flyBedwars")
-				if LinearVelocity then 
-					LinearVelocity:Destroy()
-					LinearVelocity = nil
+				if connection1 then
+					connection1:Disconnect()
 				end
+				if connection21 then
+					connection21:Disconnect()
+				end
+				flyup1 = false
+				flydown1 = false
+				debTime = 3.5
+				script.Parent.FlyUI.Visible = false
+				if ltween then
+					ltween:Cancel()
+					ltween = nil
+				end
+				newFrame.Size = UDim2.new(1,0,0.16,0)
+				newText.Text = debTime
 			end
 		end,
 	})
+	--FlyE = Fly["Function"]
 	
-	local AnticheatDisabler = windowapi.CreateButton({
+	--[[local AnticheatDisabler = windowapi.CreateButton({
 		["Name"] = "AnticheatDisabler",
 		["Tab"] = "Blatant",
 		["Function"] = function(callback)
@@ -2586,7 +2820,7 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 			end
 	
 		end,
-	})
+	})]]--
 	
 	local oldReach = nil
 	local Reach = windowapi.CreateButton({
@@ -2605,6 +2839,91 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
+	
+	local FloatDisabler = windowapi.CreateButton({
+		["Name"] = "FloatDisabler",
+		["Tab"] = "Blatant",
+		["Function"] = function(callback)
+			if callback then
+				if GetMatchState() ~= 1 then
+					repeat task.wait() until GetMatchState() == 1
+				end
+				local oldhook = bedwars["BalloonController"].hookBalloon
+				local oldenable = bedwars["BalloonController"].enableBalloonPhysics
+				bedwars["BalloonController"].enableBalloonPhysics = function() end
+				bedwars["BalloonController"].deflateBalloon = function() end
+				bedwars["BalloonController"].hookBalloon = function(x1,x2,x3,x4)
+					x4:WaitForChild("Balloon").CFrame = CFrame.new(0,-1995,0)
+					x4.Balloon:ClearAllChildren()
+					bedwars["BalloonController"].enableBalloonPhysics = oldenable
+					bedwars["BalloonController"].hookBalloon = oldhook
+				end
+				createinfo("FloatDisabler", "Float check disabled until you die", 10)
+				bedwars["BalloonController"].inflateBalloon()
+			end
+		end,
+	})
+	
+	local lightingsettings = {}
+	local lightingconnection
+	local lightingchanged = false
+	local Fullbright = windowapi.CreateButton({
+		["Name"] = "Fullbright",
+		["Tab"] = "Render",
+		["Function"] = function(callback)
+			if callback then
+				lightingsettings["Brightness"] = lighting.Brightness
+				lightingsettings["ClockTime"] = lighting.ClockTime
+				lightingsettings["FogEnd"] = lighting.FogEnd
+				lightingsettings["GlobalShadows"] = lighting.GlobalShadows
+				lightingsettings["OutdoorAmbient"] = lighting.OutdoorAmbient
+				lightingchanged = false
+				lighting.Brightness = 2
+				lighting.ClockTime = 14
+				lighting.FogEnd = 100000
+				lighting.GlobalShadows = false
+				lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+				lightingchanged = true
+				lightingconnection = lighting.Changed:Connect(function()
+					if not lightingchanged then
+						lightingsettings["Brightness"] = lighting.Brightness
+						lightingsettings["ClockTime"] = lighting.ClockTime
+						lightingsettings["FogEnd"] = lighting.FogEnd
+						lightingsettings["GlobalShadows"] = lighting.GlobalShadows
+						lightingsettings["OutdoorAmbient"] = lighting.OutdoorAmbient
+						lightingchanged = true
+						lighting.Brightness = 2
+						lighting.ClockTime = 14
+						lighting.FogEnd = 100000
+						lighting.GlobalShadows = false
+						lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+						lightingchanged = false
+					end
+				end)
+			else
+				for name,thing in pairs(lightingsettings) do 
+					lighting[name] = thing 
+				end
+				lightingconnection:Disconnect()
+			end
+		end,
+		["HoverText"] = "fullbright yes"
+	})
+	
+	createinfo("Insult - Finished loading", "Finished loading.\nPress <b>RightShift</b> to toggle.", 5)
+	
+	--[[local ReachAmount = windowapi.CreateSlider({
+		["Name"] = "Distance",
+		["LinkTo"] = "Reach",
+		["Min"] = 1,
+		["Max"] = 25,
+		["Default"] = 18,
+		["Function"] = function(amount)
+			oldReach = bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE
+			bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = amount
+		end,
+		["HoverText"] = "The amount of reach to have."
+	})]]--
 	
 	--[[local AutoLeaveTest = windowapi.CreateButton({
 		["Name"] = "AutoLeaveTest",
@@ -2625,4 +2944,4 @@ local function XGXYP_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 	})]]--
 end
-coroutine.wrap(XGXYP_fake_script)()
+coroutine.wrap(MJZAJP_fake_script)()
