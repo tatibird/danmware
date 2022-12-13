@@ -8,6 +8,7 @@ local bedWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/mai
 local skyWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/skywars_by_voxels.lua"
 
 local alreadyLaunched = false
+local idexe = identifyexecutor()
 
 local bedWars_ids = {
 	6872274481,
@@ -34,7 +35,9 @@ local function createinfo(this_title, this_notify, this_duration)
 	})
 end
 
-if fluxus then
+if idexe == "ScriptWare" then
+	createinfo("Insult", 'Detected ScriptWare', 5)
+elseif fluxus then
 	createinfo("Insult", 'Detected Fluxus', 5)
 elseif syn then
 	createinfo("Insult", 'Detected Synapse X or a decent executor', 5)
