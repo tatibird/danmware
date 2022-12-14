@@ -1,6 +1,15 @@
 local module = {}
 
 local function createNotify()
+	local Notification = Instance.new("Frame")
+	local UICorner = Instance.new("UICorner")
+	local Image = Instance.new("ImageLabel")
+	local Title = Instance.new("TextLabel")
+	local Description = Instance.new("TextLabel")
+	local Timer = Instance.new("Frame")
+	local UICorner_2 = Instance.new("UICorner")
+	local UIAspectRatioConstraint = Instance.new("UIAspectRatioConstraint")
+	
 	Notification.Name = "Notification"
 	Notification.AnchorPoint = Vector2.new(0.5, 0.5)
 	Notification.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
