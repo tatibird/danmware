@@ -1,6 +1,6 @@
 local module = {}
 
-local function createNotify()
+local function createNotify(image)
 	local Notification = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
 	local Image = Instance.new("ImageLabel")
