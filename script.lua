@@ -6,9 +6,12 @@ if not game:IsLoaded() then game.Loaded:Wait() end
 --// Load scripts
 local bedWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/bedwars.lua"
 local skyWarsLoad = "https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/skywars_by_voxels.lua"
+local canRun = true
 
 local alreadyLaunched = false
 local idexe = identifyexecutor()
+
+local wrtest = writefile
 
 local bedWars_ids = {
 	6872274481,
@@ -35,6 +38,12 @@ local function createinfo(this_title, this_notify, this_duration)
 	})
 end
 
+if not writefile then
+	canRun = false
+	createinfo("Insult", 'Executor not supported.', 10)
+	createinfo("Insult", 'Insult cannot execute.', 10)
+end
+
 if idexe == "ScriptWare" then
 	createinfo("Insult", 'Detected ScriptWare', 5)
 elseif fluxus then
@@ -48,15 +57,19 @@ end
 print("PlaceID (Insult): "..placeID)
 
 local bedwars_launch = function()
-	createinfo("Insult", 'Executing script for "BedWars", please wait...', 5)
-	loadstring(game:HttpGet(bedWarsLoad))()
-	createinfo("Insult", 'Finished loading for "BedWars". Have fun!', 5)
+	if canRun then
+		createinfo("Insult", 'Executing script for "BedWars", please wait...', 5)
+		loadstring(game:HttpGet(bedWarsLoad))()
+		createinfo("Insult", 'Finished loading for "BedWars". Have fun!', 5)
+	end
 end
 
 local skyWars_launch = function()
-	createinfo("Insult", 'Executing script for "SkyWars", please wait...', 5)
-	loadstring(game:HttpGet(skyWarsLoad))()
-	createinfo("Insult", 'Finished loading for "SkyWars". Have fun!', 5)
+	if canRun then
+		createinfo("Insult", 'Executing script for "SkyWars", please wait...', 5)
+		loadstring(game:HttpGet(skyWarsLoad))()
+		createinfo("Insult", 'Finished loading for "SkyWars". Have fun!', 5)	
+	end
 end
 
 for i,v in pairs(bedWars_ids) do
