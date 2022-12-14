@@ -51,7 +51,7 @@ local FlyUI = Instance.new("Frame")
 local TextLabel_2 = Instance.new("TextLabel")
 local Frame = Instance.new("Frame")
 local UICorner_9 = Instance.new("UICorner")
-local slider = Instance.new("Frame")
+local OLD_slider = Instance.new("Frame")
 local UICorner_10 = Instance.new("UICorner")
 local Holder = Instance.new("Frame")
 local Background = Instance.new("Frame")
@@ -77,6 +77,21 @@ local list_5 = Instance.new("Frame")
 local UIListLayout_6 = Instance.new("UIListLayout")
 local UICorner_15 = Instance.new("UICorner")
 local UIGradient_7 = Instance.new("UIGradient")
+local BindLabel = Instance.new("TextLabel")
+local slider = Instance.new("Frame")
+local UICorner_16 = Instance.new("UICorner")
+local Holder_2 = Instance.new("Frame")
+local Background_2 = Instance.new("Frame")
+local UICorner_17 = Instance.new("UICorner")
+local SliderFill = Instance.new("Frame")
+local UICorner_18 = Instance.new("UICorner")
+local Amount_2 = Instance.new("TextLabel")
+local Title_4 = Instance.new("TextLabel")
+local bindBtn = Instance.new("Frame")
+local UICorner_19 = Instance.new("UICorner")
+local Title_5 = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local UICorner_20 = Instance.new("UICorner")
 
 --Properties:
 
@@ -400,18 +415,18 @@ Frame.Size = UDim2.new(1, 0, 0.159574464, 0)
 UICorner_9.CornerRadius = UDim.new(0, 4)
 UICorner_9.Parent = Frame
 
-slider.Name = "slider"
-slider.Parent = insultv2exec_v2
-slider.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
-slider.Position = UDim2.new(0, 0, -4.70950283e-08, 0)
-slider.Size = UDim2.new(1, 0, 0.48156786, 0)
-slider.Visible = false
+OLD_slider.Name = "OLD_slider"
+OLD_slider.Parent = insultv2exec_v2
+OLD_slider.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+OLD_slider.Position = UDim2.new(0, 0, -4.70950283e-08, 0)
+OLD_slider.Size = UDim2.new(1, 0, 0.48156786, 0)
+OLD_slider.Visible = false
 
 UICorner_10.CornerRadius = UDim.new(0, 4)
-UICorner_10.Parent = slider
+UICorner_10.Parent = OLD_slider
 
 Holder.Name = "Holder"
-Holder.Parent = slider
+Holder.Parent = OLD_slider
 Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Holder.BackgroundTransparency = 1.000
 Holder.Position = UDim2.new(0.0630920157, 0, 0.616545677, 0)
@@ -442,7 +457,7 @@ UICorner_12.CornerRadius = UDim.new(0, 4)
 UICorner_12.Parent = Slider
 
 Amount.Name = "Amount"
-Amount.Parent = slider
+Amount.Parent = OLD_slider
 Amount.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Amount.BackgroundTransparency = 1.000
 Amount.Position = UDim2.new(0.565999985, 0, 0.138999999, 0)
@@ -456,7 +471,7 @@ Amount.TextWrapped = true
 Amount.TextXAlignment = Enum.TextXAlignment.Right
 
 Title_2.Name = "Title"
-Title_2.Parent = slider
+Title_2.Parent = OLD_slider
 Title_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Title_2.BackgroundTransparency = 1.000
 Title_2.Position = UDim2.new(0.0617171377, 0, 0.138999939, 0)
@@ -585,6 +600,119 @@ UICorner_15.Parent = Render
 
 UIGradient_7.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(47, 47, 47)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(88, 88, 88))}
 UIGradient_7.Parent = Render
+
+BindLabel.Name = "BindLabel"
+BindLabel.Parent = insultv2exec_v2
+BindLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BindLabel.BackgroundTransparency = 1.000
+BindLabel.Position = UDim2.new(0.745109558, 0, 2.80278471e-07, 0)
+BindLabel.Size = UDim2.new(0.251069546, 0, 0.955153227, 0)
+BindLabel.Visible = false
+BindLabel.Font = Enum.Font.Gotham
+BindLabel.Text = "R"
+BindLabel.TextColor3 = Color3.fromRGB(138, 138, 138)
+BindLabel.TextScaled = true
+BindLabel.TextSize = 14.000
+BindLabel.TextWrapped = true
+BindLabel.TextXAlignment = Enum.TextXAlignment.Right
+
+slider.Name = "slider"
+slider.Parent = insultv2exec_v2
+slider.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+slider.Position = UDim2.new(0, 0, -4.70950283e-08, 0)
+slider.Size = UDim2.new(1, 0, 0.48156786, 0)
+slider.Visible = false
+
+UICorner_16.CornerRadius = UDim.new(0, 4)
+UICorner_16.Parent = slider
+
+Holder_2.Name = "Holder"
+Holder_2.Parent = slider
+Holder_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Holder_2.BackgroundTransparency = 1.000
+Holder_2.Position = UDim2.new(0.0630920157, 0, 0.616545677, 0)
+Holder_2.Size = UDim2.new(0.863498151, 0, 0.179454982, 0)
+
+Background_2.Name = "Background"
+Background_2.Parent = Holder_2
+Background_2.BackgroundColor3 = Color3.fromRGB(0, 132, 255)
+Background_2.Size = UDim2.new(1, 0, 1, 0)
+
+UICorner_17.CornerRadius = UDim.new(0, 4)
+UICorner_17.Parent = Background_2
+
+SliderFill.Name = "SliderFill"
+SliderFill.Parent = Holder_2
+SliderFill.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SliderFill.Size = UDim2.new(0.157000005, 0, 0.984000027, 0)
+SliderFill.ZIndex = 999
+
+UICorner_18.CornerRadius = UDim.new(0, 4)
+UICorner_18.Parent = SliderFill
+
+Amount_2.Name = "Amount"
+Amount_2.Parent = slider
+Amount_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Amount_2.BackgroundTransparency = 1.000
+Amount_2.Position = UDim2.new(0.565999985, 0, 0.138999999, 0)
+Amount_2.Size = UDim2.new(0.35921526, 0, 0.33327356, 0)
+Amount_2.Font = Enum.Font.Gotham
+Amount_2.Text = "69/100"
+Amount_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Amount_2.TextScaled = true
+Amount_2.TextSize = 14.000
+Amount_2.TextWrapped = true
+Amount_2.TextXAlignment = Enum.TextXAlignment.Right
+
+Title_4.Name = "Title"
+Title_4.Parent = slider
+Title_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_4.BackgroundTransparency = 1.000
+Title_4.Position = UDim2.new(0.0617171377, 0, 0.138999939, 0)
+Title_4.Size = UDim2.new(0.462835014, 0, 0.33327356, 0)
+Title_4.Font = Enum.Font.Gotham
+Title_4.Text = "Fly Speed"
+Title_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title_4.TextScaled = true
+Title_4.TextSize = 14.000
+Title_4.TextWrapped = true
+Title_4.TextXAlignment = Enum.TextXAlignment.Left
+
+bindBtn.Name = "bindBtn"
+bindBtn.Parent = insultv2exec_v2
+bindBtn.BackgroundColor3 = Color3.fromRGB(56, 56, 56)
+bindBtn.Size = UDim2.new(1, 0, 0.20186618, 0)
+bindBtn.Visible = false
+
+UICorner_19.CornerRadius = UDim.new(0, 4)
+UICorner_19.Parent = bindBtn
+
+Title_5.Name = "Title"
+Title_5.Parent = bindBtn
+Title_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title_5.BackgroundTransparency = 1.000
+Title_5.Position = UDim2.new(0.0223963, 0, 0.162323952, 0)
+Title_5.Size = UDim2.new(0.462834984, 0, 0.667584062, 0)
+Title_5.Font = Enum.Font.Gotham
+Title_5.Text = "Bind"
+Title_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title_5.TextScaled = true
+Title_5.TextSize = 14.000
+Title_5.TextWrapped = true
+
+TextButton.Parent = bindBtn
+TextButton.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+TextButton.Position = UDim2.new(0.53602618, 0, 0.0915581658, 0)
+TextButton.Size = UDim2.new(0.419498712, 0, 0.778244376, 0)
+TextButton.Font = Enum.Font.Gotham
+TextButton.Text = "..."
+TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+
+UICorner_20.CornerRadius = UDim.new(0, 4)
+UICorner_20.Parent = TextButton
 
 -- Module Scripts:
 
@@ -865,7 +993,7 @@ end
 
 -- Scripts:
 
-local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript 
+local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript 
 	local script = Instance.new('LocalScript', insultv2exec_v2)
 	local req = require
 	local require = function(obj)
@@ -881,9 +1009,13 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	
 	-- bedwars
 	
-	local isPrivate = true
+	local isPrivate = false
 	local lplr = game.Players.LocalPlayer
 	local repstorage = game:GetService("ReplicatedStorage")
+	
+	local ntf = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/notification.lua')))()
+	local createinfo = ntf.createinfo
+	local createerror = ntf.createerror
 	
 	local cam = workspace.CurrentCamera
 	workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
@@ -894,6 +1026,8 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	local KnitClient = debug.getupvalue(require(lplr.PlayerScripts.TS.knit).setup, 6)
 	local Client = require(repstorage.TS.remotes).default.Client
 	local funcs = require(script.Parent.funcs)
+	--local SliderService = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/SliderService.lua')))()
+	local notifyFrame = NotifyFrame
 	local getremote = function(tab)
 		for i,v in pairs(tab) do
 			if v == "Client" then
@@ -913,6 +1047,19 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 			["hand"] = nil
 		}
 	}
+	
+	if not isfile("insult") then
+		makefolder("insult")
+	end
+	if not isfile("insult/config") then
+		makefolder("insult/config")
+	end
+	if not isfile("insult/config/bedwars") then
+		makefolder("insult/config/bedwars")
+	end
+	if not isfile("insult/config/bedwars/sliders") then
+		makefolder("insult/config/bedwars/sliders")
+	end
 	
 	local RunLoops = {RenderStepTable = {}, StepTable = {}, HeartTable = {}}
 	do
@@ -990,32 +1137,6 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	local bedwarsblocks = {}
 	local blockraycast = RaycastParams.new()
 	blockraycast.FilterType = Enum.RaycastFilterType.Whitelist
-	
-	local function createinfo(this_title, this_notify, this_duration)
-		coroutine.wrap(function()
-			local notification = script.Parent:WaitForChild("Notification"):Clone()
-			--[[if this_title:match("(Plus)") and isPrivate == true then
-				local notification = script.Parent:WaitForChild("Notification_Plus"):Clone()
-			else
-				local notification = script.Parent:WaitForChild("Notification"):Clone()
-			end]]--
-			notification.Parent = script.Parent:WaitForChild("NotifyFrame")
-			notification.Visible = true
-			notification.Title.Text = this_title
-			notification.Description.Text = this_notify
-			local tween = notification.Timer:TweenSize(UDim2.new(0,0,0.05,0), "In", "Linear", this_duration)
-			task.wait(this_duration)
-			local tween2 = notification:TweenSize(UDim2.new(0,0,0,0), "In", "Linear", 0.25)
-			task.wait(0.25)
-			notification:Destroy()
-		end)()
-		--[[game:GetService("StarterGui"):SetCore("SendNotification", {
-			Title = this_title,
-			Text = this_notify,
-			Duration = this_duration,
-			Icon = "rbxassetid://6962520787"
-		})]]--
-	end
 	
 	local function destruct()
 		for i3,v3 in pairs(connectionstodisconnect) do
@@ -1146,7 +1267,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		buttonapi["Function"] = argstablemain["Function"]
 		buttonapi["HoverText"] = argstablemain["HoverText"]
 		buttonapi["NumValue"] = argstablemain["NumValue"]
-		
+	
 		currentAdded = currentAdded + 1
 		--local enabled = isfile(buttonapi["Name"]..".txt")
 	
@@ -1173,20 +1294,6 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		TextButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 		TextButton.TextSize = 20
 		
-		--[[config.Parent = TextButton
-		config.Size = UDim2.new(0.184, 0, 0.813, 0)
-		config.Position = UDim2.new(0.809, 0, 0.094, 0)
-		config.Image = "rbxassetid://7059346373"
-		config.BackgroundTransparency = 1]]--
-		if not isfile("insult") then
-			makefolder("insult")
-		end
-		if not isfile("insult/config") then
-			makefolder("insult/config")
-		end
-		if not isfile("insult/config/bedwars") then
-			makefolder("insult/config/bedwars")
-		end
 		local cfgisEnabled = isfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
 		if cfgisEnabled then
 			local function resume()
@@ -1198,6 +1305,71 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 			end
 			coroutine.wrap(resume)()
 		end
+		local gBindF = nil
+		
+		--[[coroutine.wrap(function()
+			task.wait(0.25)
+			local bindFrame = script.Parent.bindBtn:Clone()
+			gBindF = bindFrame
+			bindFrame.TextButton.MouseButton1Click:Connect(function()
+				local ScreenGui = Instance.new("ScreenGui")
+				local TextBox = Instance.new("TextBox")
+				local UICorner = Instance.new("UICorner")
+	
+				--Properties:
+	
+				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	
+				TextBox.Parent = ScreenGui
+				TextBox.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+				TextBox.BackgroundTransparency = 0.050
+				TextBox.Position = UDim2.new(0.411009163, 0, 0.848780513, 0)
+				TextBox.Size = UDim2.new(0, 290, 0, 47)
+				TextBox.ZIndex = 99999
+				TextBox.Font = Enum.Font.SourceSans
+				TextBox.Text = ""
+				TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+				TextBox.TextScaled = true
+				TextBox.TextSize = 14.000
+				TextBox.TextWrapped = true
+	
+				UICorner.Parent = TextBox
+				TextBox.FocusLost:Connect(function()
+					if bind == TextBox.Text then
+						if cfgisEnabled then
+							delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+						end
+						if TextButton:FindFirstChild("BindLabel") then
+							TextButton:FindFirstChild("BindLabel"):Destroy()
+						end
+					else
+						bind = TextBox.Text
+						TextBox:Destroy()
+						local bn = script.Parent:WaitForChild("BindLabel"):Clone()
+						bn.Parent = TextButton
+						bn.Text = bind
+						bn.Visible = true
+						if cfgisEnabled then
+							delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+							writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
+						end
+					end
+					--if enabled then
+					--delfile(buttonapi["Name"],scriptName)
+					--writefile(buttonapi["Name"]..".txt",bind)
+					--else
+					--writefile(buttonapi["Name"]..".txt",bind)
+					--end
+				end)
+			end)
+		end)()]]--
+		
+		
+		--[[config.Parent = TextButton
+		config.Size = UDim2.new(0.184, 0, 0.813, 0)
+		config.Position = UDim2.new(0.809, 0, 0.094, 0)
+		config.Image = "rbxassetid://7059346373"
+		config.BackgroundTransparency = 1]]--
 		mouse.KeyDown:connect(function(key)
 			if key == bind then
 				if buttonapi["Function"] ~= true then
@@ -1205,7 +1377,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					if not cfgisEnabled then
 						writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
 					end
-					createinfo("Insult", buttonapi["Name"].." has been enabled!", 2)
+					createinfo("Insult", buttonapi["Name"].." has been enabled!", 2, notifyFrame)
 					table.insert(states,argstablemain["Function"])
 					states[buttonapi["Name"]] = true
 					argstablemain["Function"](true)
@@ -1219,7 +1391,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					TextButton.BackgroundColor3 = Color3.fromRGB(85, 85, 85)
 					buttonapi["Function"] = false
 					delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
-					createinfo("Insult", buttonapi["Name"].." has been disabled!", 2)
+					createinfo("Insult", buttonapi["Name"].." has been disabled!", 2, notifyFrame)
 				end
 			end
 		end)
@@ -1236,7 +1408,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				if not cfgisEnabled then
 					writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
 				end
-				createinfo("Insult", buttonapi["Name"].." has been enabled!", 2)
+				createinfo("Insult", buttonapi["Name"].." has been enabled!", 2, notifyFrame)
 				TextButton.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
 			else
 				table.insert(states,argstablemain["Function"])
@@ -1244,8 +1416,10 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				TextButton.BackgroundColor3 = Color3.fromRGB(69, 69, 69)
 				buttonapi["Function"] = false
 				removeItemFromInsultList(buttonapi["Name"])
-				delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
-				createinfo("Insult", buttonapi["Name"].." has been disabled!", 2)
+				if isfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult") then
+					delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+				end
+				createinfo("Insult", buttonapi["Name"].." has been disabled!", 2, notifyFrame)
 			end
 			if buttonapi["Function"] ~= true then
 				argstablemain["Function"](false)
@@ -1253,47 +1427,77 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				argstablemain["Function"](true)
 			end
 		end)
-	
+		
+		local bindAlreadyExists = false
+		local bindFrame = nil
 		TextButton.MouseButton2Down:Connect(function()
-			local ScreenGui = Instance.new("ScreenGui")
-			local TextBox = Instance.new("TextBox")
-			local UICorner = Instance.new("UICorner")
+			task.wait(0.1)
+			if bindFrame ~= nil then
+				bindFrame.Visible = not bindFrame.Visible
+			end
+			if bindAlreadyExists ~= false then return end
+			bindAlreadyExists = true
+			bindFrame = script.Parent.bindBtn:Clone()
+			bindFrame.Parent = TextButton.Parent
+			bindFrame.LayoutOrder = TextButton.LayoutOrder
+			bindFrame.Visible = true
+			bindFrame:WaitForChild("TextButton").MouseButton1Click:Connect(function()
+				local ScreenGui = Instance.new("ScreenGui")
+				local TextBox = Instance.new("TextBox")
+				local UICorner = Instance.new("UICorner")
 	
-			--Properties:
+				--Properties:
 	
-			ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+				ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 	
-			TextBox.Parent = ScreenGui
-			TextBox.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
-			TextBox.BackgroundTransparency = 0.050
-			TextBox.Position = UDim2.new(0.411009163, 0, 0.848780513, 0)
-			TextBox.Size = UDim2.new(0, 290, 0, 47)
-			TextBox.ZIndex = 99999
-			TextBox.Font = Enum.Font.SourceSans
-			TextBox.Text = ""
-			TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
-			TextBox.TextScaled = true
-			TextBox.TextSize = 14.000
-			TextBox.TextWrapped = true
+				TextBox.Parent = ScreenGui
+				TextBox.BackgroundColor3 = Color3.fromRGB(75, 75, 75)
+				TextBox.BackgroundTransparency = 0.050
+				TextBox.Position = UDim2.new(0.411009163, 0, 0.848780513, 0)
+				TextBox.Size = UDim2.new(0, 290, 0, 47)
+				TextBox.ZIndex = 99999
+				TextBox.Font = Enum.Font.SourceSans
+				TextBox.Text = ""
+				TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+				TextBox.TextScaled = true
+				TextBox.TextSize = 14.000
+				TextBox.TextWrapped = true
 	
-			UICorner.Parent = TextBox
-			TextBox.FocusLost:Connect(function()
-				bind = TextBox.Text
-				TextBox:Destroy()
-				if cfgisEnabled then
-					delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
-					writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
-				end
-				--if enabled then
-				--delfile(buttonapi["Name"],scriptName)
-				--writefile(buttonapi["Name"]..".txt",bind)
-				--else
-				--writefile(buttonapi["Name"]..".txt",bind)
-				--end
+				UICorner.Parent = TextBox
+				TextBox.FocusLost:Connect(function()
+					if bind == TextBox.Text then
+						if cfgisEnabled then
+							delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+						end
+						if TextButton:FindFirstChild("BindLabel") then
+							TextButton:FindFirstChild("BindLabel"):Destroy()
+						end
+						bindFrame.TextButton.Text = "..."
+					else
+						bind = TextBox.Text
+						TextBox:Destroy()
+						local bn = script.Parent:WaitForChild("BindLabel"):Clone()
+						bn.Parent = TextButton
+						bn.Text = bind
+						bn.Visible = true
+						bindFrame.TextButton.Text = bind:upper()
+						if cfgisEnabled then
+							delfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
+							writefile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult",bind)
+						end
+					end
+					--if enabled then
+					--delfile(buttonapi["Name"],scriptName)
+					--writefile(buttonapi["Name"]..".txt",bind)
+					--else
+					--writefile(buttonapi["Name"]..".txt",bind)
+					--end
+				end)
 			end)
 		end)
+			
 		UICorner_2.Parent = TextButton
-		
+	
 		if buttonapi["HoverText"] ~= nil then
 			TextButton.MouseEnter:Connect(function(x,y)
 				local hover = script.Parent:FindFirstChild("Hover")
@@ -1344,12 +1548,12 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		print("Recieved args")
 		
 		if buttonapi["LinkTo"] == nil then
-			createinfo("Insult", "A checkbox link error occurred.", 5)
+			createinfo("Insult", "A checkbox link error occurred.", 5, notifyFrame)
 		end
 		
 		local getLink = getLinkTo(buttonapi["LinkTo"])
 		if not getLink then
-			createinfo("Insult", "A fatal error occurred. Check output for details.", 10)
+			createinfo("Insult", "A fatal error occurred. Check output for details.", 10, notifyFrame)
 			error("The LinkTo provided in the CreateCheckbox function returned nil.")
 			return
 		end
@@ -1412,6 +1616,148 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		end
 	end
 	
+	local sliderapi = {}
+	-- credit: engoware
+	sliderapi["CreateSlider"] = function(buttonapi)
+		local sliderapi2 = {}
+		local min, max, default, round = buttonapi.Min, buttonapi.Max, (buttonapi.Default or buttonapi.Min), (buttonapi.Round or 1)
+		
+		local slideEnter
+		local slideLeave
+		local slideMEnter
+		local slideMLeave
+		local slideMFocus
+		local slideMFocusL
+		
+		local slideIB
+		local slideIE
+		local slideIC
+		
+		local getLink = getLinkTo(buttonapi["LinkTo"])
+		if not getLink then
+			createerror("Insult", "A fatal error occurred. Check output for details.", 10, notifyFrame)
+			error("The LinkTo provided in the CreateSlider function returned nil.")
+			return
+		end
+		
+		local function getValueText(value)
+			if math.floor(value) == value then 
+				return tostring(value) .. ".0"
+			end
+			return tostring(value)
+		end  
+		
+		local holderFrame = script.Parent.slider:Clone()
+		holderFrame.LayoutOrder = getLink.LayoutOrder
+		holderFrame.Parent = getLink.Parent
+		holderFrame.Title.Text = buttonapi["Name"]
+		holderFrame.Name = buttonapi["Name"].."_slider"
+		holderFrame.Visible = false
+		local SliderFill = holderFrame.Holder.SliderFill
+		local SliderBack = holderFrame.Holder.Background
+		
+		getLink.MouseButton2Down:Connect(function()
+			holderFrame.Visible = not holderFrame.Visible
+		end)
+		
+		--[[utils:connection(Slider.MouseEnter:Connect(function()
+			SliderBack.BorderSizePixel = 1
+			SliderBack.BackgroundColor3 = Color3.fromRGB(23, 23, 23)
+		end))
+	
+		utils:connection(Slider.MouseLeave:Connect(function()
+			SliderBack.BorderSizePixel = 0
+			SliderBack.BackgroundColor3 = Color3.fromRGB(17, 17, 17)
+		end))]]--
+		local isSliding
+		local function slide(input)
+			local sizeX = math.clamp((input.Position.X - SliderBack.AbsolutePosition.X) / SliderBack.AbsoluteSize.X, 0, 1)
+			SliderFill.Size = UDim2.new(sizeX, 0, 1, 0)
+			local value = math.round(((( (max - min) * sizeX ) + min) * (10 ^ round))) / (10 ^ round)
+			sliderapi2.Value = value
+			holderFrame.Amount.Text = getValueText(value)
+			if isfile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult") then
+				delfile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult")
+				writefile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult",sliderapi.Value)
+			else
+				writefile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult",sliderapi.Value)
+			end
+			if buttonapi.OnInputEnded then
+				return
+			end
+			if buttonapi["Function"] then
+				buttonapi["Function"](value)
+				print("function: "..buttonapi["Name"]..", from: "..buttonapi["LinkTo"])
+			end
+		end
+		
+		slideIB = holderFrame.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				isSliding = true
+				slide(input)
+			end
+		end)
+		
+		slideIE = holderFrame.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				--if buttonapi.OnInputEnded then
+				if isfile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult") then
+					delfile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult")
+					writefile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult",sliderapi.Value)
+				else
+					writefile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult",sliderapi.Value)
+				end
+				if buttonapi["Function"] then
+					local sizeX = math.clamp((input.Position.X - SliderBack.AbsolutePosition.X) / SliderBack.AbsoluteSize.X, 0, 1)
+					local value = math.round(((( (max - min) * sizeX ) + min) * (10 ^ round))) / (10 ^ round)
+					buttonapi["Function"](value)
+					print("function: "..buttonapi["Name"]..", from: "..buttonapi["LinkTo"])
+					end
+				--end
+				isSliding = false
+			end
+		end)
+		
+		slideIC = uis.InputChanged:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseMovement then
+				if isSliding then
+					slide(input)
+				end
+			end
+		end)
+		
+		function sliderapi.Set(value, useOverMax)
+			local value = not useOverMax and math.floor((math.clamp(value, min, max) * (10^round))+0.5)/(10^round) or 
+				math.clamp(value, (buttonapi.RealMin or -math.huge), (buttonapi.RealMax or math.huge))
+			local sizeValue = math.floor((math.clamp(value, min, max) * (10^round))+0.5)/(10^round)
+			sliderapi.Value = value
+			SliderFill.Size = UDim2.new((sizeValue - min) / (max - min), 0, 1, 0)
+			holderFrame.Amount.Text = getValueText(value)
+			if buttonapi.Function then
+				buttonapi.Function(value)
+			end
+		end
+		sliderapi.Set(default)
+		
+		if isfile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult") then
+			local contents = readfile("insult/config/bedwars/sliders/"..buttonapi["LinkTo"].."_"..buttonapi["Name"]..".insult")
+			if contents then
+				sliderapi.Set(tonumber(contents))
+			end
+		end
+		--if getLink.Parent.Name ~= "list" then return end
+		--[[local cSlider = SliderService.new(holderFrame, {
+			SliderData = {Start = tonumber(buttonapi["Min"]), End = tonumber(buttonapi["Max"]), Increment = tonumber(buttonapi["Increment"])},
+			MoveInfo = TweenInfo.new(0.1, Enum.EasingStyle.Quad)
+		})
+		cSlider:OverrideValue(tonumber(buttonapi["Default"]))
+		
+		cSlider.Changed:Connect(function(newNum: number)
+			buttonapi["Function"] = newNum
+			holderFrame.Amount.Text = newNum
+		end)]]--
+	end
+	
 	local GetInventory = function(plr) 
 		if not plr then 
 			return {items = {}, armor = {}}
@@ -1442,6 +1788,20 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	
 		return ret
 	end
+	
+	-- from devforum https://devforum.roblox.com/t/rounding-numbers-on-guis-to-the-nearest-hundredth/468375/6
+	local roundDecimals = function(num, places) --num is your number or value and places is number of decimal places, in your case you would need 2
+		places = math.pow(10, places or 0)
+		num = num * places
+		if num >= 0 then 
+			num = math.floor(num + 0.5) 
+		else 
+			num = math.ceil(num - 0.5) 
+		end
+		return num / places
+	end
+	
+	print(roundDecimals(142.165, 2)) --> 142.17
 	
 	--[[local noSlowdown_Enabled = false
 	local shopTier_Enabled = false
@@ -1479,7 +1839,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	
 	local newBlur = Instance.new("BlurEffect", game.Lighting)
 	newBlur.Size = 15
-	newBlur.Enabled = false
+	newBlur.Enabled = true
 	
 	local blueCallback = Color3.fromRGB(0, 145, 255)
 	local noCallback = Color3.fromRGB(69, 69, 69) -- funny
@@ -1577,10 +1937,11 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		return Vector3.new(goalX, goalY, goalZ)
 	end
 	
-	--createinfo("Insult+ (Plus)", "<b>Insult Plus</b> loaded\nDon't have Insult Plus? skill issue moment", 7)
+	--createinfo("Insult+ (Plus)", "<b>Insult Plus</b> loaded\nDon't have Insult Plus? skill issue moment", 7, notifyFrame)
 	
 	local AntivoidEnabled = nil
 	local antivoidpart
+	local av_velo = 130
 	local AntiVoid = windowapi.CreateButton({
 		["Name"] = "AntiVoid",
 		["Tab"] = "Blatant",
@@ -1600,7 +1961,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					if isalive(lplr) and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 10 then
 						local e = Instance.new("BodyVelocity",lplr.Character.HumanoidRootPart)
 						workspace.Gravity = 0
-						e.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X,130,lplr.Character:WaitForChild("HumanoidRootPart").Velocity.Z)
+						e.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X,av_velo,lplr.Character:WaitForChild("HumanoidRootPart").Velocity.Z)
 						task.wait(0.5)
 						e:Destroy()
 						workspace.Gravity = 196.2
@@ -1610,6 +1971,17 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				AntivoidEnabled = false
 				if antivoidpart then antivoidpart:Destroy() antivoidpart = nil end
 			end
+		end,
+	})
+	local AVSlider = sliderapi.CreateSlider({
+		["Name"] = "Velocity",
+		["Min"] = 50,
+		["Max"] = 300,
+		["Default"] = 130,
+		["Round"] = 1,
+		["LinkTo"] = "AntiVoid",
+		["Function"] = function(val)
+			av_velo = val
 		end,
 	})
 	
@@ -1719,6 +2091,17 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 			else
 				KA_Enabled = false
 			end
+		end,
+	})
+	local KASlider = sliderapi.CreateSlider({
+		["Name"] = "Distance",
+		["Min"] = 1,
+		["Max"] = 100,
+		["Default"] = 18,
+		["Round"] = 1,
+		["LinkTo"] = "Killaura",
+		["Function"] = function(val)
+			Distance["Value"] = val
 		end,
 	})
 	
@@ -1959,6 +2342,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	
 	local longjumpE = nil
 	local longjumpAmount = 3.5
+	local longJumpA = 0.154
 	local LongJumpFly = windowapi.CreateButton({
 		["Name"] = "LongJump",
 		["Tab"] = "Blatant",
@@ -1992,6 +2376,17 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				game.Workspace.Gravity = 192.6
 				longjumpE = false
 			end
+		end,
+	})
+	local LJSlider = sliderapi.CreateSlider({
+		["Name"] = "Distance/Speed",
+		["Min"] = 10,
+		["Max"] = 999,
+		["Default"] = 154,
+		["Round"] = 1,
+		["LinkTo"] = "LongJump",
+		["Function"] = function(val)
+			longJumpA = val / 1000
 		end,
 	})
 	
@@ -2059,6 +2454,17 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				end
 	
 			end
+		end,
+	})
+	local SpeedSpeed = sliderapi.CreateSlider({
+		["Name"] = "Speed",
+		["Min"] = 0.1,
+		["Max"] = 50,
+		["Default"] = 1,
+		["Round"] = 1,
+		["LinkTo"] = "Speed",
+		["Function"] = function(val)
+			numValue = val
 		end,
 	})
 	--[[local speedCheckBox = windowapi.CreateCheckbox({
@@ -2235,6 +2641,17 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
+	local SPSlider = sliderapi.CreateSlider({
+		["Name"] = "Spider Speed",
+		["Min"] = 1,
+		["Max"] = 100,
+		["Default"] = 40,
+		["Round"] = 1,
+		["LinkTo"] = "Spider",
+		["Function"] = function(val)
+			spiderspeed["Value"] = val
+		end,
+	})
 	
 	local colorSetActionBarChoose = Color3.fromRGB(203, 54, 36)
 	local old_select_color_health_bar = nil
@@ -2273,7 +2690,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	})
 	
 	local HealthText = Instance.new("TextLabel")
-	HealthText.Font = Enum.Font.SourceSans
+	HealthText.Font = Enum.Font.Gotham
 	HealthText.TextSize = 20
 	HealthText.Text = "100❤"
 	HealthText.Position = UDim2.new(0.5, 0, 0.5, 70)
@@ -2369,6 +2786,17 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					until not nukerEnabled
 				end)()
 			end
+		end,
+	})
+	local NKSlider = sliderapi.CreateSlider({
+		["Name"] = "Range",
+		["Min"] = 1,
+		["Max"] = 100,
+		["Default"] = 50,
+		["Round"] = 1,
+		["LinkTo"] = "Nuker",
+		["Function"] = function(val)
+			NukerRange = val
 		end,
 	})
 	
@@ -2622,8 +3050,8 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				disableorEnableAllButtons(false)
 				hideUI()
 				script.Parent.Enabled = false
-				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100)
-				createinfo("Insult", "Leaving in 2 seconds...", 100)
+				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100, notifyFrame)
+				createinfo("Insult", "Leaving in 2 seconds...", 100, notifyFrame)
 				task.wait(2)
 				bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
 			end
@@ -2648,21 +3076,21 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	})
 	
 	local GetNearestHumanoidToMouse = function(player, distance, checkvis)
-			local closest, returnedplayer = distance, nil
-			if isalive(lplr) then
-				for i, v in pairs(game:GetService("Players"):GetPlayers()) do
-						local vec, vis = cam:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-						if vis and targetCheck(v) then
-							local mag = (uis:GetMouseLocation() - Vector2.new(vec.X, vec.Y)).magnitude
-							if mag <= closest then
-								closest = mag
-								returnedplayer = v
-							end
-						end
+		local closest, returnedplayer = distance, nil
+		if isalive(lplr) then
+			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+				local vec, vis = cam:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
+				if vis and targetCheck(v) then
+					local mag = (uis:GetMouseLocation() - Vector2.new(vec.X, vec.Y)).magnitude
+					if mag <= closest then
+						closest = mag
+						returnedplayer = v
 					end
+				end
 			end
-			return returnedplayer, closest
 		end
+		return returnedplayer, closest
+	end
 	
 	--[[local AutoLeaveCheckbox = windowapi.CreateCheckbox({
 		["Name"] = "Leave on Staff",
@@ -2670,9 +3098,9 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		["Default"] = false,
 		["Function"] = function(callback)
 			if callback then
-				createinfo("Insult", "cope", 2)
+				createinfo("Insult", "cope", 2, notifyFrame)
 			else
-				createinfo("Insult", "still cope", 2)
+				createinfo("Insult", "still cope", 2, notifyFrame)
 			end
 		end,
 		["HoverText"] = "cope"
@@ -2683,7 +3111,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	local connection1
 	local connection21
 	local ltween = nil
-	local debTime = 3
+	local debTime = 2.5
 	local BounceFlyE = {["Enabled"] = false}
 	local newText = script.Parent.FlyUI.TextLabel
 	local newFrame = script.Parent.FlyUI.Frame
@@ -2706,9 +3134,9 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					local newFrame = script.Parent.FlyUI.Frame
 					if not ltween then
 						ltween = game:GetService("TweenService"):Create(
-							newFrame,
-							TweenInfo.new(3, Enum.EasingStyle.Linear, Enum.EasingDirection.In),
-							{Size = UDim2.new(0, 0, .16, 0)}
+						newFrame,
+						TweenInfo.new(2.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In),
+						{Size = UDim2.new(0, 0, .16, 0)}
 						)
 						ltween:Play()
 						--newFrame:TweenSize(UDim2.new(0, 0, .16, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, debTime)
@@ -2716,9 +3144,9 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					repeat task.wait(0.1)
 						if not BounceFlyE["Enabled"] then break end
 						debTime = debTime - 0.1
-						newText.Text = math.round(debTime).."s"
+						newText.Text = roundDecimals(debTime, 2).."s"
 					until debTime <= 0
-					debTime = 3
+					debTime = 2.5
 					script.Parent.FlyUI.Visible = false
 					BounceFlyE["Enabled"] = false
 					if FlyE then
@@ -2760,7 +3188,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 							end
 							flyup1 = false
 							flydown1 = false
-							debTime = 3.5
+							debTime = 2.5
 							script.Parent.FlyUI.Visible = false
 						end
 						for i = 1,15 do
@@ -2787,7 +3215,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 				end
 				flyup1 = false
 				flydown1 = false
-				debTime = 3.5
+				debTime = 2.5
 				script.Parent.FlyUI.Visible = false
 				if ltween then
 					ltween:Cancel()
@@ -2813,9 +3241,9 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
 					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
 					workspace.Gravity = 192.6
-					createinfo("Insult: AnticheatDisabler", "<b>Successfully</b> enabled.\nDo note that you can't redo this unless you join another game.", 10)
+					createinfo("Insult: AnticheatDisabler", "<b>Successfully</b> enabled.\nDo note that you can't redo this unless you join another game.", 10, notifyFrame)
 				else
-					createinfo("Insult: AnticheatDisabler", "<b>Error:</b> You must be alive first.", 10)
+					createinfo("Insult: AnticheatDisabler", "<b>Error:</b> You must be alive first.", 10, notifyFrame)
 				end
 			end
 	
@@ -2823,6 +3251,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 	})]]--
 	
 	local oldReach = nil
+	local reachDist = 18
 	local Reach = windowapi.CreateButton({
 		["Name"] = "Reach",
 		["Tab"] = "Default",
@@ -2837,6 +3266,17 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = 14.4
 				end
 			end
+		end,
+	})
+	local ReachDistance = sliderapi.CreateSlider({
+		["Name"] = "Distance",
+		["Min"] = 1,
+		["Max"] = 999,
+		["Default"] = 18,
+		["Round"] = 1,
+		["LinkTo"] = "Reach",
+		["Function"] = function(val)
+			reachDist = val
 		end,
 	})
 	
@@ -2858,7 +3298,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 					bedwars["BalloonController"].enableBalloonPhysics = oldenable
 					bedwars["BalloonController"].hookBalloon = oldhook
 				end
-				createinfo("FloatDisabler", "Float check disabled until you die", 10)
+				createinfo("FloatDisabler", "Float check disabled until you die", 10, notifyFrame)
 				bedwars["BalloonController"].inflateBalloon()
 			end
 		end,
@@ -2910,7 +3350,7 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		["HoverText"] = "fullbright yes"
 	})
 	
-	createinfo("Insult - Finished loading", "Finished loading.\nPress <b>RightShift</b> to toggle.", 5)
+	createinfo("Insult - Finished loading", "Finished loading.\nPress RightShift to toggle.", 5, notifyFrame)
 	
 	--[[local ReachAmount = windowapi.CreateSlider({
 		["Name"] = "Distance",
@@ -2930,18 +3370,18 @@ local function MJZAJP_fake_script() -- insultv2exec_v2.LocalScript
 		["Tab"] = "Default",
 		["Function"] = function(callback)
 			if callback then
-				createinfo("Insult", "AutoLeaveTest begins in 5 seconds.", 3)
+				createinfo("Insult", "AutoLeaveTest begins in 5 seconds.", 3, notifyFrame)
 				task.wait(5)
 				destruct()
 				disableorEnableAllButtons(false)
 				hideUI()
 				script.Parent.Enabled = false
-				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100)
-				createinfo("Insult", "Leaving in 2 seconds...", 100)
+				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100, notifyFrame)
+				createinfo("Insult", "Leaving in 2 seconds...", 100, notifyFrame)
 				task.wait(2)
 				bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
 			end
 		end,
 	})]]--
 end
-coroutine.wrap(MJZAJP_fake_script)()
+coroutine.wrap(VBKIKF_fake_script)()
