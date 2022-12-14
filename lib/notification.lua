@@ -27,7 +27,7 @@ local function createNotify(image)
 	Image.BackgroundTransparency = 1.000
 	Image.Position = UDim2.new(0.0444444455, 0, 0.160714284, 0)
 	Image.Size = UDim2.new(0.0993078426, 0, 0.354460627, 0)
-	Image.Image = "rbxassetid://6962520787"
+	Image.Image = image
 
 	Title.Name = "Title"
 	Title.Parent = Notification
@@ -73,9 +73,57 @@ local function createNotify(image)
 	return Notification
 end
 
+local getasset = nil -- or function(location) return "rbxasset://"..location end
+
+local function initAsset()
+	if syn then
+		getasset = getsynasset
+	else
+		getasset = getcustomasset
+	end
+end
+
+initAsset()
+if not getasset then
+	warn("Bad executor or not init properly (Insult v3)")
+	return
+end
+if not isfile('insult/info_notify.png') then
+	writefile('insult/info_notify.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/info_notify.png'))
+end
+if not isfile('insult/info_error.png') then
+	writefile('insult/info_error.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/info_error.png'))
+end
+
 function module.createinfo(this_title, this_notify, this_duration, notifyFrame)
 	coroutine.wrap(function()
-			local notification = createNotify()
+			local notification = createNotify(getasset('insult/info_notify.png'))
+			--[[if this_title:match("(Plus)") and isPrivate == true then
+				local notification = script.Parent:WaitForChild("Notification_Plus"):Clone()
+			else
+				local notification = script.Parent:WaitForChild("Notification"):Clone()
+			end]]--
+			notification.Parent = notifyFrame
+			notification.Visible = true
+			notification.Title.Text = this_title
+			notification.Description.Text = this_notify
+			local tween = notification.Timer:TweenSize(UDim2.new(0,0,0.05,0), "In", "Linear", this_duration)
+			task.wait(this_duration)
+			local tween2 = notification:TweenSize(UDim2.new(0,0,0,0), "In", "Linear", 0.25)
+			task.wait(0.25)
+			notification:Destroy()
+	end)()
+		--[[game:GetService("StarterGui"):SetCore("SendNotification", {
+			Title = this_title,
+			Text = this_notify,
+			Duration = this_duration,
+			Icon = "rbxassetid://6962520787"
+		})]]--
+end
+
+function module.createerror(this_title, this_notify, this_duration, notifyFrame)
+	coroutine.wrap(function()
+			local notification = createNotify(getasset('insult/info_error.png'))
 			--[[if this_title:match("(Plus)") and isPrivate == true then
 				local notification = script.Parent:WaitForChild("Notification_Plus"):Clone()
 			else
