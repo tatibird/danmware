@@ -20,10 +20,10 @@ local TweenService = game:GetService("TweenService")
 
 assert(RunService:IsClient(), "Slider module can only be used on the Client!")
 
-local utilsFolder = script.Utils
+--local utilsFolder = script.Utils
 
-local Signal = require(utilsFolder.Signal)
-local SliderFuncs = require(utilsFolder.SliderFuncs)
+local Signal = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/SliderData/Signal.lua')))()
+local SliderFuncs = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/SliderData/SliderFuncs.lua')))()
 
 Slider.__index = function(object, indexed)
 	local deprecated = {
