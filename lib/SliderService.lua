@@ -13,6 +13,7 @@
 
 --!nonstrict
 local Slider = {Sliders = {}}
+print("slider init")
 
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
