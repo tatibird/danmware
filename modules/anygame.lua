@@ -1779,24 +1779,40 @@ local function BVWKY_fake_script() -- insultv2exec_v2_ANYGAME.LocalScript
 	})
 	
 	-- credit: https://github.com/Exunys/Anti-Kick/blob/main/Anti%20Kick.lua
+	
 	local OldNameCall = nil
 	local AntiKickEnabled = false
+	local alreadyRan = false
+	
+	local function antiKick()
+		if alreadyRan == false then
+			OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
+				local NameCallMethod = getnamecallmethod()
+
+				if tostring(string.lower(NameCallMethod)) == "kick" and AntiKickEnabled == true then
+					createinfo("Insult (AntiKick)", "Detected kick attempt.", 10, notifyFrame)
+					return nil
+				end
+
+				return OldNameCall(Self, ...)
+			end)
+		end
+	end
+
 	local AntiKick = windowapi.CreateButton({
 		["Name"] = "AntiKick",
 		["Tab"] = "Default",
 		["Function"] = function(callback)
 			if callback then
 				AntiKickEnabled = true
-				OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
-					local NameCallMethod = getnamecallmethod()
-	
-					if tostring(string.lower(NameCallMethod)) == "kick" and AntiKickEnabled == true then
-						createinfo("Insult (AntiKick)", "Detected kick attempt.", 10)
-						return nil
-					end
-	
-					return OldNameCall(Self, ...)
-				end)
+				if not hookmetamethod then
+					createerror("Insult", '"hookmetamethod" does not exist. AntiKick will not work.', 10, notifyFrame)
+				else
+					antiKick()
+					if not alreadyRan then
+						alreadyRan = true
+					end	
+				end
 			else
 				AntiKickEnabled = false
 			end
