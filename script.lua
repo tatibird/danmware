@@ -17,6 +17,7 @@ end
 local mainUI = Instance.new("ScreenGui")
 mainUI.Parent = game.CoreGui
 
+local NotifyFrame = Instance.new("Frame")
 NotifyFrame.Name = "NotifyFrame"
 NotifyFrame.Parent = mainUI
 NotifyFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
