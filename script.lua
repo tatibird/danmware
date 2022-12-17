@@ -1,11 +1,31 @@
--- insult (private) by youknowwho REWRITE 1.1
+-- insult v2 by youknowwho REWRITE 1.1 [UPDATE 1.5]
+-- no skidding pls
 
 --/ Wait for the game to load
 if not game:IsLoaded() then game.Loaded:Wait() end
 
+-- by xylex
+local betterisfile = function(file)
+	local suc, res = pcall(function() return readfile(file) end)
+	return suc and res ~= nil
+end
+
 local function getModule(url)
 	return game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/"..url)
 end
+
+local mainUI = Instance.new("ScreenGui")
+mainUI.Parent = game.CoreGui
+
+NotifyFrame.Name = "NotifyFrame"
+NotifyFrame.Parent = mainUI
+NotifyFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+NotifyFrame.BackgroundTransparency = 1.000
+NotifyFrame.Position = UDim2.new(0.740372658, 0, 0.696787119, 0)
+NotifyFrame.Size = UDim2.new(0.258385092, 0, 0.20080322, 0)
+
+local ntf = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/notification.lua')))()
+local createinfo = ntf.createinfo
 
 --// Load scripts
 local bedWarsLoad = getModule("bedwars.lua")
@@ -34,52 +54,51 @@ local skyWars_ids = {
 }
 	
 local placeID = game.PlaceId
-local function createinfo(this_title, this_notify, this_duration)
+
+-- old create info
+--[[local function createinfo(this_title, this_notify, this_duration)
 	game:GetService("StarterGui"):SetCore("SendNotification", {
 		Title = this_title,
 		Text = this_notify,
 		Duration = this_duration,
 		Icon = "rbxassetid://6962520787"
 	})
-end
+end]]--
 
 if not writefile then
 	canRun = false
-	createinfo("Insult", 'Executor not supported.', 10)
-	createinfo("Insult", 'Insult cannot execute.', 10)
+	createinfo("Insult", 'Executor not supported.', 10, NotifyFrame)
+	createinfo("Insult", 'Insult cannot execute.', 10, NotifyFrame)
 end
 
 if idexe == "ScriptWare" then
-	createinfo("Insult", 'Detected ScriptWare', 5)
+	createinfo("Insult", 'Detected ScriptWare', 5, NotifyFrame)
 elseif fluxus then
-	createinfo("Insult", 'Detected Fluxus', 5)
+	createinfo("Insult", 'Detected Fluxus', 5, NotifyFrame)
 elseif syn then
-	createinfo("Insult", 'Detected Synapse X or a decent executor', 5)
+	createinfo("Insult", 'Detected Synapse X or a decent executor', 5, NotifyFrame)
 elseif KRNL_LOADED then
-	createinfo("Insult", 'Detected KRNL', 5)
-end
--- bedwars
-print("PlaceID (Insult): "..placeID)
-
-local bedwars_launch = function()
-	if canRun then
-		createinfo("Insult", 'Executing script for "BedWars", please wait...', 5)
-		loadstring(bedWarsLoad)()
-		createinfo("Insult", 'Finished loading for "BedWars". Have fun!', 5)
-	end
+	createinfo("Insult", 'Detected KRNL', 5, NotifyFrame)
 end
 
-local skyWars_launch = function()
+local game_launch = function(gameName, fileName, externalLoad)
 	if canRun then
-		createinfo("Insult", 'Executing script for "SkyWars", please wait...', 5)
-		loadstring(skyWarsLoad)()
-		createinfo("Insult", 'Finished loading for "SkyWars". Have fun!', 5)	
+		if betterisfile("insult/modules/custom/"..fileName..".lua") then
+			createinfo("Insult", 'Detected custom module!', 5)
+			createinfo("Insult", 'Executing script for "'..gameName..'", please wait...', 5, NotifyFrame)
+			loadstring(readfile("insult/modules/custom/bedwars.lua"))()
+			createinfo("Insult", 'Finished loading for "'..gameName..'". Have fun!', 5, NotifyFrame)
+		else
+			createinfo("Insult", 'Executing script for "'..gameName..'", please wait...', 5, NotifyFrame)
+			loadstring(externalLoad)()
+			createinfo("Insult", 'Finished loading for "'..gameName..'". Have fun!', 5, NotifyFrame)
+		end
 	end
 end
 
 for i,v in pairs(bedWars_ids) do
 	if v == placeID then
-		coroutine.wrap(bedwars_launch)()
+		game_launch("BedWars", "bedwars", bedWarsLoad)
 		alreadyLaunched = true
 		break
 	end
@@ -87,7 +106,7 @@ end
 
 for i,v in pairs(skyWars_ids) do
 	if v == placeID then
-		coroutine.wrap(skyWars_launch)()
+		game_launch("SkyWars", "skywars_by_voxels", skyWarsLoad)
 		alreadyLaunched = true
 		break
 	end
@@ -95,10 +114,10 @@ end
 
 if alreadyLaunched == false then
 	--createinfo("Insult", "Unknown PlaceID. Insult will not execute.", 10)
-	createinfo("Insult", "Detected a game that is not on the module list.", 5)
-	createinfo("Insult", "Executing script for any game, please wait...", 5)
-	loadstring(anyGameLoad)()
-	createinfo("Insult", 'Finished loading for the universal script. Have fun!', 5)	
+	createinfo("Insult", "Detected a game that is not on the module list.", 5, NotifyFrame)
+	--createinfo("Insult", "Executing script for any game, please wait...", 5)
+	game_launch("Any/Universal", "anygame", anyGameLoad)
+	--createinfo("Insult", 'Finished loading for the universal script. Have fun!', 5)	
 end
 
 --[[if placeID == 6872274481 or 8444591321 or 8560631822 or 9903116309 then -- Skywars by Voxels
