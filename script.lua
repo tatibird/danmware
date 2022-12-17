@@ -11,7 +11,7 @@ local betterisfile = function(file)
 end
 
 local function getModule(url)
-	return game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/main/modules/"..url)
+	return game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/main/any-game/"..url)
 end
 
 local mainUI = Instance.new("ScreenGui")
