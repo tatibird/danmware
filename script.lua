@@ -94,7 +94,7 @@ local game_launch = function(gameName, fileName, externalLoad)
 		if betterisfile("insult/modules/custom/"..fileName..".lua") then
 			createinfo("Insult", 'Detected custom module!', 5)
 			createinfo("Insult", 'Executing script for "'..gameName..'", please wait...', 5, NotifyFrame)
-			loadstring(readfile("insult/modules/custom/bedwars.lua"))()
+			loadstring(readfile("insult/modules/custom/"..fileName..".lua"))()
 			createinfo("Insult", 'Finished loading for "'..gameName..'". Have fun!', 5, NotifyFrame)
 		else
 			createinfo("Insult", 'Executing script for "'..gameName..'", please wait...', 5, NotifyFrame)
