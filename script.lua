@@ -11,7 +11,7 @@ local betterisfile = function(file)
 end
 
 local function getModule(url)
-	return game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/main/any-game/"..url)
+	return game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/any-game/modules/"..url)
 end
 
 local mainUI = Instance.new("ScreenGui")
@@ -24,6 +24,13 @@ NotifyFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 NotifyFrame.BackgroundTransparency = 1.000
 NotifyFrame.Position = UDim2.new(0.740372658, 0, 0.696787119, 0)
 NotifyFrame.Size = UDim2.new(0.258385092, 0, 0.20080322, 0)
+
+local UIListLayout_5 = Instance.new("UIListLayout")
+UIListLayout_5.Parent = NotifyFrame
+UIListLayout_5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout_5.VerticalAlignment = Enum.VerticalAlignment.Bottom
+UIListLayout_5.Padding = UDim.new(0, 4)
 
 local ntf = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/notification.lua')))()
 local createinfo = ntf.createinfo
