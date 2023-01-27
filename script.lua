@@ -11,7 +11,7 @@ local betterisfile = function(file)
 end
 
 local function getModule(url)
-	return game:HttpGet("https://raw.githubusercontent.com/youknowwhorblx/insult/any-game/modules/"..url)
+	return game:HttpGet("https://raw.githubusercontent.com/tatibird/danmware/any-game/modules/"..url)
 end
 
 local mainUI = Instance.new("ScreenGui")
@@ -32,7 +32,7 @@ UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout_5.VerticalAlignment = Enum.VerticalAlignment.Bottom
 UIListLayout_5.Padding = UDim.new(0, 4)
 
-local ntf = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/notification.lua')))()
+local ntf = loadstring(game:HttpGet(('https://raw.githubusercontent.com/tatibird/danmware/main/lib/notification.lua')))()
 local createinfo = ntf.createinfo
 
 --// Load scripts
