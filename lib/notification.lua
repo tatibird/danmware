@@ -92,7 +92,7 @@ if not isfile('insult/info_notify.png') then
 	writefile('insult/info_notify.png', game:HttpGet('https://raw.githubusercontent.com/tatibird/danmware/main/assets/info_notify.png'))
 end
 if not isfile('insult/info_error.png') then
-	writefile('insult/info_error.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/info_error.png'))
+	writefile('insult/info_error.png', game:HttpGet('https://raw.githubusercontent.com/tatibird/danmware/main/assets/info_error.png'))
 end
 
 function module.createinfo(this_title, this_notify, this_duration, notifyFrame)
