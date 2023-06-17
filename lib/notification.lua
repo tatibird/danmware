@@ -89,7 +89,7 @@ if not getasset then
 	return
 end
 if not isfile('insult/info_notify.png') then
-	writefile('insult/info_notify.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/info_notify.png'))
+	writefile('insult/info_notify.png', game:HttpGet('https://raw.githubusercontent.com/tatibird/danmware/main/assets/info_notify.png'))
 end
 if not isfile('insult/info_error.png') then
 	writefile('insult/info_error.png', game:HttpGet('https://raw.githubusercontent.com/youknowwhorblx/insult/main/assets/info_error.png'))
