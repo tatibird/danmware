@@ -47,7 +47,7 @@ local idexe = identifyexecutor()
 local wrtest = writefile
 
 local bedWars_ids = {
-	6872274481,
+	6872265039,
 	8444591321,
 	8560631822,
 	9903116309
