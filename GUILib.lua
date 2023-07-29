@@ -57,14 +57,14 @@ function module.CreateButton(argstablemain)
 	config.Position = UDim2.new(0.809, 0, 0.094, 0)
 	config.Image = "rbxassetid://7059346373"
 	config.BackgroundTransparency = 1]]--
-	if not isfile("insult") then
-		makefolder("insult")
+	if not isfile("Elysian") then
+		makefolder("Elysian")
 	end
-	if not isfile("insult/config") then
-		makefolder("insult/config")
+	if not isfile("Elysian/config") then
+		makefolder("Elysian/config")
 	end
-	if not isfile("insult/config/bedwars") then
-		makefolder("insult/config/bedwars")
+	if not isfile("Elysian/config/bedwars") then
+		makefolder("Elysian/config/bedwars")
 	end
 	local cfgisEnabled = isfile("insult/config/bedwars/"..argstablemain["Name"].."_cfg.insult")
 	if cfgisEnabled then
