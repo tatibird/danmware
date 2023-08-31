@@ -1013,7 +1013,7 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 	local lplr = game.Players.LocalPlayer
 	local repstorage = game:GetService("ReplicatedStorage")
 	
-	local ntf = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/notification.lua')))()
+	local ntf = loadstring(game:HttpGet(('https://raw.githubusercontent.com/tatibird/danmware/main/lib/notification.lua')))()
 	local createinfo = ntf.createinfo
 	local createerror = ntf.createerror
 	
@@ -1025,7 +1025,6 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 	local uis = game:GetService("UserInputService")
 	local KnitClient = debug.getupvalue(require(lplr.PlayerScripts.TS.knit).setup, 6)
 	local Client = require(repstorage.TS.remotes).default.Client
-	local funcs = require(script.Parent.funcs)
 	--local SliderService = loadstring(game:HttpGet(('https://raw.githubusercontent.com/youknowwhorblx/insult/main/lib/SliderService.lua')))()
 	local notifyFrame = NotifyFrame
 	local getremote = function(tab)
@@ -1120,7 +1119,6 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 		["BlockPlacementController"] = KnitClient.Controllers.BlockPlacementController,
 		["KnockbackTable"] = debug.getupvalue(require(repstorage.TS.damage["knockback-util"]).KnockbackUtil.calculateKnockbackVelocity, 1),
 		["BlockController2"] = require(repstorage["rbxts_include"]["node_modules"]["@easy-games"]["block-engine"].out.client.placement["block-placer"]).BlockPlacer,
-		["LobbyClientEvents"] = require(repstorage["rbxts_include"]["node_modules"]["@easy-games"].lobby.out.client.events).LobbyClientEvents,
 		["BowTable"] = KnitClient.Controllers.ProjectileController,
 		["BowConstantsTable"] = debug.getupvalue(KnitClient.Controllers.ProjectileController.enableBeam, 5),
 		["CombatConstant"] = require(repstorage.TS.combat["combat-constant"]).CombatConstant,
@@ -1853,7 +1851,7 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 	end
 	
 	game:GetService("UserInputService").InputBegan:Connect(function(input)
-		if input.KeyCode == Enum.KeyCode.RightShift then
+		if input.KeyCode == Enum.KeyCode.B then
 			if script.Parent.Credits.Visible == false then
 				blatant.Visible = true
 				default.Visible = true
@@ -1939,172 +1937,6 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 	
 	--createinfo("Insult+ (Plus)", "<b>Insult Plus</b> loaded\nDon't have Insult Plus? skill issue moment", 7, notifyFrame)
 	
-	local AntivoidEnabled = nil
-	local antivoidpart
-	local av_velo = 130
-	local AntiVoid = windowapi.CreateButton({
-		["Name"] = "AntiVoid",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				AntivoidEnabled = true
-				antivoidpart = Instance.new("Part")
-				antivoidpart.CanCollide = false
-				antivoidpart.Size = Vector3.new(10000, 1, 10000)
-				antivoidpart.Anchored = true
-				antivoidpart.Material = Enum.Material.Neon
-				antivoidpart.Color = Color3.fromRGB(0, 81, 255)
-				antivoidpart.Transparency = 0.35
-				antivoidpart.Position = Vector3.new(0, 10, 0)
-				antivoidpart.Parent = workspace
-				repeat wait()
-					if isalive(lplr) and lplr.Character:WaitForChild("HumanoidRootPart").Position.Y < 10 then
-						local e = Instance.new("BodyVelocity",lplr.Character.HumanoidRootPart)
-						workspace.Gravity = 0
-						e.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X,av_velo,lplr.Character:WaitForChild("HumanoidRootPart").Velocity.Z)
-						task.wait(0.5)
-						e:Destroy()
-						workspace.Gravity = 196.2
-					end
-				until not AntivoidEnabled
-			else
-				AntivoidEnabled = false
-				if antivoidpart then antivoidpart:Destroy() antivoidpart = nil end
-			end
-		end,
-	})
-	local AVSlider = sliderapi.CreateSlider({
-		["Name"] = "Velocity",
-		["Min"] = 50,
-		["Max"] = 300,
-		["Default"] = 130,
-		["Round"] = 1,
-		["LinkTo"] = "AntiVoid",
-		["Function"] = function(val)
-			av_velo = val
-		end,
-	})
-	
-	local canReturn = false
-	function isalive(plr)
-		plr = plr or lplr
-		if not plr.Character then return false end
-		if not plr.Character:FindFirstChild("Head") then return false end
-		if not plr.Character:FindFirstChild("Humanoid") then return false end
-		return true
-	end
-	
-	function getnearestplayer(maxdist)
-		local obj = lplr
-		local dist = math.huge
-		for i,v in pairs(game:GetService("Players"):GetChildren()) do
-			if v.Team ~= lplr.Team and v ~= lplr and isalive(v) and isalive(lplr) then
-				local mag = (v.Character:WaitForChild("HumanoidRootPart").Position - lplr.Character:WaitForChild("HumanoidRootPart").Position).Magnitude
-				if (mag < dist) and (mag < maxdist) then
-					dist = mag
-					obj = v
-				end
-				if v.Team ~= lplr.Team and v ~= lplr and isalive(v) and isalive(lplr) then
-					canReturn = true
-				end
-			end
-		end
-		if canReturn then
-			canReturn = false
-			return obj
-		end
-	end
-	local function getSword()
-		local highest, returning = -9e9, nil
-		for i,v in next, GetInventory(lplr).items do 
-			local power = table.find(require(game:GetService("ReplicatedStorage").TS.games.bedwars["bedwars-swords"]).BedwarsSwords, v.itemType)
-			if not power then continue end
-			if power > highest then 
-				returning = v
-				highest = power
-			end
-		end
-		return returning
-	end
-	function hashFunc(vec) 
-		return {value = vec}
-	end
-	
-	local count = 0
-	local Distance = {["Value"] = 18}
-	local HitRemote = Client:Get(bedwars["SwordRemote"])
-	local KA_Enabled = true
-	local Killaura = windowapi.CreateButton({
-		["Name"] = "Killaura",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				local anims = {
-					Normal = {
-						{CFrame = CFrame.new(1, -1, 2) * CFrame.Angles(math.rad(295), math.rad(55), math.rad(290)), Time = 0.25},
-						{CFrame = CFrame.new(-1, 1, -2.2) * CFrame.Angles(math.rad(200), math.rad(60), math.rad(1)), Time = 0.25}
-					},
-				}
-				local origC0 = cam.Viewmodel.RightHand.RightWrist.C0
-				repeat
-					task.wait(0.02)
-					local nearest = getnearestplayer(Distance["Value"])
-					if nearest ~= nil and nearest.Team ~= lplr.Team and isalive(nearest) and nearest.Character:FindFirstChild("Humanoid").Health > 0.1 and isalive(lplr) and lplr.Character:FindFirstChild("Humanoid").Health > 0.1 then
-						local sword = getSword()
-						spawn(function()
-							for i,v in pairs(anims.Normal) do 
-								local anim = game:GetService("TweenService"):Create(cam.Viewmodel.RightHand.RightWrist, TweenInfo.new(v.Time), {C0 = origC0 * v.CFrame})
-								anim:Play()
-								task.wait(v.Time+0.1)
-								pcall(function()
-									anim:Cancel()
-								end)
-								local anim2 = game:GetService("TweenService"):Create(cam.Viewmodel.RightHand.RightWrist, TweenInfo.new(0.1), {C0 = origC0})
-								anim2:Play()
-							end
-							--local anim = Instance.new("Animation")
-							--anim.AnimationId = "rbxassetid://4947108314"
-							--local animator = lplr.Character:FindFirstChild("Humanoid"):FindFirstChild("Animator")
-							--animator:LoadAnimation(anim):Play()
-							--anim:Destroy()
-							--bedwars["ViewmodelController"]:playAnimation(15)
-							if sword ~= nil then
-								bedwars["SwordController"].lastAttack = game:GetService("Workspace"):GetServerTimeNow() - 0.11
-								HitRemote:SendToServer({
-									["weapon"] = sword.tool,
-									["entityInstance"] = nearest.Character,
-									["validate"] = {
-										["raycast"] = {
-											["cameraPosition"] = hashFunc(cam.CFrame.Position),
-											["cursorDirection"] = hashFunc(Ray.new(cam.CFrame.Position, nearest.Character:FindFirstChild("HumanoidRootPart").Position).Unit.Direction)
-										},
-										["targetPosition"] = hashFunc(nearest.Character:FindFirstChild("HumanoidRootPart").Position),
-										["selfPosition"] = hashFunc(lplr.Character:FindFirstChild("HumanoidRootPart").Position + ((lplr.Character:FindFirstChild("HumanoidRootPart").Position - nearest.Character:FindFirstChild("HumanoidRootPart").Position).magnitude > 14 and (CFrame.lookAt(lplr.Character:FindFirstChild("HumanoidRootPart").Position, nearest.Character:FindFirstChild("HumanoidRootPart").Position).LookVector * 4) or Vector3.new(0, 0, 0)))
-									},
-									["chargedAttack"] = {["chargeRatio"] = 0.6}
-								})
-							end
-	
-						end)
-					end
-				until not KA_Enabled
-			else
-				KA_Enabled = false
-			end
-		end,
-	})
-	local KASlider = sliderapi.CreateSlider({
-		["Name"] = "Distance",
-		["Min"] = 1,
-		["Max"] = 100,
-		["Default"] = 18,
-		["Round"] = 1,
-		["LinkTo"] = "Killaura",
-		["Function"] = function(val)
-			Distance["Value"] = val
-		end,
-	})
-	
 	local noFallEnabled = false
 	local NoFall = windowapi.CreateButton({
 		["Name"] = "NoFall",
@@ -2124,272 +1956,175 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 		end,
 		["HoverText"] = "Disables fall damage."
 	})
-	
-	local bedespE = false
-	local bedESPFolder = Instance.new("Folder")
-	bedESPFolder.Name = "Folder_BedESP_Data_Shared_Detail"
-	bedESPFolder.Parent = script.Parent
-	local BedESPTable = {}
-	local BedESPColor = {["Value"] = 0.44}
-	local BedESPTransparency = {["Value"] = 1}
-	local BedESPOnTop = {["Enabled"] = true}
-	local BedESP = windowapi.CreateButton({
-		["Name"] = "BedESP",
+
+	local lightingsettings = {}
+	local lightingconnection
+	local lightingchanged = false
+	local Fullbright = windowapi.CreateButton({
+		["Name"] = "Fullbright",
 		["Tab"] = "Render",
 		["Function"] = function(callback)
 			if callback then
-				RunLoops:BindToRenderStep("BedESP", 500, function()
-					if game:GetService("CollectionService"):GetTagged("bed") then
-						for i,plr in pairs(game:GetService("CollectionService"):GetTagged("bed")) do
-							local thing
-							if plr ~= nil and BedESPTable[plr] then
-								thing = BedESPTable[plr]
-								for bedespnumber, bedesppart in pairs(thing:GetChildren()) do
-									bedesppart.Visible = false
-								end
-							end
-	
-							if plr ~= nil and plr.Parent ~= nil and plr:FindFirstChild("Covers") and lplr.Team and plr.Covers.BrickColor ~= lplr.Team.TeamColor then
-								if bedESPFolder:FindFirstChild(plr.Name..tostring(plr.Covers.BrickColor)) == nil then
-									local Bedfolder = Instance.new("Folder")
-									Bedfolder.Name = plr.Name..tostring(plr.Covers.BrickColor)
-									Bedfolder.Parent = bedESPFolder
-									BedESPTable[plr] = Bedfolder
-									thing = Bedfolder
-									for bedespnumber, bedesppart in pairs(plr:GetChildren()) do
-										local boxhandle = Instance.new("BoxHandleAdornment")
-										boxhandle.Size = bedesppart.Size + Vector3.new(.01, .01, .01)
-										boxhandle.AlwaysOnTop = true
-										boxhandle.ZIndex = (bedesppart.Name == "Covers" and 10 or 8)
-										boxhandle.Visible = true
-										boxhandle.Color3 = bedesppart.Color
-										boxhandle.Name = bedespnumber
-										boxhandle.Parent = Bedfolder
-									end
-								end
-								for bedespnumber, bedesppart in pairs(thing:GetChildren()) do
-									bedesppart.Visible = true
-									if plr:GetChildren()[bedespnumber] then
-										bedesppart.Adornee = plr:GetChildren()[bedespnumber]
-									else
-										bedesppart.Adornee = nil
-									end
-								end
-							end
-						end
+				lightingsettings["Brightness"] = lighting.Brightness
+				lightingsettings["ClockTime"] = lighting.ClockTime
+				lightingsettings["FogEnd"] = lighting.FogEnd
+				lightingsettings["GlobalShadows"] = lighting.GlobalShadows
+				lightingsettings["OutdoorAmbient"] = lighting.OutdoorAmbient
+				lightingchanged = false
+				lighting.Brightness = 2
+				lighting.ClockTime = 14
+				lighting.FogEnd = 100000
+				lighting.GlobalShadows = false
+				lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+				lightingchanged = true
+				lightingconnection = lighting.Changed:Connect(function()
+					if not lightingchanged then
+						lightingsettings["Brightness"] = lighting.Brightness
+						lightingsettings["ClockTime"] = lighting.ClockTime
+						lightingsettings["FogEnd"] = lighting.FogEnd
+						lightingsettings["GlobalShadows"] = lighting.GlobalShadows
+						lightingsettings["OutdoorAmbient"] = lighting.OutdoorAmbient
+						lightingchanged = true
+						lighting.Brightness = 2
+						lighting.ClockTime = 14
+						lighting.FogEnd = 100000
+						lighting.GlobalShadows = false
+						lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
+						lightingchanged = false
 					end
 				end)
 			else
-				RunLoops:UnbindFromRenderStep("BedESP") 
-				bedESPFolder:ClearAllChildren()
-			end
-		end,
-		["HoverText"] = "Shows where all the beds are in the match."
-	})
-	
-	local infFly = windowapi.CreateButton({
-		["Name"] = "InfFly",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			local part
-			if callback then
-				local origy = lplr.Character.HumanoidRootPart.Position.y
-				part = Instance.new("Part", workspace)
-				part.Size = Vector3.new(1,1,1)
-				part.Transparency = 1
-				part.Anchored = true
-				part.CanCollide = false
-				workspace.CurrentCamera.CameraSubject = part
-				RunLoops:BindToHeartbeat("FunnyFlyPart", 1, function()
-					local pos = lplr.Character.HumanoidRootPart.Position
-					part.Position = Vector3.new(pos.x, origy, pos.z)
-				end)
-				local cf = lplr.Character.HumanoidRootPart.CFrame
-				lplr.Character.HumanoidRootPart.CFrame = CFrame.new(cf.x, 300000, cf.z)
-				if lplr.Character.HumanoidRootPart.Position.X < 50000 then 
-					lplr.Character.HumanoidRootPart.CFrame *= CFrame.new(0, 100000, 0)
+				for name,thing in pairs(lightingsettings) do 
+					lighting[name] = thing 
 				end
-			else
-				RunLoops:UnbindFromHeartbeat("FunnyFlyPart")
-				local pos = lplr.Character.HumanoidRootPart.Position
-				local rcparams = RaycastParams.new()
-				rcparams.FilterType = Enum.RaycastFilterType.Whitelist
-				rcparams.FilterDescendantsInstances = {workspace.Map}
-				local rc = workspace:Raycast(Vector3.new(pos.x, 300, pos.z), Vector3.new(0,-1000,0), rcparams)
-				if rc and rc.Position then
-					lplr.Character.HumanoidRootPart.CFrame = CFrame.new(rc.Position) * CFrame.new(0,3,0)
-				end
-				workspace.CurrentCamera.CameraSubject = lplr.Character
-				if part then part:Destroy() end
-				RunLoops:BindToHeartbeat("FunnyFlyVeloEnd", 1, function()
-					lplr.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
-					lplr.Character.HumanoidRootPart.CFrame = CFrame.new(rc.Position) * CFrame.new(0,3,0)
-				end)
-				task.wait(1)
-				RunLoops:UnbindFromHeartbeat("FunnyFlyVeloEnd")
+				lightingconnection:Disconnect()
 			end
 		end,
-		["HoverText"] = "An infinite fly (thx mastadawn)"
+		["HoverText"] = "fullbright yes"
 	})
-	
-	local function getEquipped()
-		local typetext = ""
-		local obj = currentinventory.inventory.hand
-		if obj then
-			local metatab = bedwars["ItemTable"][obj.itemType]
-			typetext = metatab.sword and "sword" or metatab.block and "block" or obj.itemType:find("bow") and "bow"
-		end
-		return {["Object"] = obj and obj.tool, ["Type"] = typetext}
-	end
-	
-	local velohorizontal = {["Value"] = 0}
-	local velovertical = {["Value"] = 0}
-	local Velocity = {["Enabled"] = false}
-	local oldhori = bedwars["KnockbackTable"]["kbDirectionStrength"]
-	local oldvert = bedwars["KnockbackTable"]["kbUpwardStrength"]
-	local Velocity = windowapi.CreateButton({
-		["Name"] = "Velocity",
-		["Tab"] = "Default",
-		["Function"] = function(callback)
-			if callback then
-				bedwars["KnockbackTable"]["kbDirectionStrength"] = oldhori * (velohorizontal["Value"] / 100)
-				bedwars["KnockbackTable"]["kbUpwardStrength"] = oldvert * (velovertical["Value"] / 100)
-			else
-				bedwars["KnockbackTable"]["kbDirectionStrength"] = oldhori
-				bedwars["KnockbackTable"]["kbUpwardStrength"] = oldvert
-			end
-		end,
-		["HoverText"] = "Reduces or removes knockback taken."
-	})
-	
-	local bedprotector1stlayer = {
-		Vector3.new(0, 3, 0),
-		Vector3.new(0, 3, 3),
-		Vector3.new(3, 0, 0),
-		Vector3.new(3, 0, 3),
-		Vector3.new(-3, 0, 0),
-		Vector3.new(-3, 0, 3),
-		Vector3.new(0, 0, 6),
-		Vector3.new(0, 0, -3)
-	}
-	local bedprotector2ndlayer = {
-		Vector3.new(0, 6, 0),
-		Vector3.new(0, 6, 3),
-		Vector3.new(0, 3, 6),
-		Vector3.new(0, 3, -3),
-		Vector3.new(0, 0, -6),
-		Vector3.new(0, 0, 9),
-		Vector3.new(3, 3, 0),
-		Vector3.new(3, 3, 3),
-		Vector3.new(3, 0, 6),
-		Vector3.new(3, 0, -3),
-		Vector3.new(6, 0, 3),
-		Vector3.new(6, 0, 0),
-		Vector3.new(-3, 3, 3),
-		Vector3.new(-3, 3, 0),
-		Vector3.new(-6, 0, 3),
-		Vector3.new(-6, 0, 0),
-		Vector3.new(-3, 0, 6),
-		Vector3.new(-3, 0, -3),
-	}
-	
-	local function getItemFromList(list)
-		local selecteditem
-		for i3,v3 in pairs(list) do
-			local item = getItem(v3)
-			if item then 
-				selecteditem = item
-				break
-			end
-		end
-		return selecteditem
-	end
-	
-	local function placelayer(layertab, obj, selecteditems)
-		for i2,v2 in pairs(layertab) do
-			local selecteditem = getItemFromList(selecteditems)
-			if selecteditem then
-				bedwars["placeBlock"](obj.Position + v2, selecteditem.itemType)
-			else
-				return false
-			end
-		end
-		return true
-	end
-	
-	local bedprotectorrange = {["Value"] = 20}
-	local BedProtector = windowapi.CreateButton({
-		["Name"] = "BedProtector",
-		["Tab"] = "World",
-		["Function"] = function(callback)
-			if callback then
-				task.spawn(function()
-					for i, obj in pairs(game:GetService("CollectionService"):GetTagged("bed")) do
-						if isalive(lplr) and obj:GetAttribute("Team"..lplr:GetAttribute("Team").."NoBreak") and obj.Parent ~= nil then
-							if (lplr.Character.HumanoidRootPart.Position - obj.Position).magnitude <= bedprotectorrange["Value"] then
-								local firstlayerplaced = placelayer(bedprotector1stlayer, obj, {"obsidian", "stone_brick", "plank_oak", getwool()})
-								if firstlayerplaced then
-									placelayer(bedprotector2ndlayer, obj, {getwool()})
-								end
-							end
-							break
-						end
-					end
-				end)
-			end
-		end,
-	})
-	
-	local longjumpE = nil
-	local longjumpAmount = 3.5
-	local longJumpA = 0.154
-	local LongJumpFly = windowapi.CreateButton({
-		["Name"] = "LongJump",
+
+	local velo1
+	local flyup1 = false
+	local flydown1 = false
+	local connection1
+	local connection21
+	local ltween = nil
+	local debTime = 2.5
+	local BounceFlyE = {["Enabled"] = false}
+	local newText = script.Parent.FlyUI.TextLabel
+	local newFrame = script.Parent.FlyUI.Frame
+	local FlyE = nil
+	local Fly = windowapi.CreateButton({
+		["Name"] = "Fly",
 		["Tab"] = "Blatant",
 		["Function"] = function(callback)
 			if callback then
-				longjumpE = true
-				game.Players.LocalPlayer.Character.Humanoid.Jump = true
-				game.Players.LocalPlayer.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
-				game.Workspace.Gravity = 10
-				local newGUI = Instance.new("TextLabel", script.Parent)
-				newGUI.Text = "3.5s left"
-				newGUI.TextColor3 = Color3.fromRGB(255,255,255)
-				newGUI.TextScaled = true
-				newGUI.Font = Enum.Font.Gotham
-				newGUI.Size = UDim2.new(0,0,0.2,0)
-				newGUI.Position = UDim2.new(0,0,0.7,0)
+				BounceFlyE["Enabled"] = true
 				coroutine.wrap(function()
-					repeat task.wait(0.1)
-						longjumpAmount = longjumpAmount - 0.1
-						newGUI.Text = tostring(longjumpAmount).."s left"
-					until longjumpAmount <= 0
-					longjumpE = false
-					newGUI:Destroy()
-				end)()
-				for i = 1,66 do task.wait(0.01)
-					if longjumpE then
-						lplr.Character.HumanoidRootPart.CFrame = lplr.Character.HumanoidRootPart.CFrame + Vector3.new(0,0.154,0)
+					--[[newText = Instance.new("TextLabel")
+					newText.Parent = script.Parent
+					newText.BackgroundTransparency = 1
+					newText.TextScaled = true
+					newText.TextColor3 = Color3.fromRGB(255,255,255)
+					newText.Font = "Gotham"]]--
+					script.Parent.FlyUI.Visible = true
+					local newText = script.Parent.FlyUI.TextLabel
+					local newFrame = script.Parent.FlyUI.Frame
+					if not ltween then
+						ltween = game:GetService("TweenService"):Create(
+						newFrame,
+						TweenInfo.new(2.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In),
+						{Size = UDim2.new(0, 0, .16, 0)}
+						)
+						ltween:Play()
+						--newFrame:TweenSize(UDim2.new(0, 0, .16, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, debTime)
 					end
-				end
+					repeat task.wait(0.1)
+						if not BounceFlyE["Enabled"] then break end
+						debTime = debTime - 0.1
+						newText.Text = roundDecimals(debTime, 2).."s"
+					until debTime <= 0
+					debTime = 2.5
+					script.Parent.FlyUI.Visible = false
+					BounceFlyE["Enabled"] = false
+					if FlyE then
+						table.insert(states, FlyE)
+					end
+					script.Parent.Blatant.list.Fly.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
+				end)()
+				velo1 = Instance.new("BodyVelocity")
+				velo1.MaxForce = Vector3.new(0,9e9,0)
+				velo1.Parent = lplr.Character:FindFirstChild("HumanoidRootPart")
+				connection1 = uis.InputBegan:Connect(function(input)
+					if input.KeyCode == Enum.KeyCode.Space then
+						flyup1 = true
+					end
+					if input.KeyCode == Enum.KeyCode.LeftShift then
+						flydown1 = true
+					end
+				end)
+				connection21 = uis.InputEnded:Connect(function(input)
+					if input.KeyCode == Enum.KeyCode.Space then
+						flyup1 = false
+					end
+					if input.KeyCode == Enum.KeyCode.LeftShift then
+						flydown1 = false
+					end
+				end)
+				spawn(function()
+					repeat
+						task.wait()
+						if not BounceFlyE["Enabled"] then
+							if velo1 then
+								velo1:Destroy()
+							end
+							if connection1 then
+								connection1:Disconnect()
+							end
+							if connection21 then
+								connection21:Disconnect()
+							end
+							flyup1 = false
+							flydown1 = false
+							debTime = 2.5
+							script.Parent.FlyUI.Visible = false
+						end
+						for i = 1,15 do
+							task.wait()
+							if not BounceFlyE["Enabled"] then return end
+							velo1.Velocity = Vector3.new(0,i*1.25+(flyup1 and 42 or 0)+(flydown1 and -42 or 0),0)
+						end
+						for i = 1,15 do
+							task.wait()
+							if not BounceFlyE["Enabled"] then return end
+							velo1.Velocity = Vector3.new(0,-i*1+(flyup1 and 42 or 0)+(flydown1 and -42 or 0),0)
+						end
+					until not BounceFlyE["Enabled"]
+				end)
 			else
-				game.Workspace.Gravity = 192.6
-				longjumpE = false
+				if velo1 then
+					velo1:Destroy()
+				end
+				if connection1 then
+					connection1:Disconnect()
+				end
+				if connection21 then
+					connection21:Disconnect()
+				end
+				flyup1 = false
+				flydown1 = false
+				debTime = 2.5
+				script.Parent.FlyUI.Visible = false
+				if ltween then
+					ltween:Cancel()
+					ltween = nil
+				end
+				newFrame.Size = UDim2.new(1,0,0.16,0)
+				newText.Text = debTime
 			end
 		end,
 	})
-	local LJSlider = sliderapi.CreateSlider({
-		["Name"] = "Distance/Speed",
-		["Min"] = 10,
-		["Max"] = 999,
-		["Default"] = 154,
-		["Round"] = 1,
-		["LinkTo"] = "LongJump",
-		["Function"] = function(val)
-			longJumpA = val / 1000
-		end,
-	})
-	
+
 	local isSprinting = nil
 	local Sprint = windowapi.CreateButton({
 		["Name"] = "Sprint",
@@ -2407,252 +2142,7 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
-	
-	local hasSpeed = nil
-	local numValue = 1
-	local Speed = windowapi.CreateButton({
-		["Name"] = "Speed",
-		["Tab"] = "Default",
-		["Function"] = function(callback)
-			if callback then
-				local Speed = numValue / 10
-				_G.Speed1 = true
-				local You = game.Players.LocalPlayer.Name
-				local UIS = game:GetService("UserInputService")
-				while _G.Speed1 do wait()
-					if UIS:IsKeyDown(Enum.KeyCode.W) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed)
-					end;
-					if UIS:IsKeyDown(Enum.KeyCode.A) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-Speed,0,0)
-					end;
-					if UIS:IsKeyDown(Enum.KeyCode.S) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,Speed)
-					end;
-					if UIS:IsKeyDown(Enum.KeyCode.D) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(Speed,0,0)
-					end;
-				end
-			else
-				local Speed = numValue / 10
-				_G.Speed1 = false
-				local You = game.Players.LocalPlayer.Name
-				local UIS = game:GetService("UserInputService")
-				while _G.Speed1 do wait()
-					if UIS:IsKeyDown(Enum.KeyCode.W) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,-Speed)
-					end;
-					if UIS:IsKeyDown(Enum.KeyCode.A) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(-Speed,0,0)
-					end;
-					if UIS:IsKeyDown(Enum.KeyCode.S) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(0,0,Speed)
-					end;
-					if UIS:IsKeyDown(Enum.KeyCode.D) then
-						lplr.Character:WaitForChild("HumanoidRootPart").CFrame = game:GetService("Workspace")[You].HumanoidRootPart.CFrame * CFrame.new(Speed,0,0)
-					end;
-				end
-	
-			end
-		end,
-	})
-	local SpeedSpeed = sliderapi.CreateSlider({
-		["Name"] = "Speed",
-		["Min"] = 0.1,
-		["Max"] = 50,
-		["Default"] = 1,
-		["Round"] = 1,
-		["LinkTo"] = "Speed",
-		["Function"] = function(val)
-			numValue = val
-		end,
-	})
-	--[[local speedCheckBox = windowapi.CreateCheckbox({
-		["Name"] = "VeryOP",
-		["LinkTo"] = "Speed",
-		["Default"] = false,
-		["Function"] = function(callback)
-			if callback then
-				numValue = 15
-			else
-				numValue = 1
-			end
-		end,
-	})]]--
-	
-	local spiderEnabled = false
-	local phaseEnabled = false
-	
-	local slowdownspeed = false
-	local slowdownspeedval = 0.6
-	local spidergoinup = false
-	local holdingshift = false
-	local nocheck = false
-	local oldnocheck = false
-	local phasedelay = tick()
-	local phasedelay2 = tick()
-	local phase = {["Enabled"] = true}
-	local phasedist = {["Value"] = 2}
-	local checktable = {}
-	local raycastparameters = RaycastParams.new()
-	raycastparameters.FilterType = Enum.RaycastFilterType.Whitelist
-	
-	for i,v in pairs(workspace:GetChildren()) do
-		if v:IsA("Folder") and v.Name:find("Map") == nil then
-			table.insert(checktable, v)
-		end
-	end
-	
-	local function isPointInMapOccupied(p)
-		local region = Region3.new(p - Vector3.new(1, 1, 1), p + Vector3.new(1, 1, 1))
-		local possible = workspace:FindPartsInRegion3WithIgnoreList(region, {lplr.Character, unpack(checktable)})
-		return (#possible == 0)
-	end
-	
-	local function addvectortocframe(cframe, vec)
-		local x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22 = cframe:GetComponents()
-		return CFrame.new(x + vec.X, y + vec.Y, z + vec.Z, R00, R01, R02, R10, R11, R12, R20, R21, R22)
-	end
-	
-	local Phase = windowapi.CreateButton({
-		["Name"] = "Phase",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				phaseEnabled = true
-				RunLoops:BindToHeartbeat("Phase", 1, function()
-					if isalive(lplr) and lplr.Character.Humanoid.MoveDirection ~= Vector3.zero then
-						if phasedelay <= tick() then
-							nocheck = false
-						end
-						if phasedelay2 <= tick() then
-							slowdownspeed = false
-						end
-						if phasedelay <= tick() and phasedelay2 <= tick() and (spiderEnabled == false or holdingshift) then
-							local pos = lplr.Character.HumanoidRootPart.CFrame.p - Vector3.new(0, 1, 0)
-							local pos2 = lplr.Character.HumanoidRootPart.CFrame.p + Vector3.new(0, 1, 0)
-							local pos3 = lplr.Character.Head.CFrame.p
-							raycastparameters.FilterDescendantsInstances = {bedwarsblocks, game:GetService("CollectionService"):GetTagged("spawn-cage"), workspace.SpectatorPlatform}
-							local newray = workspace:Raycast(pos3, lplr.Character.Humanoid.MoveDirection, raycastparameters)
-							if newray then
-								if isPointInMapOccupied(getScaffold(pos, false) + (newray.Normal * -(3 + (3 * phasedist["Value"])))) and isPointInMapOccupied(getScaffold(pos2, false) + (newray.Normal * -(3 + (3 * phasedist["Value"])))) then
-									phasedelay = tick() + 0.075
-									phasedelay2 = tick() + 5
-									slowdownspeed = true
-									nocheck = true
-									lplr.Character.HumanoidRootPart.CFrame = addvectortocframe(lplr.Character.HumanoidRootPart.CFrame, (newray.Normal * -3))
-								end
-							end
-						end
-					end
-				end)
-				RunLoops:BindToStepped("Phase", 1, function()
-					if isalive(lplr) and (nocheck ~= oldnocheck or nocheck) then
-						oldnocheck = nocheck
-						for i,v in pairs(lplr.Character:GetDescendants()) do
-							if v:IsA("BasePart") then
-								if nocheck and v.Name ~= "HumanoidRootPart" then
-									v.CanCollide = false
-								end
-							end
-						end
-					end
-				end)
-			else
-				RunLoops:UnbindFromHeartbeat("Phase")
-				RunLoops:UnbindFromStepped("Phase")
-				slowdownspeed = false
-				phaseEnabled = false
-			end
-		end,
-	})
-	
-	local function getblock(pos)
-		local blockpos = bedwars["BlockController"]:getBlockPosition(pos)
-		return bedwars["BlockController"]:getStore():getBlockAt(blockpos), blockpos
-	end
-	
-	local function roundpos(vec)
-		return Vector3.new(math.round(vec.X / .5) * .65, math.round(vec.Y), math.round(vec.Z / .5) * .65)
-	end
-	
-	local spiderspeed = {["Value"] = 40}
-	local spidermode = {["Value"] = "Normal"}
-	local spiderpart
-	local spiderconnection1
-	local spiderconnection2
-	local Spider = windowapi.CreateButton({
-		["Name"] = "Spider",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				spiderEnabled = true
-				spiderconnection1 = uis.InputBegan:Connect(function(input1)
-					if input1.KeyCode == Enum.KeyCode.LeftShift then 
-						holdingshift = true
-					end
-				end)
-				spiderconnection2 = uis.InputEnded:Connect(function(input1)
-					if input1.KeyCode == Enum.KeyCode.LeftShift then 
-						holdingshift = false
-					end
-				end)
-				RunLoops:BindToHeartbeat("Spider", 1, function()
-					if isalive(lplr) then
-						if spidermode["Value"] == "Normal" then
-							local vec = lplr.Character.Humanoid.MoveDirection.Unit * 2
-							local newray = getblock(lplr.Character.HumanoidRootPart.Position + (vec + Vector3.new(0, 0.1, 0)))
-							local newray2 = getblock(lplr.Character.HumanoidRootPart.Position + (vec - Vector3.new(0, lplr.Character.Humanoid.HipHeight, 0)))
-							if newray and (not newray.CanCollide) then newray = nil end 
-							if newray2 and (not newray2.CanCollide) then newray2 = nil end 
-							if spidergoinup and (not newray) and (not newray2) then
-								lplr.Character.HumanoidRootPart.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X, 0, lplr.Character.HumanoidRootPart.Velocity.Z)
-							end
-							spidergoinup = ((newray or newray2) and true or false)
-							if (newray or newray2) and (phaseEnabled == false or holdingshift == false) then
-								lplr.Character.HumanoidRootPart.Velocity = Vector3.new(newray2 and newray == nil and lplr.Character.HumanoidRootPart.Velocity.X or 0, spiderspeed["Value"], newray2 and newray == nil and lplr.Character.HumanoidRootPart.Velocity.Z or 0)
-							end
-						else
-							if not spiderpart then 
-								spiderpart = Instance.new("TrussPart")
-								spiderpart.Size = Vector3.new(2, 2, 2)
-								spiderpart.Transparency = 1
-								spiderpart.Anchored = true
-								spiderpart.Parent = cam
-							end
-							local vec = lplr.Character.HumanoidRootPart.CFrame.lookVector.Unit * 1.5
-							local vec2 = lplr.Character.HumanoidRootPart.CFrame.lookVector.Unit * .5
-							local newray2, newray2pos = getblock(lplr.Character.HumanoidRootPart.Position + (vec - Vector3.new(0, lplr.Character.Humanoid.HipHeight, 0)))
-							if newray2 and (not newray2.CanCollide) then newray2 = nil end 
-							local newpos = newray2 and (newray2pos * 3) - roundpos(vec2) or Vector3.zero
-							spiderpart.Position = newpos
-						end
-					end
-				end)
-			else
-				if spiderconnection1 then spiderconnection1:Disconnect() end
-				if spiderconnection2 then spiderconnection2:Disconnect() end
-				if spiderpart then 
-					spiderpart:Remove()
-				end
-				RunLoops:UnbindFromHeartbeat("Spider")
-				holdingshift = false
-				spiderEnabled = false
-			end
-		end,
-	})
-	local SPSlider = sliderapi.CreateSlider({
-		["Name"] = "Spider Speed",
-		["Min"] = 1,
-		["Max"] = 100,
-		["Default"] = 40,
-		["Round"] = 1,
-		["LinkTo"] = "Spider",
-		["Function"] = function(val)
-			spiderspeed["Value"] = val
-		end,
-	})
-	
+
 	local colorSetActionBarChoose = Color3.fromRGB(203, 54, 36)
 	local old_select_color_health_bar = nil
 	local blueBarCooldown = false
@@ -2788,600 +2278,88 @@ local function VBKIKF_fake_script() -- insultv2exec_v2.LocalScript
 			end
 		end,
 	})
-	local NKSlider = sliderapi.CreateSlider({
-		["Name"] = "Range",
-		["Min"] = 1,
-		["Max"] = 100,
-		["Default"] = 50,
-		["Round"] = 1,
-		["LinkTo"] = "Nuker",
-		["Function"] = function(val)
-			NukerRange = val
-		end,
-	})
-	
-	--[[local Panic = windowapi.CreateButton({
-		["Name"] = "Panic",
+
+	local velohorizontal = {["Value"] = 0}
+	local velovertical = {["Value"] = 0}
+	local Velocity = {["Enabled"] = false}
+	local oldhori = bedwars["KnockbackTable"]["kbDirectionStrength"]
+	local oldvert = bedwars["KnockbackTable"]["kbUpwardStrength"]
+	local Velocity = windowapi.CreateButton({
+		["Name"] = "Velocity",
 		["Tab"] = "Default",
 		["Function"] = function(callback)
 			if callback then
-				for i,v in pairs(states) do
-					v = false
-					print(v)
-				end
+				bedwars["KnockbackTable"]["kbDirectionStrength"] = oldhori * (velohorizontal["Value"] / 100)
+				bedwars["KnockbackTable"]["kbUpwardStrength"] = oldvert * (velovertical["Value"] / 100)
+			else
+				bedwars["KnockbackTable"]["kbDirectionStrength"] = oldhori
+				bedwars["KnockbackTable"]["kbUpwardStrength"] = oldvert
 			end
 		end,
-	})]]--
-	
-	local stealerEnabled = nil
-	local ChestStealer = windowapi.CreateButton({
-		["Name"] = "ChestStealer",
-		["Tab"] = "World",
+		["HoverText"] = "Reduces or removes knockback taken."
+	})
+
+	local bedespE = false
+	local bedESPFolder = Instance.new("Folder")
+	bedESPFolder.Name = "Folder_BedESP_Data_Shared_Detail"
+	bedESPFolder.Parent = script.Parent
+	local BedESPTable = {}
+	local BedESPColor = {["Value"] = 0.44}
+	local BedESPTransparency = {["Value"] = 1}
+	local BedESPOnTop = {["Enabled"] = true}
+	local BedESP = windowapi.CreateButton({
+		["Name"] = "BedESP",
+		["Tab"] = "Render",
 		["Function"] = function(callback)
 			if callback then
-				stealerEnabled = true
-				repeat wait()
-					if bedwars["AppController"]:isAppOpen("ChestApp") then
-						local chest = lplr.Character:FindFirstChild("ObservedChestFolder")
-						local items = chest and chest.Value and chest.Value:GetChildren() or {}
-						if #items > 0 then
-							for itemNumber,Item in pairs(items) do
-								if Item:IsA("Accessory") then
-									task.spawn(function()
-										pcall(function()
-											bedwars["ClientHandler"]:GetNamespace("Inventory"):Get("ChestGetItem"):CallServer(chest.Value, Item)
-										end)
-									end)
+				RunLoops:BindToRenderStep("BedESP", 500, function()
+					if game:GetService("CollectionService"):GetTagged("bed") then
+						for i,plr in pairs(game:GetService("CollectionService"):GetTagged("bed")) do
+							local thing
+							if plr ~= nil and BedESPTable[plr] then
+								thing = BedESPTable[plr]
+								for bedespnumber, bedesppart in pairs(thing:GetChildren()) do
+									bedesppart.Visible = false
+								end
+							end
+	
+							if plr ~= nil and plr.Parent ~= nil and plr:FindFirstChild("Covers") and lplr.Team and plr.Covers.BrickColor ~= lplr.Team.TeamColor then
+								if bedESPFolder:FindFirstChild(plr.Name..tostring(plr.Covers.BrickColor)) == nil then
+									local Bedfolder = Instance.new("Folder")
+									Bedfolder.Name = plr.Name..tostring(plr.Covers.BrickColor)
+									Bedfolder.Parent = bedESPFolder
+									BedESPTable[plr] = Bedfolder
+									thing = Bedfolder
+									for bedespnumber, bedesppart in pairs(plr:GetChildren()) do
+										local boxhandle = Instance.new("BoxHandleAdornment")
+										boxhandle.Size = bedesppart.Size + Vector3.new(.01, .01, .01)
+										boxhandle.AlwaysOnTop = true
+										boxhandle.ZIndex = (bedesppart.Name == "Covers" and 10 or 8)
+										boxhandle.Visible = true
+										boxhandle.Color3 = bedesppart.Color
+										boxhandle.Name = bedespnumber
+										boxhandle.Parent = Bedfolder
+									end
+								end
+								for bedespnumber, bedesppart in pairs(thing:GetChildren()) do
+									bedesppart.Visible = true
+									if plr:GetChildren()[bedespnumber] then
+										bedesppart.Adornee = plr:GetChildren()[bedespnumber]
+									else
+										bedesppart.Adornee = nil
+									end
 								end
 							end
 						end
 					end
-				until not stealerEnabled
-			else
-				stealerEnabled = false
-			end
-		end,
-	})
-	
-	local espHighlight
-	local Chams = windowapi.CreateButton({
-		["Name"] = "Chams",
-		["Tab"] = "Render",
-		["Function"] = function(callback)
-			local players = game.Players:GetPlayers()
-			if callback then
-				for i,v in pairs(players) do
-					espHighlight = Instance.new("Highlight")
-					espHighlight.Name = v.Name.."_highlight_insult"
-					espHighlight.FillTransparency = 0.5
-					espHighlight.FillColor = Color3.fromRGB(0, 179, 255)
-					espHighlight.OutlineColor = Color3.fromRGB(0, 110, 255)
-					espHighlight.OutlineTransparency = 0
-					espHighlight.Parent = v.Character
-				end
-			else
-				for i,v in pairs(players) do
-					if v.Character:FindFirstChildWhichIsA("Highlight") then
-						local highlight = v.Character:FindFirstChildWhichIsA("Highlight")
-						if highlight.Name:match("_highlight_insult") then
-							highlight:Destroy()
-						end
-					end
-				end
-			end
-		end,
-	})
-	
-	local NoKillFeed = windowapi.CreateButton({
-		["Name"] = "NoKillFeed",
-		["Tab"] = "World",
-		["Function"] = function(callback)
-			local killFeed = lplr:WaitForChild("PlayerGui"):WaitForChild("KillFeedGui")
-			if callback then
-				if killFeed then killFeed.Enabled = false end
-			else
-				if killFeed then killFeed.Enabled = true end
-			end
-		end,
-		["HoverText"] = "Disables the new kill feed."
-	})
-	
-	local AutoJuggernaut = windowapi.CreateButton({
-		["Name"] = "AutoJuggernaut",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				if workspace:FindFirstChild("JuggernautRageBlade") then
-					local juggernaut = workspace:FindFirstChild("JuggernautRageBlade")
-					local proximity = juggernaut:WaitForChild("Rock"):FindFirstChildWhichIsA("ProximityPrompt")
-					if proximity then
-						local character = lplr.Character or lplr.CharacterAdded:Wait()
-						character.PrimaryPart.CFrame = CFrame.new(1000,1000,1000)
-						task.wait(1)
-						character.PrimaryPart.CFrame = juggernaut:WaitForChild("Rock").CFrame
-						task.wait(1)
-						fireproximityprompt(proximity, 500)
-					end
-				end
-			end
-		end,
-		["HoverText"] = "Teleports to the juggernaut sword."
-	})
-	
-	local function getbed_fourbigguysexploitv2()
-		local mag = 18
-		local returned
-		for i, obj in pairs(game:GetService("CollectionService"):GetTagged("bed")) do
-			if isalive(lplr) then
-				if obj and bedwars["BlockController"]:isBlockBreakable({blockPosition = obj.Position / 3}, lplr) and obj.Parent ~= nil then
-					local newmag = (lplr.Character.HumanoidRootPart.Position - obj.Position).magnitude
-					if newmag <= mag then
-						mag = newmag
-						returned = {RootPart = obj}
-					end
-				end
-			end
-		end
-		return returned
-	end
-	
-	local function targetCheck(plr)
-		return plr and plr.Humanoid and plr.Humanoid.Health > 0 and plr.Character:FindFirstChild("ForceField") == nil
-	end
-	
-	local function GetNearestHumanoidToPosition(player, distance, overridepos)
-		local closest, returnedplayer = distance, nil
-		if isalive(lplr) then
-			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
-				if targetCheck(v) then
-					local vChar = v.Character or v.CharacterAdded:Wait()
-					local mag = (lplr.Character.HumanoidRootPart.Position - vChar.HumanoidRootPart.Position).magnitude
-					if overridepos and mag > distance then 
-						mag = (overridepos - vChar.HumanoidRootPart.Position).magnitude
-					end
-					if mag <= closest then
-						closest = mag
-						returnedplayer = v
-					end
-				end
-			end
-			for i2,v2 in pairs(game:GetService("CollectionService"):GetTagged("Monster")) do -- monsters
-				if v2.PrimaryPart and v2:GetAttribute("Team") ~= lplr:GetAttribute("Team") then -- no duck
-					local mag = (lplr.Character.HumanoidRootPart.Position - v2.PrimaryPart.Position).magnitude
-					if overridepos and mag > distance then 
-						mag = (overridepos - v2.PrimaryPart.Position).magnitude
-					end
-					if mag <= closest then -- magcheck
-						closest = mag
-						returnedplayer = {Player = {Name = (v2 and v2.Name or "Monster"), UserId = (v2 and v2.Name == "Duck" and 2020831224 or 1443379645)}, Character = v2, RootPart = v2.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
-					end
-				end
-			end
-			for i3,v3 in pairs(game:GetService("CollectionService"):GetTagged("Drone")) do -- drone
-				if v3.PrimaryPart then
-					if tonumber(v3:GetAttribute("PlayerUserId")) == lplr.UserId then continue end
-					local droneplr = game:GetService("Players"):GetPlayerByUserId(v3:GetAttribute("PlayerUserId"))
-					if droneplr and droneplr.Team == lplr.Team then continue end
-					local mag = (lplr.Character.HumanoidRootPart.Position - v3.PrimaryPart.Position).magnitude
-					if overridepos and mag > distance then 
-						mag = (overridepos - v3.PrimaryPart.Position).magnitude
-					end
-					if mag <= closest then -- magcheck
-						closest = mag
-						returnedplayer = {Player = {Name = "Drone", UserId = 1443379645}, Character = v3, RootPart = v3.PrimaryPart} -- monsters are npcs so I have to create a fake player for target info
-					end
-				end
-			end
-		end
-		return returnedplayer
-	end
-	
-	--[[local fourBigGuysEnabled = false
-	local FourBigGuysExploitV2 = windowapi.CreateButton({
-		["Name"] = "FourBigGuysExploit",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				fourBigGuysEnabled = true
-				task.spawn(function()
-					repeat
-						task.wait(0.05)
-						local cplr = getbed_fourbigguysexploitv2() or GetNearestHumanoidToPosition(true, 18)
-						if cplr then
-							UserSettings():GetService("UserGameSettings").RotationType = Enum.RotationType.MovementRelative
-							lplr.Character.HumanoidRootPart.CFrame = CFrame.new(cplr.PrimaryPart.CFrame.p, Vector3.new(lplr.Character.HumanoidRootPart.Position.X, cplr.PrimaryPart.CFrame.p.Y, lplr.Character.HumanoidRootPart.Position.Z))
-							bedwars["ClientHandler"]:Get(bedwars["JuggernautAttackRemote"]):SendToServer({
-								swordType = "juggernaut_rage_blade",
-								player = lplr
-							})
-						end
-					until (fourBigGuysEnabled == false)
 				end)
 			else
-				fourBigGuysEnabled = false
+				RunLoops:UnbindFromRenderStep("BedESP") 
+				bedESPFolder:ClearAllChildren()
 			end
 		end,
-	})]]--
-	
-	local queueEnabled = false
-	local AutoQueue = windowapi.CreateButton({
-		["Name"] = "AutoQueue",
-		["Tab"] = "Default",
-		["Function"] = function(callback)
-			queueEnabled = callback
-		end,
+		["HoverText"] = "Shows where all the beds are in the match."
 	})
-	
-	coroutine.wrap(function()
-		bedwars["ClientHandler"]:WaitFor("MatchEndEvent"):andThen(function(p6)
-			connectionstodisconnect[#connectionstodisconnect + 1] = p6:Connect(function(p2)
-				if queueEnabled then
-					task.wait(0.2)
-					if bedwars["ClientStoreHandler"]:getState().Game.customMatch == nil and bedwars["ClientStoreHandler"]:getState().Party.leader.userId == lplr.UserId then
-						if bedwars["ClientStoreHandler"]:getState().Party.queueState == 0 then
-							bedwars["LobbyClientEvents"].joinQueue:fire({
-								queueType = queueType
-							})
-						end
-					end
-				end
-			end)
-		end)
-	end)()
-	
-	local function getEasyGGRole(plr)
-		local suc, res = pcall(function() return plr:GetRankInGroup(5774246) end)
-		if not suc then 
-			repeat
-				suc, res = pcall(function() return plr:GetRankInGroup(5774246) end)
-				task.wait()
-			until suc
-		end
-		return res
-	end
-	
-	local alsconnection = nil
-	local autoLeaveStaffEnabled = false
-	
-	local function autoleaveplr(alplr)
-		if getEasyGGRole(alplr) >= 100 and (alplr.UserId ~= 87365146) then
-			if autoLeaveStaffEnabled == true then
-				destruct()
-				disableorEnableAllButtons(false)
-				hideUI()
-				script.Parent.Enabled = false
-				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100, notifyFrame)
-				createinfo("Insult", "Leaving in 2 seconds...", 100, notifyFrame)
-				task.wait(2)
-				bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
-			end
-		end
-	end
-	
-	local AutoLeaveStaff = windowapi.CreateButton({
-		["Name"] = "AutoLeaveStaff",
-		["Tab"] = "Default",
-		["Function"] = function(callback)
-			if callback then
-				autoLeaveStaffEnabled = true
-				alsconnection = game:GetService("Players").PlayerAdded:Connect(autoleaveplr)
-				for i, v in pairs(game:GetService("Players"):GetPlayers()) do
-					autoleaveplr(v)
-				end
-			else
-				autoLeaveStaffEnabled = false
-				alsconnection:Disconnect()
-			end
-		end,
-	})
-	
-	local GetNearestHumanoidToMouse = function(player, distance, checkvis)
-		local closest, returnedplayer = distance, nil
-		if isalive(lplr) then
-			for i, v in pairs(game:GetService("Players"):GetPlayers()) do
-				local vec, vis = cam:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
-				if vis and targetCheck(v) then
-					local mag = (uis:GetMouseLocation() - Vector2.new(vec.X, vec.Y)).magnitude
-					if mag <= closest then
-						closest = mag
-						returnedplayer = v
-					end
-				end
-			end
-		end
-		return returnedplayer, closest
-	end
-	
-	--[[local AutoLeaveCheckbox = windowapi.CreateCheckbox({
-		["Name"] = "Leave on Staff",
-		["LinkTo"] = "AutoLeaveStaff",
-		["Default"] = false,
-		["Function"] = function(callback)
-			if callback then
-				createinfo("Insult", "cope", 2, notifyFrame)
-			else
-				createinfo("Insult", "still cope", 2, notifyFrame)
-			end
-		end,
-		["HoverText"] = "cope"
-	})]]--
-	local velo1
-	local flyup1 = false
-	local flydown1 = false
-	local connection1
-	local connection21
-	local ltween = nil
-	local debTime = 2.5
-	local BounceFlyE = {["Enabled"] = false}
-	local newText = script.Parent.FlyUI.TextLabel
-	local newFrame = script.Parent.FlyUI.Frame
-	local FlyE = nil
-	local Fly = windowapi.CreateButton({
-		["Name"] = "Fly",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				BounceFlyE["Enabled"] = true
-				coroutine.wrap(function()
-					--[[newText = Instance.new("TextLabel")
-					newText.Parent = script.Parent
-					newText.BackgroundTransparency = 1
-					newText.TextScaled = true
-					newText.TextColor3 = Color3.fromRGB(255,255,255)
-					newText.Font = "Gotham"]]--
-					script.Parent.FlyUI.Visible = true
-					local newText = script.Parent.FlyUI.TextLabel
-					local newFrame = script.Parent.FlyUI.Frame
-					if not ltween then
-						ltween = game:GetService("TweenService"):Create(
-						newFrame,
-						TweenInfo.new(2.5, Enum.EasingStyle.Linear, Enum.EasingDirection.In),
-						{Size = UDim2.new(0, 0, .16, 0)}
-						)
-						ltween:Play()
-						--newFrame:TweenSize(UDim2.new(0, 0, .16, 0), Enum.EasingDirection.In, Enum.EasingStyle.Linear, debTime)
-					end
-					repeat task.wait(0.1)
-						if not BounceFlyE["Enabled"] then break end
-						debTime = debTime - 0.1
-						newText.Text = roundDecimals(debTime, 2).."s"
-					until debTime <= 0
-					debTime = 2.5
-					script.Parent.FlyUI.Visible = false
-					BounceFlyE["Enabled"] = false
-					if FlyE then
-						table.insert(states, FlyE)
-					end
-					script.Parent.Blatant.list.Fly.BackgroundColor3 = Color3.fromRGB(0, 145, 255)
-				end)()
-				velo1 = Instance.new("BodyVelocity")
-				velo1.MaxForce = Vector3.new(0,9e9,0)
-				velo1.Parent = lplr.Character:FindFirstChild("HumanoidRootPart")
-				connection1 = uis.InputBegan:Connect(function(input)
-					if input.KeyCode == Enum.KeyCode.Space then
-						flyup1 = true
-					end
-					if input.KeyCode == Enum.KeyCode.LeftShift then
-						flydown1 = true
-					end
-				end)
-				connection21 = uis.InputEnded:Connect(function(input)
-					if input.KeyCode == Enum.KeyCode.Space then
-						flyup1 = false
-					end
-					if input.KeyCode == Enum.KeyCode.LeftShift then
-						flydown1 = false
-					end
-				end)
-				spawn(function()
-					repeat
-						task.wait()
-						if not BounceFlyE["Enabled"] then
-							if velo1 then
-								velo1:Destroy()
-							end
-							if connection1 then
-								connection1:Disconnect()
-							end
-							if connection21 then
-								connection21:Disconnect()
-							end
-							flyup1 = false
-							flydown1 = false
-							debTime = 2.5
-							script.Parent.FlyUI.Visible = false
-						end
-						for i = 1,15 do
-							task.wait()
-							if not BounceFlyE["Enabled"] then return end
-							velo1.Velocity = Vector3.new(0,i*1.25+(flyup1 and 42 or 0)+(flydown1 and -42 or 0),0)
-						end
-						for i = 1,15 do
-							task.wait()
-							if not BounceFlyE["Enabled"] then return end
-							velo1.Velocity = Vector3.new(0,-i*1+(flyup1 and 42 or 0)+(flydown1 and -42 or 0),0)
-						end
-					until not BounceFlyE["Enabled"]
-				end)
-			else
-				if velo1 then
-					velo1:Destroy()
-				end
-				if connection1 then
-					connection1:Disconnect()
-				end
-				if connection21 then
-					connection21:Disconnect()
-				end
-				flyup1 = false
-				flydown1 = false
-				debTime = 2.5
-				script.Parent.FlyUI.Visible = false
-				if ltween then
-					ltween:Cancel()
-					ltween = nil
-				end
-				newFrame.Size = UDim2.new(1,0,0.16,0)
-				newText.Text = debTime
-			end
-		end,
-	})
-	--FlyE = Fly["Function"]
-	
-	--[[local AnticheatDisabler = windowapi.CreateButton({
-		["Name"] = "AnticheatDisabler",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				if isalive(lplr) then
-					lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, true)
-					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Dead)
-					repeat task.wait() until lplr.Character.Humanoid.MoveDirection ~= Vector3.zero
-					task.wait(0.2)
-					lplr.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Dead, false)
-					lplr.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Running)
-					workspace.Gravity = 192.6
-					createinfo("Insult: AnticheatDisabler", "<b>Successfully</b> enabled.\nDo note that you can't redo this unless you join another game.", 10, notifyFrame)
-				else
-					createinfo("Insult: AnticheatDisabler", "<b>Error:</b> You must be alive first.", 10, notifyFrame)
-				end
-			end
-	
-		end,
-	})]]--
-	
-	local oldReach = nil
-	local reachDist = 18
-	local Reach = windowapi.CreateButton({
-		["Name"] = "Reach",
-		["Tab"] = "Default",
-		["Function"] = function(callback)
-			if callback then
-				oldReach = bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE
-				bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = 18
-			else
-				if oldReach then
-					bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = oldReach
-				else
-					bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = 14.4
-				end
-			end
-		end,
-	})
-	local ReachDistance = sliderapi.CreateSlider({
-		["Name"] = "Distance",
-		["Min"] = 1,
-		["Max"] = 999,
-		["Default"] = 18,
-		["Round"] = 1,
-		["LinkTo"] = "Reach",
-		["Function"] = function(val)
-			reachDist = val
-		end,
-	})
-	
-	local FloatDisabler = windowapi.CreateButton({
-		["Name"] = "FloatDisabler",
-		["Tab"] = "Blatant",
-		["Function"] = function(callback)
-			if callback then
-				if GetMatchState() ~= 1 then
-					repeat task.wait() until GetMatchState() == 1
-				end
-				local oldhook = bedwars["BalloonController"].hookBalloon
-				local oldenable = bedwars["BalloonController"].enableBalloonPhysics
-				bedwars["BalloonController"].enableBalloonPhysics = function() end
-				bedwars["BalloonController"].deflateBalloon = function() end
-				bedwars["BalloonController"].hookBalloon = function(x1,x2,x3,x4)
-					x4:WaitForChild("Balloon").CFrame = CFrame.new(0,-1995,0)
-					x4.Balloon:ClearAllChildren()
-					bedwars["BalloonController"].enableBalloonPhysics = oldenable
-					bedwars["BalloonController"].hookBalloon = oldhook
-				end
-				createinfo("FloatDisabler", "Float check disabled until you die", 10, notifyFrame)
-				bedwars["BalloonController"].inflateBalloon()
-			end
-		end,
-	})
-	
-	local lightingsettings = {}
-	local lightingconnection
-	local lightingchanged = false
-	local Fullbright = windowapi.CreateButton({
-		["Name"] = "Fullbright",
-		["Tab"] = "Render",
-		["Function"] = function(callback)
-			if callback then
-				lightingsettings["Brightness"] = lighting.Brightness
-				lightingsettings["ClockTime"] = lighting.ClockTime
-				lightingsettings["FogEnd"] = lighting.FogEnd
-				lightingsettings["GlobalShadows"] = lighting.GlobalShadows
-				lightingsettings["OutdoorAmbient"] = lighting.OutdoorAmbient
-				lightingchanged = false
-				lighting.Brightness = 2
-				lighting.ClockTime = 14
-				lighting.FogEnd = 100000
-				lighting.GlobalShadows = false
-				lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
-				lightingchanged = true
-				lightingconnection = lighting.Changed:Connect(function()
-					if not lightingchanged then
-						lightingsettings["Brightness"] = lighting.Brightness
-						lightingsettings["ClockTime"] = lighting.ClockTime
-						lightingsettings["FogEnd"] = lighting.FogEnd
-						lightingsettings["GlobalShadows"] = lighting.GlobalShadows
-						lightingsettings["OutdoorAmbient"] = lighting.OutdoorAmbient
-						lightingchanged = true
-						lighting.Brightness = 2
-						lighting.ClockTime = 14
-						lighting.FogEnd = 100000
-						lighting.GlobalShadows = false
-						lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128)
-						lightingchanged = false
-					end
-				end)
-			else
-				for name,thing in pairs(lightingsettings) do 
-					lighting[name] = thing 
-				end
-				lightingconnection:Disconnect()
-			end
-		end,
-		["HoverText"] = "fullbright yes"
-	})
-	
-	createinfo("Insult - Finished loading", "Finished loading.\nPress RightShift to toggle.", 5, notifyFrame)
-	
-	--[[local ReachAmount = windowapi.CreateSlider({
-		["Name"] = "Distance",
-		["LinkTo"] = "Reach",
-		["Min"] = 1,
-		["Max"] = 25,
-		["Default"] = 18,
-		["Function"] = function(amount)
-			oldReach = bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE
-			bedwars["CombatConstant"].RAYCAST_SWORD_CHARACTER_DISTANCE = amount
-		end,
-		["HoverText"] = "The amount of reach to have."
-	})]]--
-	
-	--[[local AutoLeaveTest = windowapi.CreateButton({
-		["Name"] = "AutoLeaveTest",
-		["Tab"] = "Default",
-		["Function"] = function(callback)
-			if callback then
-				createinfo("Insult", "AutoLeaveTest begins in 5 seconds.", 3, notifyFrame)
-				task.wait(5)
-				destruct()
-				disableorEnableAllButtons(false)
-				hideUI()
-				script.Parent.Enabled = false
-				createinfo("Insult", "Staff Detected!\n"..lplr.DisplayName.." (@"..lplr.Name..")", 100, notifyFrame)
-				createinfo("Insult", "Leaving in 2 seconds...", 100, notifyFrame)
-				task.wait(2)
-				bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
-			end
-		end,
-	})]]--
+
 end
 coroutine.wrap(VBKIKF_fake_script)()
